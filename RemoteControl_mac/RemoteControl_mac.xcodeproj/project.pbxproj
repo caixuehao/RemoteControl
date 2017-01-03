@@ -1,0 +1,554 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FC5CAED61E1BA04A00DCAFA7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAED51E1BA04A00DCAFA7 /* AppDelegate.m */; };
+		FC5CAED91E1BA04A00DCAFA7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAED81E1BA04A00DCAFA7 /* main.m */; };
+		FC5CAEDB1E1BA04A00DCAFA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC5CAEDA1E1BA04A00DCAFA7 /* Assets.xcassets */; };
+		FC5CAEDE1E1BA04A00DCAFA7 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5CAEDC1E1BA04A00DCAFA7 /* MainMenu.xib */; };
+		FC5CAEE91E1BA04A00DCAFA7 /* RemoteControl_macTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAEE81E1BA04A00DCAFA7 /* RemoteControl_macTests.m */; };
+		FC5CAEF41E1BA04A00DCAFA7 /* RemoteControl_macUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAEF31E1BA04A00DCAFA7 /* RemoteControl_macUITests.m */; };
+		FC5CAF481E1BA2E600DCAFA7 /* MonitorControl.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF471E1BA2E600DCAFA7 /* MonitorControl.mm */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FC5CAEE51E1BA04A00DCAFA7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FC5CAEC91E1BA04A00DCAFA7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FC5CAED01E1BA04A00DCAFA7;
+			remoteInfo = RemoteControl_mac;
+		};
+		FC5CAEF01E1BA04A00DCAFA7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FC5CAEC91E1BA04A00DCAFA7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FC5CAED01E1BA04A00DCAFA7;
+			remoteInfo = RemoteControl_mac;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FC5CAED11E1BA04A00DCAFA7 /* RemoteControl_mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemoteControl_mac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC5CAED41E1BA04A00DCAFA7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FC5CAED51E1BA04A00DCAFA7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FC5CAED81E1BA04A00DCAFA7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FC5CAEDA1E1BA04A00DCAFA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FC5CAEDD1E1BA04A00DCAFA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		FC5CAEDF1E1BA04A00DCAFA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC5CAEE41E1BA04A00DCAFA7 /* RemoteControl_macTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RemoteControl_macTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC5CAEE81E1BA04A00DCAFA7 /* RemoteControl_macTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RemoteControl_macTests.m; sourceTree = "<group>"; };
+		FC5CAEEA1E1BA04A00DCAFA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC5CAEEF1E1BA04A00DCAFA7 /* RemoteControl_macUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RemoteControl_macUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC5CAEF31E1BA04A00DCAFA7 /* RemoteControl_macUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RemoteControl_macUITests.m; sourceTree = "<group>"; };
+		FC5CAEF51E1BA04A00DCAFA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC5CAF431E1BA27600DCAFA7 /* Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
+		FC5CAF461E1BA2E600DCAFA7 /* MonitorControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonitorControl.h; sourceTree = "<group>"; };
+		FC5CAF471E1BA2E600DCAFA7 /* MonitorControl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MonitorControl.mm; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FC5CAECE1E1BA04A00DCAFA7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC5CAEE11E1BA04A00DCAFA7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC5CAEEC1E1BA04A00DCAFA7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FC5CAEC81E1BA04A00DCAFA7 = {
+			isa = PBXGroup;
+			children = (
+				FC5CAED31E1BA04A00DCAFA7 /* RemoteControl_mac */,
+				FC5CAEE71E1BA04A00DCAFA7 /* RemoteControl_macTests */,
+				FC5CAEF21E1BA04A00DCAFA7 /* RemoteControl_macUITests */,
+				FC5CAED21E1BA04A00DCAFA7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FC5CAED21E1BA04A00DCAFA7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FC5CAED11E1BA04A00DCAFA7 /* RemoteControl_mac.app */,
+				FC5CAEE41E1BA04A00DCAFA7 /* RemoteControl_macTests.xctest */,
+				FC5CAEEF1E1BA04A00DCAFA7 /* RemoteControl_macUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FC5CAED31E1BA04A00DCAFA7 /* RemoteControl_mac */ = {
+			isa = PBXGroup;
+			children = (
+				FC5CAF401E1BA27600DCAFA7 /* Classes */,
+				FC5CAED41E1BA04A00DCAFA7 /* AppDelegate.h */,
+				FC5CAED51E1BA04A00DCAFA7 /* AppDelegate.m */,
+				FC5CAEDA1E1BA04A00DCAFA7 /* Assets.xcassets */,
+				FC5CAEDC1E1BA04A00DCAFA7 /* MainMenu.xib */,
+				FC5CAEDF1E1BA04A00DCAFA7 /* Info.plist */,
+				FC5CAED71E1BA04A00DCAFA7 /* Supporting Files */,
+			);
+			path = RemoteControl_mac;
+			sourceTree = "<group>";
+		};
+		FC5CAED71E1BA04A00DCAFA7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FC5CAED81E1BA04A00DCAFA7 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FC5CAEE71E1BA04A00DCAFA7 /* RemoteControl_macTests */ = {
+			isa = PBXGroup;
+			children = (
+				FC5CAEE81E1BA04A00DCAFA7 /* RemoteControl_macTests.m */,
+				FC5CAEEA1E1BA04A00DCAFA7 /* Info.plist */,
+			);
+			path = RemoteControl_macTests;
+			sourceTree = "<group>";
+		};
+		FC5CAEF21E1BA04A00DCAFA7 /* RemoteControl_macUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FC5CAEF31E1BA04A00DCAFA7 /* RemoteControl_macUITests.m */,
+				FC5CAEF51E1BA04A00DCAFA7 /* Info.plist */,
+			);
+			path = RemoteControl_macUITests;
+			sourceTree = "<group>";
+		};
+		FC5CAF401E1BA27600DCAFA7 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				FC5CAF411E1BA27600DCAFA7 /* Common */,
+				FC5CAF421E1BA27600DCAFA7 /* Macro */,
+				FC5CAF441E1BA27600DCAFA7 /* Modules */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		FC5CAF411E1BA27600DCAFA7 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		FC5CAF421E1BA27600DCAFA7 /* Macro */ = {
+			isa = PBXGroup;
+			children = (
+				FC5CAF431E1BA27600DCAFA7 /* Macro.h */,
+			);
+			path = Macro;
+			sourceTree = "<group>";
+		};
+		FC5CAF441E1BA27600DCAFA7 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				FC5CAF451E1BA27600DCAFA7 /* Monitor */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		FC5CAF451E1BA27600DCAFA7 /* Monitor */ = {
+			isa = PBXGroup;
+			children = (
+				FC5CAF461E1BA2E600DCAFA7 /* MonitorControl.h */,
+				FC5CAF471E1BA2E600DCAFA7 /* MonitorControl.mm */,
+			);
+			path = Monitor;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FC5CAED01E1BA04A00DCAFA7 /* RemoteControl_mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC5CAEF81E1BA04A00DCAFA7 /* Build configuration list for PBXNativeTarget "RemoteControl_mac" */;
+			buildPhases = (
+				FC5CAECD1E1BA04A00DCAFA7 /* Sources */,
+				FC5CAECE1E1BA04A00DCAFA7 /* Frameworks */,
+				FC5CAECF1E1BA04A00DCAFA7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RemoteControl_mac;
+			productName = RemoteControl_mac;
+			productReference = FC5CAED11E1BA04A00DCAFA7 /* RemoteControl_mac.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FC5CAEE31E1BA04A00DCAFA7 /* RemoteControl_macTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC5CAEFB1E1BA04A00DCAFA7 /* Build configuration list for PBXNativeTarget "RemoteControl_macTests" */;
+			buildPhases = (
+				FC5CAEE01E1BA04A00DCAFA7 /* Sources */,
+				FC5CAEE11E1BA04A00DCAFA7 /* Frameworks */,
+				FC5CAEE21E1BA04A00DCAFA7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FC5CAEE61E1BA04A00DCAFA7 /* PBXTargetDependency */,
+			);
+			name = RemoteControl_macTests;
+			productName = RemoteControl_macTests;
+			productReference = FC5CAEE41E1BA04A00DCAFA7 /* RemoteControl_macTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FC5CAEEE1E1BA04A00DCAFA7 /* RemoteControl_macUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC5CAEFE1E1BA04A00DCAFA7 /* Build configuration list for PBXNativeTarget "RemoteControl_macUITests" */;
+			buildPhases = (
+				FC5CAEEB1E1BA04A00DCAFA7 /* Sources */,
+				FC5CAEEC1E1BA04A00DCAFA7 /* Frameworks */,
+				FC5CAEED1E1BA04A00DCAFA7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FC5CAEF11E1BA04A00DCAFA7 /* PBXTargetDependency */,
+			);
+			name = RemoteControl_macUITests;
+			productName = RemoteControl_macUITests;
+			productReference = FC5CAEEF1E1BA04A00DCAFA7 /* RemoteControl_macUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FC5CAEC91E1BA04A00DCAFA7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = cxh;
+				TargetAttributes = {
+					FC5CAED01E1BA04A00DCAFA7 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					FC5CAEE31E1BA04A00DCAFA7 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = FC5CAED01E1BA04A00DCAFA7;
+					};
+					FC5CAEEE1E1BA04A00DCAFA7 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = FC5CAED01E1BA04A00DCAFA7;
+					};
+				};
+			};
+			buildConfigurationList = FC5CAECC1E1BA04A00DCAFA7 /* Build configuration list for PBXProject "RemoteControl_mac" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FC5CAEC81E1BA04A00DCAFA7;
+			productRefGroup = FC5CAED21E1BA04A00DCAFA7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FC5CAED01E1BA04A00DCAFA7 /* RemoteControl_mac */,
+				FC5CAEE31E1BA04A00DCAFA7 /* RemoteControl_macTests */,
+				FC5CAEEE1E1BA04A00DCAFA7 /* RemoteControl_macUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FC5CAECF1E1BA04A00DCAFA7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC5CAEDB1E1BA04A00DCAFA7 /* Assets.xcassets in Resources */,
+				FC5CAEDE1E1BA04A00DCAFA7 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC5CAEE21E1BA04A00DCAFA7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC5CAEED1E1BA04A00DCAFA7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FC5CAECD1E1BA04A00DCAFA7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC5CAED91E1BA04A00DCAFA7 /* main.m in Sources */,
+				FC5CAED61E1BA04A00DCAFA7 /* AppDelegate.m in Sources */,
+				FC5CAF481E1BA2E600DCAFA7 /* MonitorControl.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC5CAEE01E1BA04A00DCAFA7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC5CAEE91E1BA04A00DCAFA7 /* RemoteControl_macTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC5CAEEB1E1BA04A00DCAFA7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC5CAEF41E1BA04A00DCAFA7 /* RemoteControl_macUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FC5CAEE61E1BA04A00DCAFA7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FC5CAED01E1BA04A00DCAFA7 /* RemoteControl_mac */;
+			targetProxy = FC5CAEE51E1BA04A00DCAFA7 /* PBXContainerItemProxy */;
+		};
+		FC5CAEF11E1BA04A00DCAFA7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FC5CAED01E1BA04A00DCAFA7 /* RemoteControl_mac */;
+			targetProxy = FC5CAEF01E1BA04A00DCAFA7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FC5CAEDC1E1BA04A00DCAFA7 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FC5CAEDD1E1BA04A00DCAFA7 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FC5CAEF61E1BA04A00DCAFA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		FC5CAEF71E1BA04A00DCAFA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		FC5CAEF91E1BA04A00DCAFA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RemoteControl_mac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "www.duole.login.RemoteControl-mac";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FC5CAEFA1E1BA04A00DCAFA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RemoteControl_mac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "www.duole.login.RemoteControl-mac";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		FC5CAEFC1E1BA04A00DCAFA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RemoteControl_macTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "www.duole.login.RemoteControl-macTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RemoteControl_mac.app/Contents/MacOS/RemoteControl_mac";
+			};
+			name = Debug;
+		};
+		FC5CAEFD1E1BA04A00DCAFA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RemoteControl_macTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "www.duole.login.RemoteControl-macTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RemoteControl_mac.app/Contents/MacOS/RemoteControl_mac";
+			};
+			name = Release;
+		};
+		FC5CAEFF1E1BA04A00DCAFA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RemoteControl_macUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "www.duole.login.RemoteControl-macUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = RemoteControl_mac;
+			};
+			name = Debug;
+		};
+		FC5CAF001E1BA04A00DCAFA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RemoteControl_macUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "www.duole.login.RemoteControl-macUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = RemoteControl_mac;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FC5CAECC1E1BA04A00DCAFA7 /* Build configuration list for PBXProject "RemoteControl_mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC5CAEF61E1BA04A00DCAFA7 /* Debug */,
+				FC5CAEF71E1BA04A00DCAFA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FC5CAEF81E1BA04A00DCAFA7 /* Build configuration list for PBXNativeTarget "RemoteControl_mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC5CAEF91E1BA04A00DCAFA7 /* Debug */,
+				FC5CAEFA1E1BA04A00DCAFA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		FC5CAEFB1E1BA04A00DCAFA7 /* Build configuration list for PBXNativeTarget "RemoteControl_macTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC5CAEFC1E1BA04A00DCAFA7 /* Debug */,
+				FC5CAEFD1E1BA04A00DCAFA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		FC5CAEFE1E1BA04A00DCAFA7 /* Build configuration list for PBXNativeTarget "RemoteControl_macUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC5CAEFF1E1BA04A00DCAFA7 /* Debug */,
+				FC5CAF001E1BA04A00DCAFA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FC5CAEC91E1BA04A00DCAFA7 /* Project object */;
+}

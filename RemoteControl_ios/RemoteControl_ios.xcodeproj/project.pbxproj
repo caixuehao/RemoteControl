@@ -1,0 +1,521 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FC5CAF0F1E1BA0DB00DCAFA7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF0E1E1BA0DB00DCAFA7 /* main.m */; };
+		FC5CAF121E1BA0DB00DCAFA7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF111E1BA0DB00DCAFA7 /* AppDelegate.m */; };
+		FC5CAF151E1BA0DB00DCAFA7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF141E1BA0DB00DCAFA7 /* ViewController.m */; };
+		FC5CAF181E1BA0DB00DCAFA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC5CAF161E1BA0DB00DCAFA7 /* Main.storyboard */; };
+		FC5CAF1A1E1BA0DB00DCAFA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC5CAF191E1BA0DB00DCAFA7 /* Assets.xcassets */; };
+		FC5CAF1D1E1BA0DB00DCAFA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC5CAF1B1E1BA0DB00DCAFA7 /* LaunchScreen.storyboard */; };
+		FC5CAF281E1BA0DB00DCAFA7 /* RemoteControl_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF271E1BA0DB00DCAFA7 /* RemoteControl_iosTests.m */; };
+		FC5CAF331E1BA0DB00DCAFA7 /* RemoteControl_iosUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF321E1BA0DB00DCAFA7 /* RemoteControl_iosUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FC5CAF241E1BA0DB00DCAFA7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FC5CAF021E1BA0DB00DCAFA7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FC5CAF091E1BA0DB00DCAFA7;
+			remoteInfo = RemoteControl_ios;
+		};
+		FC5CAF2F1E1BA0DB00DCAFA7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FC5CAF021E1BA0DB00DCAFA7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FC5CAF091E1BA0DB00DCAFA7;
+			remoteInfo = RemoteControl_ios;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FC5CAF0A1E1BA0DB00DCAFA7 /* RemoteControl_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemoteControl_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC5CAF0E1E1BA0DB00DCAFA7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FC5CAF101E1BA0DB00DCAFA7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FC5CAF111E1BA0DB00DCAFA7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FC5CAF131E1BA0DB00DCAFA7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		FC5CAF141E1BA0DB00DCAFA7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		FC5CAF171E1BA0DB00DCAFA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FC5CAF191E1BA0DB00DCAFA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FC5CAF1C1E1BA0DB00DCAFA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FC5CAF1E1E1BA0DB00DCAFA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC5CAF231E1BA0DB00DCAFA7 /* RemoteControl_iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RemoteControl_iosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC5CAF271E1BA0DB00DCAFA7 /* RemoteControl_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RemoteControl_iosTests.m; sourceTree = "<group>"; };
+		FC5CAF291E1BA0DB00DCAFA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC5CAF2E1E1BA0DB00DCAFA7 /* RemoteControl_iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RemoteControl_iosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC5CAF321E1BA0DB00DCAFA7 /* RemoteControl_iosUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RemoteControl_iosUITests.m; sourceTree = "<group>"; };
+		FC5CAF341E1BA0DB00DCAFA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FC5CAF071E1BA0DB00DCAFA7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC5CAF201E1BA0DB00DCAFA7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC5CAF2B1E1BA0DB00DCAFA7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FC5CAF011E1BA0DB00DCAFA7 = {
+			isa = PBXGroup;
+			children = (
+				FC5CAF0C1E1BA0DB00DCAFA7 /* RemoteControl_ios */,
+				FC5CAF261E1BA0DB00DCAFA7 /* RemoteControl_iosTests */,
+				FC5CAF311E1BA0DB00DCAFA7 /* RemoteControl_iosUITests */,
+				FC5CAF0B1E1BA0DB00DCAFA7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FC5CAF0B1E1BA0DB00DCAFA7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FC5CAF0A1E1BA0DB00DCAFA7 /* RemoteControl_ios.app */,
+				FC5CAF231E1BA0DB00DCAFA7 /* RemoteControl_iosTests.xctest */,
+				FC5CAF2E1E1BA0DB00DCAFA7 /* RemoteControl_iosUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FC5CAF0C1E1BA0DB00DCAFA7 /* RemoteControl_ios */ = {
+			isa = PBXGroup;
+			children = (
+				FC5CAF101E1BA0DB00DCAFA7 /* AppDelegate.h */,
+				FC5CAF111E1BA0DB00DCAFA7 /* AppDelegate.m */,
+				FC5CAF131E1BA0DB00DCAFA7 /* ViewController.h */,
+				FC5CAF141E1BA0DB00DCAFA7 /* ViewController.m */,
+				FC5CAF161E1BA0DB00DCAFA7 /* Main.storyboard */,
+				FC5CAF191E1BA0DB00DCAFA7 /* Assets.xcassets */,
+				FC5CAF1B1E1BA0DB00DCAFA7 /* LaunchScreen.storyboard */,
+				FC5CAF1E1E1BA0DB00DCAFA7 /* Info.plist */,
+				FC5CAF0D1E1BA0DB00DCAFA7 /* Supporting Files */,
+			);
+			path = RemoteControl_ios;
+			sourceTree = "<group>";
+		};
+		FC5CAF0D1E1BA0DB00DCAFA7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FC5CAF0E1E1BA0DB00DCAFA7 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FC5CAF261E1BA0DB00DCAFA7 /* RemoteControl_iosTests */ = {
+			isa = PBXGroup;
+			children = (
+				FC5CAF271E1BA0DB00DCAFA7 /* RemoteControl_iosTests.m */,
+				FC5CAF291E1BA0DB00DCAFA7 /* Info.plist */,
+			);
+			path = RemoteControl_iosTests;
+			sourceTree = "<group>";
+		};
+		FC5CAF311E1BA0DB00DCAFA7 /* RemoteControl_iosUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FC5CAF321E1BA0DB00DCAFA7 /* RemoteControl_iosUITests.m */,
+				FC5CAF341E1BA0DB00DCAFA7 /* Info.plist */,
+			);
+			path = RemoteControl_iosUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FC5CAF091E1BA0DB00DCAFA7 /* RemoteControl_ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC5CAF371E1BA0DB00DCAFA7 /* Build configuration list for PBXNativeTarget "RemoteControl_ios" */;
+			buildPhases = (
+				FC5CAF061E1BA0DB00DCAFA7 /* Sources */,
+				FC5CAF071E1BA0DB00DCAFA7 /* Frameworks */,
+				FC5CAF081E1BA0DB00DCAFA7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RemoteControl_ios;
+			productName = RemoteControl_ios;
+			productReference = FC5CAF0A1E1BA0DB00DCAFA7 /* RemoteControl_ios.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FC5CAF221E1BA0DB00DCAFA7 /* RemoteControl_iosTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC5CAF3A1E1BA0DB00DCAFA7 /* Build configuration list for PBXNativeTarget "RemoteControl_iosTests" */;
+			buildPhases = (
+				FC5CAF1F1E1BA0DB00DCAFA7 /* Sources */,
+				FC5CAF201E1BA0DB00DCAFA7 /* Frameworks */,
+				FC5CAF211E1BA0DB00DCAFA7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FC5CAF251E1BA0DB00DCAFA7 /* PBXTargetDependency */,
+			);
+			name = RemoteControl_iosTests;
+			productName = RemoteControl_iosTests;
+			productReference = FC5CAF231E1BA0DB00DCAFA7 /* RemoteControl_iosTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FC5CAF2D1E1BA0DB00DCAFA7 /* RemoteControl_iosUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC5CAF3D1E1BA0DB00DCAFA7 /* Build configuration list for PBXNativeTarget "RemoteControl_iosUITests" */;
+			buildPhases = (
+				FC5CAF2A1E1BA0DB00DCAFA7 /* Sources */,
+				FC5CAF2B1E1BA0DB00DCAFA7 /* Frameworks */,
+				FC5CAF2C1E1BA0DB00DCAFA7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FC5CAF301E1BA0DB00DCAFA7 /* PBXTargetDependency */,
+			);
+			name = RemoteControl_iosUITests;
+			productName = RemoteControl_iosUITests;
+			productReference = FC5CAF2E1E1BA0DB00DCAFA7 /* RemoteControl_iosUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FC5CAF021E1BA0DB00DCAFA7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = cxh;
+				TargetAttributes = {
+					FC5CAF091E1BA0DB00DCAFA7 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					FC5CAF221E1BA0DB00DCAFA7 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = FC5CAF091E1BA0DB00DCAFA7;
+					};
+					FC5CAF2D1E1BA0DB00DCAFA7 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = FC5CAF091E1BA0DB00DCAFA7;
+					};
+				};
+			};
+			buildConfigurationList = FC5CAF051E1BA0DB00DCAFA7 /* Build configuration list for PBXProject "RemoteControl_ios" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FC5CAF011E1BA0DB00DCAFA7;
+			productRefGroup = FC5CAF0B1E1BA0DB00DCAFA7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FC5CAF091E1BA0DB00DCAFA7 /* RemoteControl_ios */,
+				FC5CAF221E1BA0DB00DCAFA7 /* RemoteControl_iosTests */,
+				FC5CAF2D1E1BA0DB00DCAFA7 /* RemoteControl_iosUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FC5CAF081E1BA0DB00DCAFA7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC5CAF1D1E1BA0DB00DCAFA7 /* LaunchScreen.storyboard in Resources */,
+				FC5CAF1A1E1BA0DB00DCAFA7 /* Assets.xcassets in Resources */,
+				FC5CAF181E1BA0DB00DCAFA7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC5CAF211E1BA0DB00DCAFA7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC5CAF2C1E1BA0DB00DCAFA7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FC5CAF061E1BA0DB00DCAFA7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC5CAF151E1BA0DB00DCAFA7 /* ViewController.m in Sources */,
+				FC5CAF121E1BA0DB00DCAFA7 /* AppDelegate.m in Sources */,
+				FC5CAF0F1E1BA0DB00DCAFA7 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC5CAF1F1E1BA0DB00DCAFA7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC5CAF281E1BA0DB00DCAFA7 /* RemoteControl_iosTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC5CAF2A1E1BA0DB00DCAFA7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC5CAF331E1BA0DB00DCAFA7 /* RemoteControl_iosUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FC5CAF251E1BA0DB00DCAFA7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FC5CAF091E1BA0DB00DCAFA7 /* RemoteControl_ios */;
+			targetProxy = FC5CAF241E1BA0DB00DCAFA7 /* PBXContainerItemProxy */;
+		};
+		FC5CAF301E1BA0DB00DCAFA7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FC5CAF091E1BA0DB00DCAFA7 /* RemoteControl_ios */;
+			targetProxy = FC5CAF2F1E1BA0DB00DCAFA7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FC5CAF161E1BA0DB00DCAFA7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FC5CAF171E1BA0DB00DCAFA7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FC5CAF1B1E1BA0DB00DCAFA7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FC5CAF1C1E1BA0DB00DCAFA7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FC5CAF351E1BA0DB00DCAFA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FC5CAF361E1BA0DB00DCAFA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FC5CAF381E1BA0DB00DCAFA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = RemoteControl_ios/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "www.duole.login.RemoteControl-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FC5CAF391E1BA0DB00DCAFA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = RemoteControl_ios/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "www.duole.login.RemoteControl-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		FC5CAF3B1E1BA0DB00DCAFA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = RemoteControl_iosTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "www.duole.login.RemoteControl-iosTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RemoteControl_ios.app/RemoteControl_ios";
+			};
+			name = Debug;
+		};
+		FC5CAF3C1E1BA0DB00DCAFA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = RemoteControl_iosTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "www.duole.login.RemoteControl-iosTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RemoteControl_ios.app/RemoteControl_ios";
+			};
+			name = Release;
+		};
+		FC5CAF3E1E1BA0DB00DCAFA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = RemoteControl_iosUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "www.duole.login.RemoteControl-iosUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = RemoteControl_ios;
+			};
+			name = Debug;
+		};
+		FC5CAF3F1E1BA0DB00DCAFA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = RemoteControl_iosUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "www.duole.login.RemoteControl-iosUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = RemoteControl_ios;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FC5CAF051E1BA0DB00DCAFA7 /* Build configuration list for PBXProject "RemoteControl_ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC5CAF351E1BA0DB00DCAFA7 /* Debug */,
+				FC5CAF361E1BA0DB00DCAFA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FC5CAF371E1BA0DB00DCAFA7 /* Build configuration list for PBXNativeTarget "RemoteControl_ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC5CAF381E1BA0DB00DCAFA7 /* Debug */,
+				FC5CAF391E1BA0DB00DCAFA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		FC5CAF3A1E1BA0DB00DCAFA7 /* Build configuration list for PBXNativeTarget "RemoteControl_iosTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC5CAF3B1E1BA0DB00DCAFA7 /* Debug */,
+				FC5CAF3C1E1BA0DB00DCAFA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		FC5CAF3D1E1BA0DB00DCAFA7 /* Build configuration list for PBXNativeTarget "RemoteControl_iosUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC5CAF3E1E1BA0DB00DCAFA7 /* Debug */,
+				FC5CAF3F1E1BA0DB00DCAFA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FC5CAF021E1BA0DB00DCAFA7 /* Project object */;
+}
