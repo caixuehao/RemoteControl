@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC494B1C1E1CC6F3005D91FE /* SocketControl.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC494B1B1E1CC6F3005D91FE /* SocketControl.mm */; };
+		FC494B221E1CCC46005D91FE /* SetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC494B201E1CCC46005D91FE /* SetViewController.m */; };
+		FC494B231E1CCC46005D91FE /* SetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC494B211E1CCC46005D91FE /* SetViewController.xib */; };
+		FC494B271E1CD027005D91FE /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC494B251E1CD027005D91FE /* MainViewController.m */; };
+		FC494B281E1CD027005D91FE /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC494B261E1CD027005D91FE /* MainViewController.xib */; };
+		FC494B311E1CD19B005D91FE /* MainNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC494B301E1CD19B005D91FE /* MainNavigationController.m */; };
 		FC5CAF0F1E1BA0DB00DCAFA7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF0E1E1BA0DB00DCAFA7 /* main.m */; };
 		FC5CAF121E1BA0DB00DCAFA7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF111E1BA0DB00DCAFA7 /* AppDelegate.m */; };
 		FC5CAF151E1BA0DB00DCAFA7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF141E1BA0DB00DCAFA7 /* ViewController.m */; };
@@ -15,6 +21,8 @@
 		FC5CAF1D1E1BA0DB00DCAFA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC5CAF1B1E1BA0DB00DCAFA7 /* LaunchScreen.storyboard */; };
 		FC5CAF281E1BA0DB00DCAFA7 /* RemoteControl_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF271E1BA0DB00DCAFA7 /* RemoteControl_iosTests.m */; };
 		FC5CAF331E1BA0DB00DCAFA7 /* RemoteControl_iosUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF321E1BA0DB00DCAFA7 /* RemoteControl_iosUITests.m */; };
+		FC7282E61E1D01B300C078D2 /* CommandLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7282E41E1D01B300C078D2 /* CommandLineViewController.m */; };
+		FC7282E71E1D01B300C078D2 /* CommandLineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC7282E51E1D01B300C078D2 /* CommandLineViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +43,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FC494B1A1E1CC6F3005D91FE /* SocketControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketControl.h; sourceTree = "<group>"; };
+		FC494B1B1E1CC6F3005D91FE /* SocketControl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SocketControl.mm; sourceTree = "<group>"; };
+		FC494B1E1E1CC880005D91FE /* SocketMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SocketMacro.h; path = ../../../../RemoteControl_mac/RemoteControl_mac/Classes/Macro/SocketMacro.h; sourceTree = "<group>"; };
+		FC494B1F1E1CCC46005D91FE /* SetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetViewController.h; path = Set/SetViewController.h; sourceTree = "<group>"; };
+		FC494B201E1CCC46005D91FE /* SetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetViewController.m; path = Set/SetViewController.m; sourceTree = "<group>"; };
+		FC494B211E1CCC46005D91FE /* SetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetViewController.xib; path = Set/SetViewController.xib; sourceTree = "<group>"; };
+		FC494B241E1CD027005D91FE /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		FC494B251E1CD027005D91FE /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		FC494B261E1CD027005D91FE /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		FC494B2F1E1CD19B005D91FE /* MainNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainNavigationController.h; sourceTree = "<group>"; };
+		FC494B301E1CD19B005D91FE /* MainNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainNavigationController.m; sourceTree = "<group>"; };
 		FC5CAF0A1E1BA0DB00DCAFA7 /* RemoteControl_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemoteControl_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC5CAF0E1E1BA0DB00DCAFA7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FC5CAF101E1BA0DB00DCAFA7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +70,9 @@
 		FC5CAF2E1E1BA0DB00DCAFA7 /* RemoteControl_iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RemoteControl_iosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC5CAF321E1BA0DB00DCAFA7 /* RemoteControl_iosUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RemoteControl_iosUITests.m; sourceTree = "<group>"; };
 		FC5CAF341E1BA0DB00DCAFA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC7282E31E1D01B300C078D2 /* CommandLineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandLineViewController.h; sourceTree = "<group>"; };
+		FC7282E41E1D01B300C078D2 /* CommandLineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommandLineViewController.m; sourceTree = "<group>"; };
+		FC7282E51E1D01B300C078D2 /* CommandLineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommandLineViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +100,73 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FC494B091E1CC4A3005D91FE /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				FC494B0A1E1CC4A3005D91FE /* Common */,
+				FC494B0B1E1CC4A3005D91FE /* Macro */,
+				FC494B0C1E1CC4A3005D91FE /* Modules */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		FC494B0A1E1CC4A3005D91FE /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		FC494B0B1E1CC4A3005D91FE /* Macro */ = {
+			isa = PBXGroup;
+			children = (
+				FC494B1E1E1CC880005D91FE /* SocketMacro.h */,
+			);
+			path = Macro;
+			sourceTree = "<group>";
+		};
+		FC494B0C1E1CC4A3005D91FE /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				FC7282DB1E1CFF9800C078D2 /* CommandLine */,
+				FC494B191E1CC6F3005D91FE /* Socket */,
+				FC494B111E1CC613005D91FE /* Set */,
+				FC494B0D1E1CC4A3005D91FE /* Main */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		FC494B0D1E1CC4A3005D91FE /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				FC494B241E1CD027005D91FE /* MainViewController.h */,
+				FC494B251E1CD027005D91FE /* MainViewController.m */,
+				FC494B2F1E1CD19B005D91FE /* MainNavigationController.h */,
+				FC494B301E1CD19B005D91FE /* MainNavigationController.m */,
+				FC494B261E1CD027005D91FE /* MainViewController.xib */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		FC494B111E1CC613005D91FE /* Set */ = {
+			isa = PBXGroup;
+			children = (
+				FC494B1F1E1CCC46005D91FE /* SetViewController.h */,
+				FC494B201E1CCC46005D91FE /* SetViewController.m */,
+				FC494B211E1CCC46005D91FE /* SetViewController.xib */,
+			);
+			name = Set;
+			sourceTree = "<group>";
+		};
+		FC494B191E1CC6F3005D91FE /* Socket */ = {
+			isa = PBXGroup;
+			children = (
+				FC494B1A1E1CC6F3005D91FE /* SocketControl.h */,
+				FC494B1B1E1CC6F3005D91FE /* SocketControl.mm */,
+			);
+			path = Socket;
+			sourceTree = "<group>";
+		};
 		FC5CAF011E1BA0DB00DCAFA7 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +190,7 @@
 		FC5CAF0C1E1BA0DB00DCAFA7 /* RemoteControl_ios */ = {
 			isa = PBXGroup;
 			children = (
+				FC494B091E1CC4A3005D91FE /* Classes */,
 				FC5CAF101E1BA0DB00DCAFA7 /* AppDelegate.h */,
 				FC5CAF111E1BA0DB00DCAFA7 /* AppDelegate.m */,
 				FC5CAF131E1BA0DB00DCAFA7 /* ViewController.h */,
@@ -138,6 +228,16 @@
 				FC5CAF341E1BA0DB00DCAFA7 /* Info.plist */,
 			);
 			path = RemoteControl_iosUITests;
+			sourceTree = "<group>";
+		};
+		FC7282DB1E1CFF9800C078D2 /* CommandLine */ = {
+			isa = PBXGroup;
+			children = (
+				FC7282E31E1D01B300C078D2 /* CommandLineViewController.h */,
+				FC7282E41E1D01B300C078D2 /* CommandLineViewController.m */,
+				FC7282E51E1D01B300C078D2 /* CommandLineViewController.xib */,
+			);
+			path = CommandLine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,7 +343,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC7282E71E1D01B300C078D2 /* CommandLineViewController.xib in Resources */,
 				FC5CAF1D1E1BA0DB00DCAFA7 /* LaunchScreen.storyboard in Resources */,
+				FC494B231E1CCC46005D91FE /* SetViewController.xib in Resources */,
+				FC494B281E1CD027005D91FE /* MainViewController.xib in Resources */,
 				FC5CAF1A1E1BA0DB00DCAFA7 /* Assets.xcassets in Resources */,
 				FC5CAF181E1BA0DB00DCAFA7 /* Main.storyboard in Resources */,
 			);
@@ -271,8 +374,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC5CAF151E1BA0DB00DCAFA7 /* ViewController.m in Sources */,
+				FC494B271E1CD027005D91FE /* MainViewController.m in Sources */,
 				FC5CAF121E1BA0DB00DCAFA7 /* AppDelegate.m in Sources */,
+				FC494B1C1E1CC6F3005D91FE /* SocketControl.mm in Sources */,
+				FC7282E61E1D01B300C078D2 /* CommandLineViewController.m in Sources */,
 				FC5CAF0F1E1BA0DB00DCAFA7 /* main.m in Sources */,
+				FC494B311E1CD19B005D91FE /* MainNavigationController.m in Sources */,
+				FC494B221E1CCC46005D91FE /* SetViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +606,7 @@
 				FC5CAF391E1BA0DB00DCAFA7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FC5CAF3A1E1BA0DB00DCAFA7 /* Build configuration list for PBXNativeTarget "RemoteControl_iosTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +615,7 @@
 				FC5CAF3C1E1BA0DB00DCAFA7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FC5CAF3D1E1BA0DB00DCAFA7 /* Build configuration list for PBXNativeTarget "RemoteControl_iosUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +624,7 @@
 				FC5CAF3F1E1BA0DB00DCAFA7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

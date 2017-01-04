@@ -14,6 +14,7 @@
 		FC5CAEE91E1BA04A00DCAFA7 /* RemoteControl_macTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAEE81E1BA04A00DCAFA7 /* RemoteControl_macTests.m */; };
 		FC5CAEF41E1BA04A00DCAFA7 /* RemoteControl_macUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAEF31E1BA04A00DCAFA7 /* RemoteControl_macUITests.m */; };
 		FC5CAF481E1BA2E600DCAFA7 /* MonitorControl.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF471E1BA2E600DCAFA7 /* MonitorControl.mm */; };
+		FC7282DA1E1CFF6800C078D2 /* CommandLineController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7282D91E1CFF6800C078D2 /* CommandLineController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FC494B1D1E1CC7D6005D91FE /* SocketMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketMacro.h; sourceTree = "<group>"; };
 		FC5CAED11E1BA04A00DCAFA7 /* RemoteControl_mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemoteControl_mac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC5CAED41E1BA04A00DCAFA7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FC5CAED51E1BA04A00DCAFA7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -50,6 +52,8 @@
 		FC5CAF431E1BA27600DCAFA7 /* Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
 		FC5CAF461E1BA2E600DCAFA7 /* MonitorControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonitorControl.h; sourceTree = "<group>"; };
 		FC5CAF471E1BA2E600DCAFA7 /* MonitorControl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MonitorControl.mm; sourceTree = "<group>"; };
+		FC7282D81E1CFF6800C078D2 /* CommandLineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandLineController.h; sourceTree = "<group>"; };
+		FC7282D91E1CFF6800C078D2 /* CommandLineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommandLineController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				FC5CAF431E1BA27600DCAFA7 /* Macro.h */,
+				FC494B1D1E1CC7D6005D91FE /* SocketMacro.h */,
 			);
 			path = Macro;
 			sourceTree = "<group>";
@@ -165,6 +170,7 @@
 		FC5CAF441E1BA27600DCAFA7 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				FC7282D71E1CFF6800C078D2 /* CommandLine */,
 				FC5CAF451E1BA27600DCAFA7 /* Monitor */,
 			);
 			path = Modules;
@@ -177,6 +183,15 @@
 				FC5CAF471E1BA2E600DCAFA7 /* MonitorControl.mm */,
 			);
 			path = Monitor;
+			sourceTree = "<group>";
+		};
+		FC7282D71E1CFF6800C078D2 /* CommandLine */ = {
+			isa = PBXGroup;
+			children = (
+				FC7282D81E1CFF6800C078D2 /* CommandLineController.h */,
+				FC7282D91E1CFF6800C078D2 /* CommandLineController.m */,
+			);
+			path = CommandLine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC5CAED91E1BA04A00DCAFA7 /* main.m in Sources */,
+				FC7282DA1E1CFF6800C078D2 /* CommandLineController.m in Sources */,
 				FC5CAED61E1BA04A00DCAFA7 /* AppDelegate.m in Sources */,
 				FC5CAF481E1BA2E600DCAFA7 /* MonitorControl.mm in Sources */,
 			);
@@ -531,6 +547,7 @@
 				FC5CAEFA1E1BA04A00DCAFA7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FC5CAEFB1E1BA04A00DCAFA7 /* Build configuration list for PBXNativeTarget "RemoteControl_macTests" */ = {
 			isa = XCConfigurationList;
@@ -539,6 +556,7 @@
 				FC5CAEFD1E1BA04A00DCAFA7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FC5CAEFE1E1BA04A00DCAFA7 /* Build configuration list for PBXNativeTarget "RemoteControl_macUITests" */ = {
 			isa = XCConfigurationList;
@@ -547,6 +565,7 @@
 				FC5CAF001E1BA04A00DCAFA7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
