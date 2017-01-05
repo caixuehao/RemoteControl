@@ -17,6 +17,7 @@ static SocketControl* shareSocketControl = nil;
 
 @implementation SocketControl{
     int connectreturn;
+    NSOperationQueue* sendQueue;
 }
 
 +(instancetype)share{
@@ -31,6 +32,7 @@ static SocketControl* shareSocketControl = nil;
 -(instancetype)init{
     if (self = [super init]) {
         _socketReturn = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+        sendQueue = [[NSOperationQueue alloc] init];
     }
     return self;
 }
@@ -57,27 +59,32 @@ static SocketControl* shareSocketControl = nil;
 }
 
 -(void)sendMessageType:(int)messagetype datatype:(int)datatype data:(id)data{
-    NSLog(@"%@",data);
-    NSData* senddata;
-    int offset = 0;
-    switch (datatype) {
-        case DataType_String:
-            senddata = [data dataUsingEncoding:NSUTF8StringEncoding];
-            offset = 1;
-            break;
-        case DataType_NSDictionary:
-            senddata = [NSJSONSerialization dataWithJSONObject:data options:NSJSONWritingPrettyPrinted error:nil];
-            break;
-        default:
-            senddata = data;
-            break;
-    }
-    NSDictionary* headdic = @{@"messageType":@(messagetype),@"dataType":@(datatype),@"dataSize":@(senddata.length)};
-    NSData* headdata =  [NSJSONSerialization dataWithJSONObject:headdic options:NSJSONWritingPrettyPrinted error:nil];
-    
-    send(_socketReturn, [headdata bytes], headdata.length, 0);
-    NSLog(@"%lu",(unsigned long)senddata.length);
-    send(_socketReturn, [senddata bytes], senddata.length, 0);
+   
+ 
+    [sendQueue addOperationWithBlock:^{
+        
+        NSData* senddata;
+        int offset = 0;
+        switch (datatype) {
+            case DataType_String:
+                senddata = [data dataUsingEncoding:NSUTF8StringEncoding];
+                offset = 1;
+                break;
+            case DataType_NSDictionary:
+                senddata = [NSJSONSerialization dataWithJSONObject:data options:NSJSONWritingPrettyPrinted error:nil];
+                break;
+            default:
+                senddata = data;
+                break;
+        }
+        NSDictionary* headdic = @{@"messageType":@(messagetype),@"dataType":@(datatype),@"dataSize":@(senddata.length)};
+        NSData* headdata =  [NSJSONSerialization dataWithJSONObject:headdic options:NSJSONWritingPrettyPrinted error:nil];
+        send(_socketReturn, [headdata bytes], headdata.length, 0);
+//        NSLog(@"%lu",(unsigned long)senddata.length);
+        send(_socketReturn, [senddata bytes], senddata.length, 0);
+        
+    }];
+
     
 }
 @end
