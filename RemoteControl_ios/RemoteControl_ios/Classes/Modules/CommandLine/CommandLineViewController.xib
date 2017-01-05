@@ -16,11 +16,35 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ALQ-32-rpS">
-                    <rect key="frame" x="89" y="154" width="30" height="30"/>
+                    <rect key="frame" x="36" y="107" width="69" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="关机"/>
                     <connections>
                         <action selector="shutdown:" destination="-1" eventType="touchUpInside" id="ney-yM-X9C"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="f87-9B-afv">
+                    <rect key="frame" x="36" y="145" width="69" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="注销"/>
+                    <connections>
+                        <action selector="logout:" destination="-1" eventType="touchUpInside" id="3gt-X2-zdb"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0T3-gy-9t7">
+                    <rect key="frame" x="36" y="183" width="69" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="睡眠"/>
+                    <connections>
+                        <action selector="sleep:" destination="-1" eventType="touchUpInside" id="oRF-qg-7no"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dbA-WA-tyv">
+                    <rect key="frame" x="36" y="216" width="69" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="重启"/>
+                    <connections>
+                        <action selector="restart:" destination="-1" eventType="touchUpInside" id="C4a-BO-6O9"/>
                     </connections>
                 </button>
             </subviews>

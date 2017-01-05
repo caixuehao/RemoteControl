@@ -16,9 +16,9 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Y7c-Rg-IbN">
-                    <rect key="frame" x="51" y="71" width="79" height="29"/>
+                    <rect key="frame" x="51" y="70" width="79" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Shell命令"/>
+                    <state key="normal" title="关机重启"/>
                     <connections>
                         <action selector="shell:" destination="-1" eventType="touchUpInside" id="4Kg-Wo-ulx"/>
                     </connections>

@@ -8,6 +8,7 @@
 
 #import "CommandLineController.h"
 
+
 static CommandLineController* shareCommandLineController = nil;
 
 @implementation CommandLineController{
@@ -32,6 +33,7 @@ static CommandLineController* shareCommandLineController = nil;
 
 -(void)shellCommands:(NSString*)commands{
     NSLog(@"%@",commands);
-    [[NSTask launchedTaskWithLaunchPath:@"/bin/shutdown" arguments:@[@"-h",@"now"]] waitUntilExit];
+  
 }
+
 @end

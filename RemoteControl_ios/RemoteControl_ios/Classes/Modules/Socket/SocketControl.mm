@@ -57,10 +57,13 @@ static SocketControl* shareSocketControl = nil;
 }
 
 -(void)sendMessageType:(int)messagetype datatype:(int)datatype data:(id)data{
+    NSLog(@"%@",data);
     NSData* senddata;
+    int offset = 0;
     switch (datatype) {
         case DataType_String:
             senddata = [data dataUsingEncoding:NSUTF8StringEncoding];
+            offset = 1;
             break;
         case DataType_NSDictionary:
             senddata = [NSJSONSerialization dataWithJSONObject:data options:NSJSONWritingPrettyPrinted error:nil];
@@ -69,11 +72,11 @@ static SocketControl* shareSocketControl = nil;
             senddata = data;
             break;
     }
-    NSDictionary* headdic = @{@"messageType":@1,@"dataType":@(datatype),@"dataSize":@(senddata.length)};
+    NSDictionary* headdic = @{@"messageType":@(messagetype),@"dataType":@(datatype),@"dataSize":@(senddata.length)};
     NSData* headdata =  [NSJSONSerialization dataWithJSONObject:headdic options:NSJSONWritingPrettyPrinted error:nil];
     
-    NSLog(@"%lu",headdata.length);
     send(_socketReturn, [headdata bytes], headdata.length, 0);
+    NSLog(@"%lu",(unsigned long)senddata.length);
     send(_socketReturn, [senddata bytes], senddata.length, 0);
     
 }

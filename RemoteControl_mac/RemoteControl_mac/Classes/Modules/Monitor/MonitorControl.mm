@@ -14,6 +14,7 @@
 #import "MonitorControl.h"
 #import "SocketMacro.h"
 #import "CommandLineController.h"
+#import "ShutDownController.h"
 
 #define MAX_LISTEN_NUM 1 //最大监听数
 
@@ -118,12 +119,13 @@ static MonitorControl* shareMonitorControl = nil;
     NSDictionary* headdic = nil;
     NSMutableData* recvData = nil;
     
-    
+
     char message[1024];
     //接收并打印客户端数据
     bool recvbool = true;
     while (recvbool) {
-        memset(message,0,1024);
+//        char *message =  (char*)malloc(1024*sizeof(char));;
+        memset(message,0,sizeof(message));
         size_t recvreturn = recv(acceptreturn,message, 1024, 0);
         //判断是否断开连接 http://blog.csdn.net/god2469/article/details/8801356
         if(recvreturn<=0 && errno != EINTR){
@@ -133,13 +135,16 @@ static MonitorControl* shareMonitorControl = nil;
             recvbool = false;
         }
         
+        //读取信息
         
         if(headdic == nil){
             //读取头
             NSData *data = [NSData dataWithBytes: message length:strlen(message)];
             headdic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             NSLog(@"recvreturn:%zu headdic:%@",recvreturn,headdic);
+            recvData = nil;
         }else{
+            NSLog(@"recvreturn:%zu recvData:%s\n\n",recvreturn,message);
             //读取数据
             if(recvData == nil){
                 recvData = [NSMutableData dataWithBytes: message length:strlen(message)];
@@ -147,10 +152,9 @@ static MonitorControl* shareMonitorControl = nil;
                 [recvData appendBytes:message length:strlen(message)];
             }
             
-            if(recvData.length == [[headdic objectForKey:@"dataSize"] integerValue]){
+            if(recvData.length >= [[headdic objectForKey:@"dataSize"] integerValue]){
                 [self executeCommand:[[headdic objectForKey:@"messageType"] intValue] datatype:[[headdic objectForKey:@"dataType"] intValue] data:recvData];
                 headdic = nil;
-                recvData = nil;
             }
         }
     }
@@ -168,6 +172,8 @@ static MonitorControl* shareMonitorControl = nil;
     //根据消息类型来执行命令
     if (messagetype==MessageType_TerminalCommand) {
         [[CommandLineController share] shellCommands:data];
+    }else if(messagetype == MessageType_Shutdown){
+        [ShutDownController shutdown:data];
     }
     
     

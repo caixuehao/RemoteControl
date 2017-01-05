@@ -13,4 +13,5 @@
 +(instancetype)share;
 
 -(void)start;
+
 @end

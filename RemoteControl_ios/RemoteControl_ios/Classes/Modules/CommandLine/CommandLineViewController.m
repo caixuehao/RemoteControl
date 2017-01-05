@@ -24,7 +24,17 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)shutdown:(id)sender {
-    [[SocketControl share] sendMessageType:MessageType_TerminalCommand datatype:DataType_String data:@"sudo halt"];
+    [[SocketControl share] sendMessageType:MessageType_Shutdown datatype:DataType_String data:ShutDown];
+}
+- (IBAction)logout:(id)sender {
+    [[SocketControl share] sendMessageType:MessageType_Shutdown datatype:DataType_String data:Logout];
+}
+- (IBAction)sleep:(id)sender {
+    [[SocketControl share] sendMessageType:MessageType_Shutdown datatype:DataType_String data:Sleep];
+}
+- (IBAction)restart:(id)sender {
+    [[SocketControl share] sendMessageType:MessageType_Shutdown datatype:DataType_String data:Restart];
+    
 }
 
 /*

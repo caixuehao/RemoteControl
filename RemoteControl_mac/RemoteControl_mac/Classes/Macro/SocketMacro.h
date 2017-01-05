@@ -8,8 +8,9 @@
 
 #ifndef SocketMacro_h
 #define SocketMacro_h
-#define NetworkPort 1995 //端口号
 
+#define NetworkPort 1995 //端口号
+#define MessageHeadLenght 59
 //数据类型
 #pragma DataType
 
@@ -21,5 +22,14 @@
 #pragma MessageType
 
 #define MessageType_TerminalCommand 1 //终端命令
+#define MessageType_Shutdown 2 //关机
+
+
+#pragma 关机命令参数
+
+#define ShutDown @"ShutDown"
+#define Restart  @"Restart"
+#define Logout   @"Logout"
+#define Sleep    @"Sleep"
 
 #endif /* SocketMacro_h */
