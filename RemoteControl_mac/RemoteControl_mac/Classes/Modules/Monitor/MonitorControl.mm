@@ -23,6 +23,7 @@ static MonitorControl* shareMonitorControl = nil;
     int socketReturn;
     int acceptreturn;
     NSOperationQueue* monitorQueue;
+    NSOperationQueue* udpQueue;
 }
 
 
@@ -71,6 +72,50 @@ static MonitorControl* shareMonitorControl = nil;
         NSLog(@"erron:%d str:%s",errno,strerror(errno));
         return;
     }
+    
+    //UDP
+    struct sockaddr_in udpSocketAddr;
+    udpSocketAddr.sin_family = AF_INET;
+    udpSocketAddr.sin_port = htons(NetworkPort);
+    udpSocketAddr.sin_addr.s_addr = htonl(INADDR_ANY);
+    
+    int udpSocketReturn = socket(AF_INET, SOCK_DGRAM, 0);
+    NSLog(@"udpSocketReturn:%d",udpSocketReturn);
+    int udpbindreturn = bind(udpSocketReturn, (struct sockaddr *) &udpSocketAddr, sizeof(udpSocketAddr));
+    NSLog(@"udpbindreturn:%d",udpbindreturn);
+    
+    
+    udpQueue = [[NSOperationQueue alloc] init] ;
+    [udpQueue addOperationWithBlock:^{
+        char message[256];
+        socklen_t sin_len = sizeof(udpSocketAddr);
+        while (1) {
+            memset(message,0,sizeof(message));
+            /**
+             *  udp接收信息
+             *
+             *  @param  一个标识套接口的描述字
+             *  @param  包含待接收数据的缓冲区
+             *  @param  缓冲区中数据的长度
+             *  @param  调用方式标志位
+             *  @param  指针，指向目的套接口的地址
+             *  @param  所指地址的长度
+             *
+             *  @return 成功则返回接收到的字符数,失败返回-1.
+             */
+            recvfrom(udpSocketReturn,message,sizeof(message),0,(struct sockaddr *)&udpSocketAddr,&sin_len);
+            NSLog(@"UDP_message:%s  IP:%s",message,inet_ntoa(udpSocketAddr.sin_addr));
+            if(strcmp(message,AnybodyHere) == 0){
+                char sendmessage[] = IAmHere;
+                sendto(udpSocketReturn,sendmessage,strlen(sendmessage)+1,0,(struct sockaddr *) &udpSocketAddr, sizeof(udpSocketAddr));
+            }
+        }
+    }];
+
+    
+    
+    
+    
     
     /**
      *  listen 处于监听状态的套接字socketReturn将维护一个客户连接请求队列，该队列最多容纳MAX_LISTEN_NUM个用户请求。
@@ -126,10 +171,10 @@ static MonitorControl* shareMonitorControl = nil;
     while (recvbool) {
 //        char *message =  (char*)malloc(1024*sizeof(char));;
         memset(message,0,sizeof(message));
-        size_t recvreturn = recv(acceptreturn,message, 1024, 0);
+        size_t recvreturn = recv(acceptreturn,message, sizeof(message), 0);
         //判断是否断开连接 http://blog.csdn.net/god2469/article/details/8801356
         if(recvreturn<=0 && errno != EINTR){
-            NSLog(@"erron:%d str:%s",errno,strerror(errno));
+            NSLog(@"链接断开了 erron:%d str:%s",errno,strerror(errno));
             close(acceptreturn);
             [self monitor];
             recvbool = false;

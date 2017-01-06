@@ -16,7 +16,10 @@
 		FC5CAEE91E1BA04A00DCAFA7 /* RemoteControl_macTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAEE81E1BA04A00DCAFA7 /* RemoteControl_macTests.m */; };
 		FC5CAEF41E1BA04A00DCAFA7 /* RemoteControl_macUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAEF31E1BA04A00DCAFA7 /* RemoteControl_macUITests.m */; };
 		FC5CAF481E1BA2E600DCAFA7 /* MonitorControl.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF471E1BA2E600DCAFA7 /* MonitorControl.mm */; };
+		FC6D9A941E1F298400D393F5 /* StartController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6D9A931E1F298400D393F5 /* StartController.m */; };
+		FC6D9A971E1F2EED00D393F5 /* SavePath.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6D9A961E1F2EED00D393F5 /* SavePath.m */; };
 		FC7282DA1E1CFF6800C078D2 /* CommandLineController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC7282D91E1CFF6800C078D2 /* CommandLineController.mm */; };
+		FCF76D821E1F44CC008DF19E /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FCF76D811E1F44CC008DF19E /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,8 +60,13 @@
 		FC5CAF431E1BA27600DCAFA7 /* Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
 		FC5CAF461E1BA2E600DCAFA7 /* MonitorControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonitorControl.h; sourceTree = "<group>"; };
 		FC5CAF471E1BA2E600DCAFA7 /* MonitorControl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MonitorControl.mm; sourceTree = "<group>"; };
+		FC6D9A921E1F298400D393F5 /* StartController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartController.h; path = Start/StartController.h; sourceTree = "<group>"; };
+		FC6D9A931E1F298400D393F5 /* StartController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartController.m; path = Start/StartController.m; sourceTree = "<group>"; };
+		FC6D9A951E1F2EED00D393F5 /* SavePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavePath.h; sourceTree = "<group>"; };
+		FC6D9A961E1F2EED00D393F5 /* SavePath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavePath.m; sourceTree = "<group>"; };
 		FC7282D81E1CFF6800C078D2 /* CommandLineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandLineController.h; sourceTree = "<group>"; };
 		FC7282D91E1CFF6800C078D2 /* CommandLineController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CommandLineController.mm; sourceTree = "<group>"; };
+		FCF76D811E1F44CC008DF19E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,11 +107,12 @@
 		FC5CAEC81E1BA04A00DCAFA7 = {
 			isa = PBXGroup;
 			children = (
-				FC51B8391E1DE352009723A5 /* Carbon.framework */,
+				FCF76D811E1F44CC008DF19E /* README.md */,
 				FC5CAED31E1BA04A00DCAFA7 /* RemoteControl_mac */,
 				FC5CAEE71E1BA04A00DCAFA7 /* RemoteControl_macTests */,
 				FC5CAEF21E1BA04A00DCAFA7 /* RemoteControl_macUITests */,
 				FC5CAED21E1BA04A00DCAFA7 /* Products */,
+				FCF76D801E1F4492008DF19E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -170,6 +179,8 @@
 		FC5CAF411E1BA27600DCAFA7 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				FC6D9A951E1F2EED00D393F5 /* SavePath.h */,
+				FC6D9A961E1F2EED00D393F5 /* SavePath.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -186,6 +197,7 @@
 		FC5CAF441E1BA27600DCAFA7 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				FC6D9A911E1F296500D393F5 /* Start */,
 				FC20C2091E1DE4E400DBAC75 /* ShutDown */,
 				FC7282D71E1CFF6800C078D2 /* CommandLine */,
 				FC5CAF451E1BA27600DCAFA7 /* Monitor */,
@@ -202,6 +214,15 @@
 			path = Monitor;
 			sourceTree = "<group>";
 		};
+		FC6D9A911E1F296500D393F5 /* Start */ = {
+			isa = PBXGroup;
+			children = (
+				FC6D9A921E1F298400D393F5 /* StartController.h */,
+				FC6D9A931E1F298400D393F5 /* StartController.m */,
+			);
+			name = Start;
+			sourceTree = "<group>";
+		};
 		FC7282D71E1CFF6800C078D2 /* CommandLine */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +230,14 @@
 				FC7282D91E1CFF6800C078D2 /* CommandLineController.mm */,
 			);
 			path = CommandLine;
+			sourceTree = "<group>";
+		};
+		FCF76D801E1F4492008DF19E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FC51B8391E1DE352009723A5 /* Carbon.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,6 +373,9 @@
 				FC20C20C1E1DE51B00DBAC75 /* ShutDownController.mm in Sources */,
 				FC7282DA1E1CFF6800C078D2 /* CommandLineController.mm in Sources */,
 				FC5CAED61E1BA04A00DCAFA7 /* AppDelegate.m in Sources */,
+				FC6D9A941E1F298400D393F5 /* StartController.m in Sources */,
+				FC6D9A971E1F2EED00D393F5 /* SavePath.m in Sources */,
+				FCF76D821E1F44CC008DF19E /* README.md in Sources */,
 				FC5CAF481E1BA2E600DCAFA7 /* MonitorControl.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

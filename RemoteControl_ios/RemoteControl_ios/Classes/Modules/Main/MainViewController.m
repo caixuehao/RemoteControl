@@ -8,21 +8,39 @@
 
 #import "MainViewController.h"
 #import "CommandLineViewController.h"
+#import "SocketControl.h"
 
 @interface MainViewController ()
 
 @end
 
-@implementation MainViewController
+@implementation MainViewController{
+
+    __weak IBOutlet UIButton *shutdownButton;
+
+}
+
+-(instancetype)init{
+    if (self = [super init]) {
+        self.isConnect = YES;
+        [[SocketControl share] connect];
+    }
+    return self;
+}
+
+-(void)setIsConnect:(BOOL)isConnect{
+    _isConnect = isConnect;
+    shutdownButton.hidden = isConnect;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+   
 }
 - (IBAction)shell:(id)sender {
     [self.navigationController pushViewController:[[CommandLineViewController alloc] init] animated:YES];

@@ -15,7 +15,10 @@
 
 +(instancetype)share;
 
--(NSString*)connectIP:(NSString*)ip Port:(int)port;
+
+-(void)connect;
+
+-(NSString*)connectIP:(NSString*)ip Port:(int)port __attribute__((deprecated));
 
 -(void)sendMessageType:(int)messagetype datatype:(int)datatype data:(id)data;
 

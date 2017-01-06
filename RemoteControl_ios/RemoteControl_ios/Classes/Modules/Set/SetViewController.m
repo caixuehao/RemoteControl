@@ -33,8 +33,15 @@
     [super didReceiveMemoryWarning];
   
 }
+- (IBAction)connect2:(id)sender {
+   [[SocketControl share] connect];
+    
+    MainViewController* mainViewController = [[MainViewController alloc] init];
+    self.view.window.rootViewController = [[MainNavigationController alloc] initWithRootViewController:mainViewController];
+    
+}
 - (IBAction)connect:(id)sender {
-   NSString* str = [[SocketControl share] connectIP:IPTextField.text Port:[portTextField.text intValue]];
+    NSString* str = [[SocketControl share] connectIP:IPTextField.text Port:[portTextField.text intValue]];
     if(str){
         NSLog(@"%@",str);
     }else{

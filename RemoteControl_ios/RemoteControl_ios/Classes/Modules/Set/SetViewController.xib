@@ -44,11 +44,19 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ZlO-mJ-aPA">
-                    <rect key="frame" x="132" y="133" width="55" height="36"/>
+                    <rect key="frame" x="25" y="133" width="68" height="36"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="查找主机"/>
+                    <connections>
+                        <action selector="connect2:" destination="-1" eventType="touchUpInside" id="BhE-qG-caP"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EHk-HK-05T">
+                    <rect key="frame" x="207" y="136" width="59" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="链接"/>
                     <connections>
-                        <action selector="connect:" destination="-1" eventType="touchUpInside" id="Fmg-2N-K0C"/>
+                        <action selector="connect:" destination="-1" eventType="touchUpInside" id="mvz-Gn-e2T"/>
                     </connections>
                 </button>
             </subviews>

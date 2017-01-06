@@ -32,4 +32,8 @@
 #define Logout   @"Logout"
 #define Sleep    @"Sleep"
 
+#pragma 对话字符串
+#define AnybodyHere "Anybody here?"
+#define IAmHere "I am here."
+
 #endif /* SocketMacro_h */

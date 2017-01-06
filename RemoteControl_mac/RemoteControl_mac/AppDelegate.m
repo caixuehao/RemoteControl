@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "MonitorControl.h"
+#import "StartController.h"
+
 
 @interface AppDelegate ()
 
@@ -18,8 +20,10 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
+   
+    [[StartController share] autoStart];
+    [[StartController share] hideDock];
     [[MonitorControl share] start];
-
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
