@@ -7,20 +7,17 @@
 //
 
 #import "AppDelegate.h"
+#import "MainViewController.h"
 #import "MonitorControl.h"
 #import "StartController.h"
-
-
 @interface AppDelegate ()
 
-@property (weak) IBOutlet NSWindow *window;
 @end
 
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
-   
     [[StartController share] autoStart];
     [[StartController share] hideDock];
     [[MonitorControl share] start];
@@ -29,5 +26,11 @@
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
 }
+//点击Dock重新打开主窗口
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication
+                    hasVisibleWindows:(BOOL)flag{
+    [[MainViewController getShareMainViewController].view.window makeKeyAndOrderFront:self];
 
+    return YES;
+}
 @end

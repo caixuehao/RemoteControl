@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G1108" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="cyR-QZ-Lrx">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
+    </dependencies>
+    <scenes>
+        <!--Application-->
+        <scene sceneID="cjd-az-S4A">
+            <objects>
+                <application id="Ber-eA-AQ5" sceneMemberID="viewController">
+                    <menu key="mainMenu" title="Main Menu" systemMenu="main" id="wg2-oA-4MO">
+                        <items>
+                            <menuItem title="RemoteControl_mac" id="soz-MU-IUq">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="RemoteControl_mac" systemMenu="apple" id="J29-mI-F43">
+                                    <items>
+                                        <menuItem title="关于 RemoteControl_mac" id="BAJ-HS-az8">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="XVR-dx-L9A"/>
+                                        <menuItem title="Preferences…" keyEquivalent="," id="1YO-yJ-Nys"/>
+                                        <menuItem isSeparatorItem="YES" id="6KU-iL-mu7"/>
+                                        <menuItem title="隐藏RemoteControl_mac" keyEquivalent="h" id="qRB-wr-5Bm"/>
+                                        <menuItem title="隐藏其他窗口" keyEquivalent="h" id="JGK-cm-dvQ">
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                        </menuItem>
+                                        <menuItem title="显示其他窗口" id="BlK-Nb-RN7">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="npR-Za-Ag5"/>
+                                        <menuItem title="退出 RemoteControl_mac" keyEquivalent="q" id="gW6-uz-BCR"/>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Edit" id="tSD-8R-7gm">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Format" id="JvH-cF-FUr">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="View" id="Cms-eB-fWg">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Window" id="ze8-6E-kAC">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Window" systemMenu="window" id="CyD-uu-1wk">
+                                    <items>
+                                        <menuItem title="Minimize" keyEquivalent="m" id="tAU-Ns-OQj"/>
+                                        <menuItem title="Zoom" id="nhD-FQ-ADe">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="NFo-nC-7d6"/>
+                                        <menuItem title="Bring All to Front" id="C04-8u-MLD">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Help" id="hv6-2g-coi">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Help" systemMenu="help" id="bAV-cG-g28">
+                                    <items>
+                                        <menuItem title="RemoteControl_mac Help" keyEquivalent="?" id="wSR-1c-7VE"/>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="delegate" destination="nSP-yy-L96" id="M3J-Ad-sNU"/>
+                    </connections>
+                </application>
+                <customObject id="nSP-yy-L96" customClass="AppDelegate"/>
+                <customObject id="AHv-tf-W9p" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-318" y="-133"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="GJd-BA-hUS">
+            <objects>
+                <viewController id="cyR-QZ-Lrx" customClass="MainViewController" sceneMemberID="viewController">
+                    <view key="view" id="vaC-si-JX6">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RCT-4B-o27">
+                                <rect key="frame" x="0.0" y="52" width="450" height="248"/>
+                                <clipView key="contentView" ambiguous="YES" id="XsW-O0-gzH">
+                                    <rect key="frame" x="1" y="1" width="433" height="246"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView ambiguous="YES" editable="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="RwR-uE-nSw">
+                                            <rect key="frame" x="0.0" y="0.0" width="433" height="246"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <size key="minSize" width="433" height="246"/>
+                                            <size key="maxSize" width="463" height="10000000"/>
+                                            <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <size key="minSize" width="433" height="246"/>
+                                            <size key="maxSize" width="463" height="10000000"/>
+                                        </textView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="d24-Ze-Bn6">
+                                    <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="41I-Eh-KDf">
+                                    <rect key="frame" x="434" y="1" width="15" height="246"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="RwR-uE-nSw" id="ZCP-sp-zbk"/>
+                    </connections>
+                </viewController>
+                <customObject id="3xc-Z6-lzk" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-296" y="257"/>
+        </scene>
+    </scenes>
+</document>

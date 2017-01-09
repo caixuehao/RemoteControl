@@ -16,6 +16,7 @@
 #import "CommandLineController.h"
 #import "ShutDownController.h"
 
+#import "MainViewController.h"
 #define MAX_LISTEN_NUM 1 //最大监听数
 
 static MonitorControl* shareMonitorControl = nil;
@@ -47,9 +48,9 @@ static MonitorControl* shareMonitorControl = nil;
      *  @return 返回该 socket 的文件描述符，如果描述符为 -1 表示创建失败
      */
     socketReturn = socket(AF_INET, SOCK_STREAM, 0);
-    NSLog(@"socketReturn:%d",socketReturn);
+    Log(@"socketReturn:%d",socketReturn);
     if (socketReturn == -1) {
-        NSLog(@"erron:%d str:%s",errno,strerror(errno));
+        Log(@"erron:%d str:%s",errno,strerror(errno));
         return;
     }
     
@@ -67,9 +68,9 @@ static MonitorControl* shareMonitorControl = nil;
     servaddr.sin_port = htons(NetworkPort);//端口
     servaddr.sin_addr.s_addr = htonl(INADDR_ANY);//INADDR_ANY表示任何IP
     int bindreturn = bind(socketReturn, (struct sockaddr *) &servaddr, sizeof(servaddr));
-    NSLog(@"bindreturn:%d",bindreturn);
+    Log(@"bindreturn:%d",bindreturn);
     if(bindreturn != 0){
-        NSLog(@"erron:%d str:%s",errno,strerror(errno));
+        Log(@"erron:%d str:%s",errno,strerror(errno));
         return;
     }
     
@@ -80,9 +81,9 @@ static MonitorControl* shareMonitorControl = nil;
     udpSocketAddr.sin_addr.s_addr = htonl(INADDR_ANY);
     
     int udpSocketReturn = socket(AF_INET, SOCK_DGRAM, 0);
-    NSLog(@"udpSocketReturn:%d",udpSocketReturn);
+    Log(@"udpSocketReturn:%d",udpSocketReturn);
     int udpbindreturn = bind(udpSocketReturn, (struct sockaddr *) &udpSocketAddr, sizeof(udpSocketAddr));
-    NSLog(@"udpbindreturn:%d",udpbindreturn);
+    Log(@"udpbindreturn:%d",udpbindreturn);
     
     
     udpQueue = [[NSOperationQueue alloc] init] ;
@@ -104,9 +105,10 @@ static MonitorControl* shareMonitorControl = nil;
              *  @return 成功则返回接收到的字符数,失败返回-1.
              */
             recvfrom(udpSocketReturn,message,sizeof(message),0,(struct sockaddr *)&udpSocketAddr,&sin_len);
-            NSLog(@"UDP_message:%s  IP:%s",message,inet_ntoa(udpSocketAddr.sin_addr));
-            if(strcmp(message,AnybodyHere) == 0){
+            Log(@"UDP_message:%s  IP:%s",message,inet_ntoa(udpSocketAddr.sin_addr));
+            if([[NSString stringWithFormat:@"%s",message] isEqualToString:[NSString stringWithFormat:@"%s",AnybodyHere]]){
                 char sendmessage[] = IAmHere;
+                Log(@"UDP_sendMessage:%s  IP:%s",sendmessage,inet_ntoa(udpSocketAddr.sin_addr));
                 sendto(udpSocketReturn,sendmessage,strlen(sendmessage)+1,0,(struct sockaddr *) &udpSocketAddr, sizeof(udpSocketAddr));
             }
         }
@@ -126,9 +128,9 @@ static MonitorControl* shareMonitorControl = nil;
      *  @return 0──成功， -1──失败
      */
     int listenreturn = listen(socketReturn,MAX_LISTEN_NUM);
-    NSLog(@"listenreturn:%d",listenreturn);
+    Log(@"listenreturn:%d",listenreturn);
     if(listenreturn != 0){
-        NSLog(@"erron:%d str:%s",errno,strerror(errno));
+        Log(@"erron:%d str:%s",errno,strerror(errno));
         return;
     }
     
@@ -154,9 +156,9 @@ static MonitorControl* shareMonitorControl = nil;
     socklen_t len = sizeof(acceptaddr);
     
     acceptreturn = accept(socketReturn, (struct sockaddr *) &acceptaddr, &len);
-    NSLog(@"acceptreturn:%d",acceptreturn);
+    Log(@"acceptreturn:%d",acceptreturn);
     if(acceptreturn < 0){
-        NSLog(@"erron:%d str:%s",errno,strerror(errno));
+        Log(@"erron:%d str:%s",errno,strerror(errno));
         return;
     }
     
@@ -174,7 +176,7 @@ static MonitorControl* shareMonitorControl = nil;
         size_t recvreturn = recv(acceptreturn,message, sizeof(message), 0);
         //判断是否断开连接 http://blog.csdn.net/god2469/article/details/8801356
         if(recvreturn<=0 && errno != EINTR){
-            NSLog(@"链接断开了 erron:%d str:%s",errno,strerror(errno));
+            Log(@"链接断开了 erron:%d str:%s",errno,strerror(errno));
             close(acceptreturn);
             [self monitor];
             recvbool = false;
@@ -186,10 +188,10 @@ static MonitorControl* shareMonitorControl = nil;
             //读取头
             NSData *data = [NSData dataWithBytes: message length:strlen(message)];
             headdic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-            NSLog(@"recvreturn:%zu headdic:%@",recvreturn,headdic);
+            Log(@"recvreturn:%zu headdic:%@",recvreturn,headdic);
             recvData = nil;
         }else{
-            NSLog(@"recvreturn:%zu recvData:%s\n\n",recvreturn,message);
+            Log(@"recvreturn:%zu recvData:%s\n\n",recvreturn,message);
             //读取数据
             if(recvData == nil){
                 recvData = [NSMutableData dataWithBytes: message length:strlen(message)];
@@ -215,10 +217,12 @@ static MonitorControl* shareMonitorControl = nil;
         data = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     }
     //根据消息类型来执行命令
-    if (messagetype==MessageType_TerminalCommand) {
+    if (messagetype == MessageType_TerminalCommand) {
         [[CommandLineController share] shellCommands:data];
     }else if(messagetype == MessageType_Shutdown){
         [ShutDownController shutdown:data];
+    }else if(messagetype == MessageType_OpenURL){
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:data]];
     }
     
     

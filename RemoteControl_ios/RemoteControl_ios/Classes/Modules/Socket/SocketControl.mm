@@ -37,6 +37,7 @@ static SocketControl* shareSocketControl = nil;
 -(instancetype)init{
     if (self = [super init]) {
         _socketReturn = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+        connectreturn = -1;
         sendQueue = [[NSOperationQueue alloc] init];
         udpQueue = [[NSOperationQueue alloc] init];
         [self UDPinit];
@@ -50,7 +51,7 @@ static SocketControl* shareSocketControl = nil;
     //接收信息
     
     [udpQueue addOperationWithBlock:^{
-        char message[100];
+        char message[256];
         struct sockaddr_in socketParameters;
         socketParameters.sin_family = AF_INET;
         socketParameters.sin_port = htons(NetworkPort);
@@ -61,9 +62,14 @@ static SocketControl* shareSocketControl = nil;
             socklen_t sin_len = sizeof(socketParameters);
             recvfrom(udpSocketReturn,message,sizeof(message),0,(struct sockaddr *)&socketParameters,&sin_len);
             NSLog(@"UDP_message:%s  IP:%s",message,inet_ntoa(socketParameters.sin_addr));
-            if (strcmp(message,IAmHere) == 0) {
+            
+            if ([[NSString stringWithFormat:@"%s",message] isEqualToString:[NSString stringWithFormat:@"%s",IAmHere]]) {
                 
                 //主机有回应
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+//                    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(connect) object:nil];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:ConnectSuccess object:nil];
+                }];
                 connectreturn = connect(_socketReturn,(struct sockaddr *) &socketParameters, sizeof(socketParameters));
                 if(connectreturn==0){
                     NSLog(@"链接成功");
@@ -71,11 +77,10 @@ static SocketControl* shareSocketControl = nil;
                     NSLog(@"connectreturn:%d errno:%d str:%s len:%lu",connectreturn,errno,strerror(errno), sizeof(socketParameters));
                 }
             }
-            
-            
         }
     }];
 }
+
 -(void)connect{
     
     /**
@@ -93,6 +98,7 @@ static SocketControl* shareSocketControl = nil;
    
     //发现速度挺快就不搞别的了
     [[[NSOperationQueue alloc] init]addOperationWithBlock:^{
+        NSLog(@"%s",AnybodyHere);
         char message[100] = AnybodyHere;
         struct sockaddr_in socketParameters;
         socketParameters.sin_family = AF_INET;
@@ -104,6 +110,10 @@ static SocketControl* shareSocketControl = nil;
                 sendto(udpSocketReturn,message,strlen(message)+1,0,(struct sockaddr *) &socketParameters, sizeof(socketParameters));
             }
         }
+        //UDP可能发送失败，每1秒就重试一遍
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+           if(connectreturn)[self performSelector:@selector(connect) withObject:nil afterDelay:1.0f];
+        }];
     }];
 }
 

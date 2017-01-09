@@ -12,11 +12,12 @@
 		FC5CAED61E1BA04A00DCAFA7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAED51E1BA04A00DCAFA7 /* AppDelegate.m */; };
 		FC5CAED91E1BA04A00DCAFA7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAED81E1BA04A00DCAFA7 /* main.m */; };
 		FC5CAEDB1E1BA04A00DCAFA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC5CAEDA1E1BA04A00DCAFA7 /* Assets.xcassets */; };
-		FC5CAEDE1E1BA04A00DCAFA7 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5CAEDC1E1BA04A00DCAFA7 /* MainMenu.xib */; };
 		FC5CAEE91E1BA04A00DCAFA7 /* RemoteControl_macTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAEE81E1BA04A00DCAFA7 /* RemoteControl_macTests.m */; };
 		FC5CAEF41E1BA04A00DCAFA7 /* RemoteControl_macUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAEF31E1BA04A00DCAFA7 /* RemoteControl_macUITests.m */; };
 		FC5CAF481E1BA2E600DCAFA7 /* MonitorControl.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF471E1BA2E600DCAFA7 /* MonitorControl.mm */; };
-		FC6D9A941E1F298400D393F5 /* StartController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6D9A931E1F298400D393F5 /* StartController.m */; };
+		FC659CC01E2323CC0028DE0F /* MainViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC659CBF1E2323CC0028DE0F /* MainViewController.mm */; };
+		FC659CC21E23266F0028DE0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC659CC11E23266F0028DE0F /* Main.storyboard */; };
+		FC6D9A941E1F298400D393F5 /* StartController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC6D9A931E1F298400D393F5 /* StartController.mm */; };
 		FC6D9A971E1F2EED00D393F5 /* SavePath.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6D9A961E1F2EED00D393F5 /* SavePath.m */; };
 		FC7282DA1E1CFF6800C078D2 /* CommandLineController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC7282D91E1CFF6800C078D2 /* CommandLineController.mm */; };
 		FCF76D821E1F44CC008DF19E /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FCF76D811E1F44CC008DF19E /* README.md */; };
@@ -49,7 +50,6 @@
 		FC5CAED51E1BA04A00DCAFA7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		FC5CAED81E1BA04A00DCAFA7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FC5CAEDA1E1BA04A00DCAFA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FC5CAEDD1E1BA04A00DCAFA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		FC5CAEDF1E1BA04A00DCAFA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC5CAEE41E1BA04A00DCAFA7 /* RemoteControl_macTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RemoteControl_macTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC5CAEE81E1BA04A00DCAFA7 /* RemoteControl_macTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RemoteControl_macTests.m; sourceTree = "<group>"; };
@@ -60,8 +60,11 @@
 		FC5CAF431E1BA27600DCAFA7 /* Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
 		FC5CAF461E1BA2E600DCAFA7 /* MonitorControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonitorControl.h; sourceTree = "<group>"; };
 		FC5CAF471E1BA2E600DCAFA7 /* MonitorControl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MonitorControl.mm; sourceTree = "<group>"; };
+		FC659CBE1E2323CC0028DE0F /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = MainViewController/MainViewController.h; sourceTree = "<group>"; };
+		FC659CBF1E2323CC0028DE0F /* MainViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MainViewController.mm; path = MainViewController/MainViewController.mm; sourceTree = "<group>"; };
+		FC659CC11E23266F0028DE0F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		FC6D9A921E1F298400D393F5 /* StartController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartController.h; path = Start/StartController.h; sourceTree = "<group>"; };
-		FC6D9A931E1F298400D393F5 /* StartController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartController.m; path = Start/StartController.m; sourceTree = "<group>"; };
+		FC6D9A931E1F298400D393F5 /* StartController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = StartController.mm; path = Start/StartController.mm; sourceTree = "<group>"; };
 		FC6D9A951E1F2EED00D393F5 /* SavePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavePath.h; sourceTree = "<group>"; };
 		FC6D9A961E1F2EED00D393F5 /* SavePath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavePath.m; sourceTree = "<group>"; };
 		FC7282D81E1CFF6800C078D2 /* CommandLineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandLineController.h; sourceTree = "<group>"; };
@@ -132,8 +135,8 @@
 				FC5CAF401E1BA27600DCAFA7 /* Classes */,
 				FC5CAED41E1BA04A00DCAFA7 /* AppDelegate.h */,
 				FC5CAED51E1BA04A00DCAFA7 /* AppDelegate.m */,
+				FC659CC11E23266F0028DE0F /* Main.storyboard */,
 				FC5CAEDA1E1BA04A00DCAFA7 /* Assets.xcassets */,
-				FC5CAEDC1E1BA04A00DCAFA7 /* MainMenu.xib */,
 				FC5CAEDF1E1BA04A00DCAFA7 /* Info.plist */,
 				FC5CAED71E1BA04A00DCAFA7 /* Supporting Files */,
 			);
@@ -197,6 +200,7 @@
 		FC5CAF441E1BA27600DCAFA7 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				FC659CBA1E2321F50028DE0F /* MainViewController */,
 				FC6D9A911E1F296500D393F5 /* Start */,
 				FC20C2091E1DE4E400DBAC75 /* ShutDown */,
 				FC7282D71E1CFF6800C078D2 /* CommandLine */,
@@ -214,11 +218,20 @@
 			path = Monitor;
 			sourceTree = "<group>";
 		};
+		FC659CBA1E2321F50028DE0F /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FC659CBE1E2323CC0028DE0F /* MainViewController.h */,
+				FC659CBF1E2323CC0028DE0F /* MainViewController.mm */,
+			);
+			name = MainViewController;
+			sourceTree = "<group>";
+		};
 		FC6D9A911E1F296500D393F5 /* Start */ = {
 			isa = PBXGroup;
 			children = (
 				FC6D9A921E1F298400D393F5 /* StartController.h */,
-				FC6D9A931E1F298400D393F5 /* StartController.m */,
+				FC6D9A931E1F298400D393F5 /* StartController.mm */,
 			);
 			name = Start;
 			sourceTree = "<group>";
@@ -344,7 +357,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC5CAEDB1E1BA04A00DCAFA7 /* Assets.xcassets in Resources */,
-				FC5CAEDE1E1BA04A00DCAFA7 /* MainMenu.xib in Resources */,
+				FC659CC21E23266F0028DE0F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,7 +386,8 @@
 				FC20C20C1E1DE51B00DBAC75 /* ShutDownController.mm in Sources */,
 				FC7282DA1E1CFF6800C078D2 /* CommandLineController.mm in Sources */,
 				FC5CAED61E1BA04A00DCAFA7 /* AppDelegate.m in Sources */,
-				FC6D9A941E1F298400D393F5 /* StartController.m in Sources */,
+				FC659CC01E2323CC0028DE0F /* MainViewController.mm in Sources */,
+				FC6D9A941E1F298400D393F5 /* StartController.mm in Sources */,
 				FC6D9A971E1F2EED00D393F5 /* SavePath.m in Sources */,
 				FCF76D821E1F44CC008DF19E /* README.md in Sources */,
 				FC5CAF481E1BA2E600DCAFA7 /* MonitorControl.mm in Sources */,
@@ -410,17 +424,6 @@
 			targetProxy = FC5CAEF01E1BA04A00DCAFA7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		FC5CAEDC1E1BA04A00DCAFA7 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FC5CAEDD1E1BA04A00DCAFA7 /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		FC5CAEF61E1BA04A00DCAFA7 /* Debug */ = {

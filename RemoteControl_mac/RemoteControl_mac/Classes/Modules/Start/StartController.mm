@@ -10,7 +10,7 @@
 
 #import "StartController.h"
 #import "SavePath.h"
-
+#import "MainViewController.h"
 
 static StartController* shareStartController;
 
@@ -46,8 +46,8 @@ static StartController* shareStartController;
     if (mainplistDic == nil)mainplistDic = [[NSMutableDictionary alloc] init];
     NSString* saveAppPath = [mainplistDic objectForKey:@"appPath"];
     NSString* nowAppPath =  [[SavePath share] appPath];
-    NSLog(@"%@",[[SavePath share] appPath]);
-    NSLog(@"%@",[[SavePath share] mainPlistPath]);
+    Log(@"%@",[[SavePath share] appPath]);
+    Log(@"%@",[[SavePath share] mainPlistPath]);
     
     if([nowAppPath isEqualToString:saveAppPath] == NO){
  

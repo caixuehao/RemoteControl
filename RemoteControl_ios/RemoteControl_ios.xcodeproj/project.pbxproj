@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C7BA79176519AB7A2846A83 /* libPods-RemoteControl_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4DC048EE82EC0C11DD2D2E /* libPods-RemoteControl_ios.a */; };
 		FC494B1C1E1CC6F3005D91FE /* SocketControl.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC494B1B1E1CC6F3005D91FE /* SocketControl.mm */; };
 		FC494B221E1CCC46005D91FE /* SetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC494B201E1CCC46005D91FE /* SetViewController.m */; };
 		FC494B231E1CCC46005D91FE /* SetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC494B211E1CCC46005D91FE /* SetViewController.xib */; };
@@ -21,6 +22,9 @@
 		FC5CAF1D1E1BA0DB00DCAFA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC5CAF1B1E1BA0DB00DCAFA7 /* LaunchScreen.storyboard */; };
 		FC5CAF281E1BA0DB00DCAFA7 /* RemoteControl_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF271E1BA0DB00DCAFA7 /* RemoteControl_iosTests.m */; };
 		FC5CAF331E1BA0DB00DCAFA7 /* RemoteControl_iosUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF321E1BA0DB00DCAFA7 /* RemoteControl_iosUITests.m */; };
+		FC659CC91E236CE70028DE0F /* OpenURLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC659CC71E236CE70028DE0F /* OpenURLViewController.m */; };
+		FC659CCA1E236CE70028DE0F /* OpenURLViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC659CC81E236CE70028DE0F /* OpenURLViewController.xib */; };
+		FC659CCE1E237BCC0028DE0F /* background1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FC659CCD1E237BCC0028DE0F /* background1.jpg */; };
 		FC7282E61E1D01B300C078D2 /* CommandLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7282E41E1D01B300C078D2 /* CommandLineViewController.m */; };
 		FC7282E71E1D01B300C078D2 /* CommandLineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC7282E51E1D01B300C078D2 /* CommandLineViewController.xib */; };
 		FCF76D841E1F4C51008DF19E /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FCF76D831E1F4C51008DF19E /* README.md */; };
@@ -44,6 +48,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6D686269E9EB4B6756C4B109 /* Pods-RemoteControl_ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemoteControl_ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-RemoteControl_ios/Pods-RemoteControl_ios.release.xcconfig"; sourceTree = "<group>"; };
+		72727C7EE7E438D1EE3272B5 /* Pods-RemoteControl_ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemoteControl_ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RemoteControl_ios/Pods-RemoteControl_ios.debug.xcconfig"; sourceTree = "<group>"; };
+		CF4DC048EE82EC0C11DD2D2E /* libPods-RemoteControl_ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RemoteControl_ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC494B1A1E1CC6F3005D91FE /* SocketControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketControl.h; sourceTree = "<group>"; };
 		FC494B1B1E1CC6F3005D91FE /* SocketControl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SocketControl.mm; sourceTree = "<group>"; };
 		FC494B1E1E1CC880005D91FE /* SocketMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SocketMacro.h; path = ../../../../RemoteControl_mac/RemoteControl_mac/Classes/Macro/SocketMacro.h; sourceTree = "<group>"; };
@@ -71,6 +78,10 @@
 		FC5CAF2E1E1BA0DB00DCAFA7 /* RemoteControl_iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RemoteControl_iosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC5CAF321E1BA0DB00DCAFA7 /* RemoteControl_iosUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RemoteControl_iosUITests.m; sourceTree = "<group>"; };
 		FC5CAF341E1BA0DB00DCAFA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC659CC61E236CE70028DE0F /* OpenURLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenURLViewController.h; path = OpenURL/OpenURLViewController.h; sourceTree = "<group>"; };
+		FC659CC71E236CE70028DE0F /* OpenURLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OpenURLViewController.m; path = OpenURL/OpenURLViewController.m; sourceTree = "<group>"; };
+		FC659CC81E236CE70028DE0F /* OpenURLViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OpenURLViewController.xib; path = OpenURL/OpenURLViewController.xib; sourceTree = "<group>"; };
+		FC659CCD1E237BCC0028DE0F /* background1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background1.jpg; sourceTree = "<group>"; };
 		FC7282E31E1D01B300C078D2 /* CommandLineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandLineViewController.h; sourceTree = "<group>"; };
 		FC7282E41E1D01B300C078D2 /* CommandLineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommandLineViewController.m; sourceTree = "<group>"; };
 		FC7282E51E1D01B300C078D2 /* CommandLineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommandLineViewController.xib; sourceTree = "<group>"; };
@@ -82,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C7BA79176519AB7A2846A83 /* libPods-RemoteControl_ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +114,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		38E90AF6BD3AFFFCDDF1438B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CF4DC048EE82EC0C11DD2D2E /* libPods-RemoteControl_ios.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8E6550080652B5A77227A338 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				72727C7EE7E438D1EE3272B5 /* Pods-RemoteControl_ios.debug.xcconfig */,
+				6D686269E9EB4B6756C4B109 /* Pods-RemoteControl_ios.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		FC494B091E1CC4A3005D91FE /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +159,7 @@
 		FC494B0C1E1CC4A3005D91FE /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				FC659CC51E236CBA0028DE0F /* OpenURL */,
 				FC7282DB1E1CFF9800C078D2 /* CommandLine */,
 				FC494B191E1CC6F3005D91FE /* Socket */,
 				FC494B111E1CC613005D91FE /* Set */,
@@ -177,6 +207,8 @@
 				FC5CAF261E1BA0DB00DCAFA7 /* RemoteControl_iosTests */,
 				FC5CAF311E1BA0DB00DCAFA7 /* RemoteControl_iosUITests */,
 				FC5CAF0B1E1BA0DB00DCAFA7 /* Products */,
+				8E6550080652B5A77227A338 /* Pods */,
+				38E90AF6BD3AFFFCDDF1438B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -193,6 +225,7 @@
 		FC5CAF0C1E1BA0DB00DCAFA7 /* RemoteControl_ios */ = {
 			isa = PBXGroup;
 			children = (
+				FC659CCC1E237BCC0028DE0F /* Resources */,
 				FC494B091E1CC4A3005D91FE /* Classes */,
 				FC5CAF101E1BA0DB00DCAFA7 /* AppDelegate.h */,
 				FC5CAF111E1BA0DB00DCAFA7 /* AppDelegate.m */,
@@ -233,6 +266,24 @@
 			path = RemoteControl_iosUITests;
 			sourceTree = "<group>";
 		};
+		FC659CC51E236CBA0028DE0F /* OpenURL */ = {
+			isa = PBXGroup;
+			children = (
+				FC659CC61E236CE70028DE0F /* OpenURLViewController.h */,
+				FC659CC71E236CE70028DE0F /* OpenURLViewController.m */,
+				FC659CC81E236CE70028DE0F /* OpenURLViewController.xib */,
+			);
+			name = OpenURL;
+			sourceTree = "<group>";
+		};
+		FC659CCC1E237BCC0028DE0F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FC659CCD1E237BCC0028DE0F /* background1.jpg */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		FC7282DB1E1CFF9800C078D2 /* CommandLine */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,9 +301,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FC5CAF371E1BA0DB00DCAFA7 /* Build configuration list for PBXNativeTarget "RemoteControl_ios" */;
 			buildPhases = (
+				E0FC403344D152CCA34764A2 /* [CP] Check Pods Manifest.lock */,
 				FC5CAF061E1BA0DB00DCAFA7 /* Sources */,
 				FC5CAF071E1BA0DB00DCAFA7 /* Frameworks */,
 				FC5CAF081E1BA0DB00DCAFA7 /* Resources */,
+				E0A03C4FE8ADA010A2497EF6 /* [CP] Embed Pods Frameworks */,
+				D64D95A2346E3D761C0137FD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -351,7 +405,9 @@
 				FC494B231E1CCC46005D91FE /* SetViewController.xib in Resources */,
 				FC494B281E1CD027005D91FE /* MainViewController.xib in Resources */,
 				FC5CAF1A1E1BA0DB00DCAFA7 /* Assets.xcassets in Resources */,
+				FC659CCA1E236CE70028DE0F /* OpenURLViewController.xib in Resources */,
 				FC5CAF181E1BA0DB00DCAFA7 /* Main.storyboard in Resources */,
+				FC659CCE1E237BCC0028DE0F /* background1.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +427,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D64D95A2346E3D761C0137FD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RemoteControl_ios/Pods-RemoteControl_ios-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E0A03C4FE8ADA010A2497EF6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RemoteControl_ios/Pods-RemoteControl_ios-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E0FC403344D152CCA34764A2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FC5CAF061E1BA0DB00DCAFA7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -378,6 +482,7 @@
 			files = (
 				FC5CAF151E1BA0DB00DCAFA7 /* ViewController.m in Sources */,
 				FC494B271E1CD027005D91FE /* MainViewController.m in Sources */,
+				FC659CC91E236CE70028DE0F /* OpenURLViewController.m in Sources */,
 				FC5CAF121E1BA0DB00DCAFA7 /* AppDelegate.m in Sources */,
 				FC494B1C1E1CC6F3005D91FE /* SocketControl.mm in Sources */,
 				FC7282E61E1D01B300C078D2 /* CommandLineViewController.m in Sources */,
@@ -525,6 +630,7 @@
 		};
 		FC5CAF381E1BA0DB00DCAFA7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 72727C7EE7E438D1EE3272B5 /* Pods-RemoteControl_ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RemoteControl_ios/Info.plist;
@@ -536,6 +642,7 @@
 		};
 		FC5CAF391E1BA0DB00DCAFA7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D686269E9EB4B6756C4B109 /* Pods-RemoteControl_ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RemoteControl_ios/Info.plist;

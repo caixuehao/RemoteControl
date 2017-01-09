@@ -23,7 +23,7 @@
 
 #define MessageType_TerminalCommand 1 //终端命令
 #define MessageType_Shutdown 2 //关机
-
+#define MessageType_OpenURL 3  //打开网页
 
 #pragma 关机命令参数
 
@@ -36,4 +36,7 @@
 #define AnybodyHere "Anybody here?"
 #define IAmHere "I am here."
 
+
+#pragma 通知字符串
+#define ConnectSuccess @"ConnectSuccess"
 #endif /* SocketMacro_h */
