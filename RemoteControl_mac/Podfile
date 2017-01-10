@@ -1,16 +1,10 @@
 # Uncomment this line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'RemoteControl_ios' do
+target 'RemoteControl_mac' do
   
     pod 'Masonry'
-    
-    pod 'SDWebImage'
-        
-    pod 'AFNetworking'
-
-    pod 'MBProgressHUD'
-   
+       
     pod 'MJExtension'
 
 end

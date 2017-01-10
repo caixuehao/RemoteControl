@@ -11,26 +11,25 @@
 
 #define NetworkPort 1995 //端口号
 #define MessageHeadLenght 59
-//数据类型
-#pragma DataType
 
+#pragma 数据类型
 #define DataType_String 1
 #define DataType_NSData 2
 #define DataType_NSDictionary 3
 
-//消息类型
-#pragma MessageType
 
+#pragma 消息类型
 #define MessageType_TerminalCommand 1 //终端命令
 #define MessageType_Shutdown 2 //关机
 #define MessageType_OpenURL 3  //打开网页
+#define MessageType_FileManager 4 //文件管理器
 
 #pragma 关机命令参数
-
 #define ShutDown @"ShutDown"
 #define Restart  @"Restart"
 #define Logout   @"Logout"
 #define Sleep    @"Sleep"
+
 
 #pragma 对话字符串
 #define AnybodyHere "Anybody here?"
@@ -39,4 +38,10 @@
 
 #pragma 通知字符串
 #define ConnectSuccess @"ConnectSuccess"
+
+
+#pragma 其他
+#define CurrentUserDesktopPath @"CurrentUserDesktopPath"
+
+
 #endif /* SocketMacro_h */

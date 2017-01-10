@@ -23,6 +23,7 @@ static SocketControl* shareSocketControl = nil;
     int udpSocketReturn;
     NSOperationQueue* sendQueue;
     NSOperationQueue* udpQueue;
+    NSOperationQueue* tcpQueue;
 }
 
 +(instancetype)share{
@@ -40,6 +41,7 @@ static SocketControl* shareSocketControl = nil;
         connectreturn = -1;
         sendQueue = [[NSOperationQueue alloc] init];
         udpQueue = [[NSOperationQueue alloc] init];
+        tcpQueue = [[NSOperationQueue alloc] init];
         [self UDPinit];
     }
     return self;
@@ -73,12 +75,57 @@ static SocketControl* shareSocketControl = nil;
                 connectreturn = connect(_socketReturn,(struct sockaddr *) &socketParameters, sizeof(socketParameters));
                 if(connectreturn==0){
                     NSLog(@"链接成功");
+                    [self tcpRecvMessage];
                 }else{
                     NSLog(@"connectreturn:%d errno:%d str:%s len:%lu",connectreturn,errno,strerror(errno), sizeof(socketParameters));
                 }
             }
         }
     }];
+}
+-(void)tcpRecvMessage{
+    
+    NSDictionary* headdic = nil;
+    NSMutableData* recvData = nil;
+    
+    char message[1024];
+    bool recvbool = true;
+    while (recvbool) {
+        //        char *message =  (char*)malloc(1024*sizeof(char));;
+        memset(message,0,sizeof(message));
+        size_t recvreturn = recv(connectreturn,message, sizeof(message), 0);
+        //判断是否断开连接 http://blog.csdn.net/god2469/article/details/8801356
+        if(recvreturn<=0 && errno != EINTR){
+            NSLog(@"链接断开了 erron:%d str:%s",errno,strerror(errno));
+            close(connectreturn);
+            [self UDPinit];
+            recvbool = false;
+        }
+        
+        //读取信息
+        
+        if(headdic == nil){
+            //读取头
+            NSData *data = [NSData dataWithBytes: message length:strlen(message)];
+            headdic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            NSLog(@"recvreturn:%zu headdic:%@",recvreturn,headdic);
+            recvData = nil;
+        }else{
+            NSLog(@"recvreturn:%zu recvData:%s\n\n",recvreturn,message);
+            //读取数据
+            if(recvData == nil){
+                recvData = [NSMutableData dataWithBytes: message length:strlen(message)];
+            }else{
+                [recvData appendBytes:message length:strlen(message)];
+            }
+            
+            if(recvData.length >= [[headdic objectForKey:@"dataSize"] integerValue]){
+                
+                headdic = nil;
+            }
+        }
+        
+    }
 }
 
 -(void)connect{

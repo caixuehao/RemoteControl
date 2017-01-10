@@ -15,6 +15,7 @@
 
 #import "CommandLineViewController.h"
 #import "OpenURLViewController.h"
+#import "FileManagerViewController.h"
 
 @interface MainViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -43,7 +44,6 @@
         MBProgressHUD *hud = [self.view viewWithTag:2008];
         [hud hideAnimated:YES];
     }else{
-        // 快速显示一个提示信息
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.label.text = @"正在查找主机";
         hud.removeFromSuperViewOnHide = YES;// 隐藏时候从父控件中移除
@@ -63,7 +63,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(connectSuccess)  name:ConnectSuccess  object:nil];
     [[SocketControl share] connect];
-    _titlesArr = @[@"关机",@"打开网页"];
+    _titlesArr = @[@"关机",@"打开网页",@"资源管理器"];
     [self loadSubView];
     //不加这个没网络
     [[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:@"http://www.baidu.com"]];
@@ -112,6 +112,9 @@
             break;
         case 1:
             [self.navigationController pushViewController:[[OpenURLViewController alloc] init] animated:YES];
+            break;
+        case 2:
+            [self.navigationController pushViewController:[[FileManagerViewController alloc] initWithPath:CurrentUserDesktopPath] animated:YES];
             break;
         default:
             [self.navigationController pushViewController:[[UIViewController alloc] init] animated:YES];

@@ -27,6 +27,8 @@
 		FC659CCE1E237BCC0028DE0F /* background1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FC659CCD1E237BCC0028DE0F /* background1.jpg */; };
 		FC7282E61E1D01B300C078D2 /* CommandLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7282E41E1D01B300C078D2 /* CommandLineViewController.m */; };
 		FC7282E71E1D01B300C078D2 /* CommandLineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC7282E51E1D01B300C078D2 /* CommandLineViewController.xib */; };
+		FCC860161E24BCE5004713A0 /* FileManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC860151E24BCE5004713A0 /* FileManagerViewController.m */; };
+		FCC8601C1E24DF2F004713A0 /* FileListEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC8601B1E24DF2F004713A0 /* FileListEntity.m */; };
 		FCF76D841E1F4C51008DF19E /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FCF76D831E1F4C51008DF19E /* README.md */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +87,10 @@
 		FC7282E31E1D01B300C078D2 /* CommandLineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandLineViewController.h; sourceTree = "<group>"; };
 		FC7282E41E1D01B300C078D2 /* CommandLineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommandLineViewController.m; sourceTree = "<group>"; };
 		FC7282E51E1D01B300C078D2 /* CommandLineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommandLineViewController.xib; sourceTree = "<group>"; };
+		FCC860141E24BCE5004713A0 /* FileManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileManagerViewController.h; path = FileManager/FileManagerViewController.h; sourceTree = "<group>"; };
+		FCC860151E24BCE5004713A0 /* FileManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileManagerViewController.m; path = FileManager/FileManagerViewController.m; sourceTree = "<group>"; };
+		FCC8601A1E24DF2F004713A0 /* FileListEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileListEntity.h; path = FileListEntity/FileListEntity.h; sourceTree = "<group>"; };
+		FCC8601B1E24DF2F004713A0 /* FileListEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileListEntity.m; path = FileListEntity/FileListEntity.m; sourceTree = "<group>"; };
 		FCF76D831E1F4C51008DF19E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -144,6 +150,7 @@
 		FC494B0A1E1CC4A3005D91FE /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				FCC860191E24DE42004713A0 /* FileListEntity */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -159,6 +166,7 @@
 		FC494B0C1E1CC4A3005D91FE /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				FCC860131E24BA6C004713A0 /* FileManager */,
 				FC659CC51E236CBA0028DE0F /* OpenURL */,
 				FC7282DB1E1CFF9800C078D2 /* CommandLine */,
 				FC494B191E1CC6F3005D91FE /* Socket */,
@@ -292,6 +300,24 @@
 				FC7282E51E1D01B300C078D2 /* CommandLineViewController.xib */,
 			);
 			path = CommandLine;
+			sourceTree = "<group>";
+		};
+		FCC860131E24BA6C004713A0 /* FileManager */ = {
+			isa = PBXGroup;
+			children = (
+				FCC860141E24BCE5004713A0 /* FileManagerViewController.h */,
+				FCC860151E24BCE5004713A0 /* FileManagerViewController.m */,
+			);
+			name = FileManager;
+			sourceTree = "<group>";
+		};
+		FCC860191E24DE42004713A0 /* FileListEntity */ = {
+			isa = PBXGroup;
+			children = (
+				FCC8601A1E24DF2F004713A0 /* FileListEntity.h */,
+				FCC8601B1E24DF2F004713A0 /* FileListEntity.m */,
+			);
+			name = FileListEntity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -481,9 +507,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCC8601C1E24DF2F004713A0 /* FileListEntity.m in Sources */,
 				FC5CAF151E1BA0DB00DCAFA7 /* ViewController.m in Sources */,
 				FC494B271E1CD027005D91FE /* MainViewController.m in Sources */,
 				FC659CC91E236CE70028DE0F /* OpenURLViewController.m in Sources */,
+				FCC860161E24BCE5004713A0 /* FileManagerViewController.m in Sources */,
 				FC5CAF121E1BA0DB00DCAFA7 /* AppDelegate.m in Sources */,
 				FC494B1C1E1CC6F3005D91FE /* SocketControl.mm in Sources */,
 				FC7282E61E1D01B300C078D2 /* CommandLineViewController.m in Sources */,

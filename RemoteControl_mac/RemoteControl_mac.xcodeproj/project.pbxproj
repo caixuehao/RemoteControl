@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B3ABCC2DB7A31DC81838A7A4 /* libPods-RemoteControl_mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 111C2CF9F0AA50EAAF3D0543 /* libPods-RemoteControl_mac.a */; };
 		FC20C20C1E1DE51B00DBAC75 /* ShutDownController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC20C20B1E1DE51B00DBAC75 /* ShutDownController.mm */; };
 		FC51B83A1E1DE352009723A5 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC51B8391E1DE352009723A5 /* Carbon.framework */; };
 		FC5CAED61E1BA04A00DCAFA7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAED51E1BA04A00DCAFA7 /* AppDelegate.m */; };
@@ -14,12 +15,13 @@
 		FC5CAEDB1E1BA04A00DCAFA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC5CAEDA1E1BA04A00DCAFA7 /* Assets.xcassets */; };
 		FC5CAEE91E1BA04A00DCAFA7 /* RemoteControl_macTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAEE81E1BA04A00DCAFA7 /* RemoteControl_macTests.m */; };
 		FC5CAEF41E1BA04A00DCAFA7 /* RemoteControl_macUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAEF31E1BA04A00DCAFA7 /* RemoteControl_macUITests.m */; };
-		FC5CAF481E1BA2E600DCAFA7 /* MonitorControl.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF471E1BA2E600DCAFA7 /* MonitorControl.mm */; };
 		FC659CC01E2323CC0028DE0F /* MainViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC659CBF1E2323CC0028DE0F /* MainViewController.mm */; };
 		FC659CC21E23266F0028DE0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC659CC11E23266F0028DE0F /* Main.storyboard */; };
 		FC6D9A941E1F298400D393F5 /* StartController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC6D9A931E1F298400D393F5 /* StartController.mm */; };
 		FC6D9A971E1F2EED00D393F5 /* SavePath.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6D9A961E1F2EED00D393F5 /* SavePath.m */; };
 		FC7282DA1E1CFF6800C078D2 /* CommandLineController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC7282D91E1CFF6800C078D2 /* CommandLineController.mm */; };
+		FCC860201E24E77F004713A0 /* FileManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC8601F1E24E77F004713A0 /* FileManagerController.m */; };
+		FCC860241E24E7BE004713A0 /* SocketControl.mm in Sources */ = {isa = PBXBuildFile; fileRef = FCC860231E24E7BE004713A0 /* SocketControl.mm */; };
 		FCF76D821E1F44CC008DF19E /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FCF76D811E1F44CC008DF19E /* README.md */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		111C2CF9F0AA50EAAF3D0543 /* libPods-RemoteControl_mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RemoteControl_mac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4788D4DA6CA462B8A5F5E5E9 /* Pods-RemoteControl_mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemoteControl_mac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RemoteControl_mac/Pods-RemoteControl_mac.debug.xcconfig"; sourceTree = "<group>"; };
+		EA263DD9C8DBACD9E295E1BB /* Pods-RemoteControl_mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemoteControl_mac.release.xcconfig"; path = "Pods/Target Support Files/Pods-RemoteControl_mac/Pods-RemoteControl_mac.release.xcconfig"; sourceTree = "<group>"; };
 		FC20C20A1E1DE51B00DBAC75 /* ShutDownController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShutDownController.h; path = ShutDown/ShutDownController.h; sourceTree = "<group>"; };
 		FC20C20B1E1DE51B00DBAC75 /* ShutDownController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ShutDownController.mm; path = ShutDown/ShutDownController.mm; sourceTree = "<group>"; };
 		FC494B1D1E1CC7D6005D91FE /* SocketMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketMacro.h; sourceTree = "<group>"; };
@@ -58,8 +63,6 @@
 		FC5CAEF31E1BA04A00DCAFA7 /* RemoteControl_macUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RemoteControl_macUITests.m; sourceTree = "<group>"; };
 		FC5CAEF51E1BA04A00DCAFA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC5CAF431E1BA27600DCAFA7 /* Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
-		FC5CAF461E1BA2E600DCAFA7 /* MonitorControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonitorControl.h; sourceTree = "<group>"; };
-		FC5CAF471E1BA2E600DCAFA7 /* MonitorControl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MonitorControl.mm; sourceTree = "<group>"; };
 		FC659CBE1E2323CC0028DE0F /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = MainViewController/MainViewController.h; sourceTree = "<group>"; };
 		FC659CBF1E2323CC0028DE0F /* MainViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MainViewController.mm; path = MainViewController/MainViewController.mm; sourceTree = "<group>"; };
 		FC659CC11E23266F0028DE0F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -69,6 +72,10 @@
 		FC6D9A961E1F2EED00D393F5 /* SavePath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavePath.m; sourceTree = "<group>"; };
 		FC7282D81E1CFF6800C078D2 /* CommandLineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandLineController.h; sourceTree = "<group>"; };
 		FC7282D91E1CFF6800C078D2 /* CommandLineController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CommandLineController.mm; sourceTree = "<group>"; };
+		FCC8601E1E24E77F004713A0 /* FileManagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileManagerController.h; path = FileManager/FileManagerController.h; sourceTree = "<group>"; };
+		FCC8601F1E24E77F004713A0 /* FileManagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileManagerController.m; path = FileManager/FileManagerController.m; sourceTree = "<group>"; };
+		FCC860221E24E7BE004713A0 /* SocketControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketControl.h; sourceTree = "<group>"; };
+		FCC860231E24E7BE004713A0 /* SocketControl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SocketControl.mm; sourceTree = "<group>"; };
 		FCF76D811E1F44CC008DF19E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +85,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC51B83A1E1DE352009723A5 /* Carbon.framework in Frameworks */,
+				B3ABCC2DB7A31DC81838A7A4 /* libPods-RemoteControl_mac.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +106,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F928D16B3580FBCBC6F0C86 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4788D4DA6CA462B8A5F5E5E9 /* Pods-RemoteControl_mac.debug.xcconfig */,
+				EA263DD9C8DBACD9E295E1BB /* Pods-RemoteControl_mac.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		FC20C2091E1DE4E400DBAC75 /* ShutDown */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +133,7 @@
 				FC5CAEF21E1BA04A00DCAFA7 /* RemoteControl_macUITests */,
 				FC5CAED21E1BA04A00DCAFA7 /* Products */,
 				FCF76D801E1F4492008DF19E /* Frameworks */,
+				9F928D16B3580FBCBC6F0C86 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -182,8 +200,7 @@
 		FC5CAF411E1BA27600DCAFA7 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				FC6D9A951E1F2EED00D393F5 /* SavePath.h */,
-				FC6D9A961E1F2EED00D393F5 /* SavePath.m */,
+				FCC860251E24EEC8004713A0 /* SavePath */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -200,22 +217,14 @@
 		FC5CAF441E1BA27600DCAFA7 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				FCC860211E24E7BE004713A0 /* Socket */,
+				FCC8601D1E24E724004713A0 /* FileManager */,
 				FC659CBA1E2321F50028DE0F /* MainViewController */,
-				FC6D9A911E1F296500D393F5 /* Start */,
 				FC20C2091E1DE4E400DBAC75 /* ShutDown */,
 				FC7282D71E1CFF6800C078D2 /* CommandLine */,
-				FC5CAF451E1BA27600DCAFA7 /* Monitor */,
+				FC6D9A911E1F296500D393F5 /* Start */,
 			);
 			path = Modules;
-			sourceTree = "<group>";
-		};
-		FC5CAF451E1BA27600DCAFA7 /* Monitor */ = {
-			isa = PBXGroup;
-			children = (
-				FC5CAF461E1BA2E600DCAFA7 /* MonitorControl.h */,
-				FC5CAF471E1BA2E600DCAFA7 /* MonitorControl.mm */,
-			);
-			path = Monitor;
 			sourceTree = "<group>";
 		};
 		FC659CBA1E2321F50028DE0F /* MainViewController */ = {
@@ -245,10 +254,38 @@
 			path = CommandLine;
 			sourceTree = "<group>";
 		};
+		FCC8601D1E24E724004713A0 /* FileManager */ = {
+			isa = PBXGroup;
+			children = (
+				FCC8601E1E24E77F004713A0 /* FileManagerController.h */,
+				FCC8601F1E24E77F004713A0 /* FileManagerController.m */,
+			);
+			name = FileManager;
+			sourceTree = "<group>";
+		};
+		FCC860211E24E7BE004713A0 /* Socket */ = {
+			isa = PBXGroup;
+			children = (
+				FCC860221E24E7BE004713A0 /* SocketControl.h */,
+				FCC860231E24E7BE004713A0 /* SocketControl.mm */,
+			);
+			path = Socket;
+			sourceTree = "<group>";
+		};
+		FCC860251E24EEC8004713A0 /* SavePath */ = {
+			isa = PBXGroup;
+			children = (
+				FC6D9A951E1F2EED00D393F5 /* SavePath.h */,
+				FC6D9A961E1F2EED00D393F5 /* SavePath.m */,
+			);
+			name = SavePath;
+			sourceTree = "<group>";
+		};
 		FCF76D801E1F4492008DF19E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				FC51B8391E1DE352009723A5 /* Carbon.framework */,
+				111C2CF9F0AA50EAAF3D0543 /* libPods-RemoteControl_mac.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -260,9 +297,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FC5CAEF81E1BA04A00DCAFA7 /* Build configuration list for PBXNativeTarget "RemoteControl_mac" */;
 			buildPhases = (
+				11A00F3E9F75F9E62E7BAA1C /* [CP] Check Pods Manifest.lock */,
 				FC5CAECD1E1BA04A00DCAFA7 /* Sources */,
 				FC5CAECE1E1BA04A00DCAFA7 /* Frameworks */,
 				FC5CAECF1E1BA04A00DCAFA7 /* Resources */,
+				F4EFBC2B98A7B7E0BBD440FE /* [CP] Embed Pods Frameworks */,
+				085039E7597F83A74F1280F5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -377,6 +417,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		085039E7597F83A74F1280F5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RemoteControl_mac/Pods-RemoteControl_mac-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		11A00F3E9F75F9E62E7BAA1C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F4EFBC2B98A7B7E0BBD440FE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RemoteControl_mac/Pods-RemoteControl_mac-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FC5CAECD1E1BA04A00DCAFA7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -390,7 +478,8 @@
 				FC6D9A941E1F298400D393F5 /* StartController.mm in Sources */,
 				FC6D9A971E1F2EED00D393F5 /* SavePath.m in Sources */,
 				FCF76D821E1F44CC008DF19E /* README.md in Sources */,
-				FC5CAF481E1BA2E600DCAFA7 /* MonitorControl.mm in Sources */,
+				FCC860241E24E7BE004713A0 /* SocketControl.mm in Sources */,
+				FCC860201E24E77F004713A0 /* FileManagerController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,6 +598,7 @@
 		};
 		FC5CAEF91E1BA04A00DCAFA7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4788D4DA6CA462B8A5F5E5E9 /* Pods-RemoteControl_mac.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -521,6 +611,7 @@
 		};
 		FC5CAEFA1E1BA04A00DCAFA7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA263DD9C8DBACD9E295E1BB /* Pods-RemoteControl_mac.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;

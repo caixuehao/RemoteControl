@@ -1,5 +1,5 @@
 //
-//  MonitorControl.h
+//  SocketControl.h
 //  RemoteControl_mac
 //
 //  Created by cxh on 17/1/3.
@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MonitorControl : NSObject
+@interface SocketControl : NSObject
 
 +(instancetype)share;
 
 -(void)start;
+
+-(void)sendMessageType:(int)messagetype datatype:(int)datatype data:(id)data;
 
 @end

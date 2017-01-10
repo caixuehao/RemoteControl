@@ -1,5 +1,5 @@
 //
-//  MonitorControl.m
+//  SocketControl.m
 //  RemoteControl_mac
 //
 //  Created by cxh on 17/1/3.
@@ -11,7 +11,7 @@
 #include<arpa/inet.h>//inet_addr
 
 
-#import "MonitorControl.h"
+#import "SocketControl.h"
 #import "SocketMacro.h"
 #import "CommandLineController.h"
 #import "ShutDownController.h"
@@ -19,25 +19,33 @@
 #import "MainViewController.h"
 #define MAX_LISTEN_NUM 1 //最大监听数
 
-static MonitorControl* shareMonitorControl = nil;
-@implementation MonitorControl{
+static SocketControl* shareSocketControl = nil;
+@implementation SocketControl{
     int socketReturn;
     int acceptreturn;
-    NSOperationQueue* monitorQueue;
+    NSOperationQueue* SocketQueue;
     NSOperationQueue* udpQueue;
+    NSOperationQueue* sendQueue;
 }
 
 
 +(instancetype)share{
     @synchronized (self) {
-        if (!shareMonitorControl) {
-            shareMonitorControl = [[MonitorControl alloc] init];
+        if (!shareSocketControl) {
+            shareSocketControl = [[SocketControl alloc] init];
+
         }
     }
-    return shareMonitorControl;
+    return shareSocketControl;
 }
 
 -(void)start{
+    
+    
+    udpQueue = [[NSOperationQueue alloc] init] ;
+    sendQueue = [[NSOperationQueue alloc] init];
+    
+    
     /**
      *  socket  创建并初始化 socket，返回该 socket 的文件描述符，如果描述符为 -1 表示创建失败。
      *
@@ -86,7 +94,7 @@ static MonitorControl* shareMonitorControl = nil;
     Log(@"udpbindreturn:%d",udpbindreturn);
     
     
-    udpQueue = [[NSOperationQueue alloc] init] ;
+
     [udpQueue addOperationWithBlock:^{
         char message[256];
         socklen_t sin_len = sizeof(udpSocketAddr);
@@ -134,15 +142,16 @@ static MonitorControl* shareMonitorControl = nil;
         return;
     }
     
-    monitorQueue = [[NSOperationQueue alloc] init] ;
-    [monitorQueue addOperationWithBlock:^{
-        [self monitor];
+    SocketQueue = [[NSOperationQueue alloc] init] ;
+    [SocketQueue addOperationWithBlock:^{
+        [self listenTCPConnect];
     }];
 }
 
 
--(void)monitor{
-    
+
+
+-(void)listenTCPConnect{
     
     /**
      *  accept 默认会阻塞进程
@@ -178,7 +187,7 @@ static MonitorControl* shareMonitorControl = nil;
         if(recvreturn<=0 && errno != EINTR){
             Log(@"链接断开了 erron:%d str:%s",errno,strerror(errno));
             close(acceptreturn);
-            [self monitor];
+            [self listenTCPConnect];
             recvbool = false;
         }
         
@@ -207,6 +216,38 @@ static MonitorControl* shareMonitorControl = nil;
     }
 }
 
+-(void)sendMessageType:(int)messagetype datatype:(int)datatype data:(id)data{
+    
+    
+    [sendQueue addOperationWithBlock:^{
+        
+        NSData* senddata;
+        int offset = 0;
+        switch (datatype) {
+            case DataType_String:
+                senddata = [data dataUsingEncoding:NSUTF8StringEncoding];
+                offset = 1;
+                break;
+            case DataType_NSDictionary:
+                senddata = [NSJSONSerialization dataWithJSONObject:data options:NSJSONWritingPrettyPrinted error:nil];
+                break;
+            default:
+                senddata = data;
+                break;
+        }
+        NSDictionary* headdic = @{@"messageType":@(messagetype),@"dataType":@(datatype),@"dataSize":@(senddata.length)};
+        NSData* headdata =  [NSJSONSerialization dataWithJSONObject:headdic options:NSJSONWritingPrettyPrinted error:nil];
+        send(acceptreturn, [headdata bytes], headdata.length, 0);
+        //        NSLog(@"%lu",(unsigned long)senddata.length);
+        send(acceptreturn, [senddata bytes], senddata.length, 0);
+        
+    }];
+    
+    
+}
+
+
+
 
 
 -(void)executeCommand:(int)messagetype datatype:(int)datatype data:(id)data{
@@ -223,8 +264,9 @@ static MonitorControl* shareMonitorControl = nil;
         [ShutDownController shutdown:data];
     }else if(messagetype == MessageType_OpenURL){
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:data]];
+    }else if(messagetype == MessageType_FileManager){
+        
     }
-    
     
 }
 @end
