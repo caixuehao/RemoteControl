@@ -65,7 +65,8 @@
     [[SocketControl share] connect];
     _titlesArr = @[@"关机",@"打开网页"];
     [self loadSubView];
-    
+    //不加这个没网络
+    [[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:@"http://www.baidu.com"]];
      self.isConnect = NO;
 
 }

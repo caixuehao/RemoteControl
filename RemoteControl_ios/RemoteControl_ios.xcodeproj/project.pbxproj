@@ -364,6 +364,7 @@
 				TargetAttributes = {
 					FC5CAF091E1BA0DB00DCAFA7 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = QHEB22MVD3;
 					};
 					FC5CAF221E1BA0DB00DCAFA7 = {
 						CreatedOnToolsVersion = 7.3;
@@ -633,6 +634,7 @@
 			baseConfigurationReference = 72727C7EE7E438D1EE3272B5 /* Pods-RemoteControl_ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = QHEB22MVD3;
 				INFOPLIST_FILE = RemoteControl_ios/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "www.duole.login.RemoteControl-ios";
@@ -645,6 +647,7 @@
 			baseConfigurationReference = 6D686269E9EB4B6756C4B109 /* Pods-RemoteControl_ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = QHEB22MVD3;
 				INFOPLIST_FILE = RemoteControl_ios/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "www.duole.login.RemoteControl-ios";
