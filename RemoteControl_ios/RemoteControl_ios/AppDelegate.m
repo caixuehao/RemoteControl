@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import <AdSupport/ASIdentifierManager.h>
 #import "MainViewController.h"
 #import "MainNavigationController.h"
 //#import "SetViewController.h"
@@ -24,6 +24,9 @@
 //    SetViewController* mainViewController = [[SetViewController alloc] init];
     self.window.rootViewController = [[MainNavigationController alloc] initWithRootViewController:[[MainViewController alloc] init]];
     [self.window makeKeyAndVisible];
+    
+    
+    NSLog(@"%@",[[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString]);
     return YES;
 }
 

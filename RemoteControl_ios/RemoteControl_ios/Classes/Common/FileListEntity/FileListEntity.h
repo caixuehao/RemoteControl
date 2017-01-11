@@ -7,17 +7,25 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MJExtension.h"
 //http://blog.csdn.net/ouyangtianhan/article/details/42004741
 //struct FileEntity{
 //    __unsafe_unretained NSString *path;
 //    NSInteger type;
 //};
 
+typedef enum : NSUInteger {
+    FileType_Folder,
+    FileType_File,
+} FileType;
+
 @interface FileEntity : NSObject
 
-@property NSString* path;
+@property NSString* fileName;
 
-@property NSInteger type;
+@property FileType type;
+
+
 
 @end
 
@@ -25,6 +33,8 @@
 
 @property(nonatomic,strong)NSString* path;
 
-@property(nonatomic,strong)NSMutableArray<FileListEntity *>* files;
+@property(nonatomic,strong)NSMutableArray<FileEntity *>* files;
+
+-(void)addFile:(NSString*)fileName type:(FileType)type;
 
 @end

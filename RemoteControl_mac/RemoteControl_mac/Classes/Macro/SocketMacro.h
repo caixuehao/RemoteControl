@@ -10,7 +10,7 @@
 #define SocketMacro_h
 
 #define NetworkPort 1995 //端口号
-#define MessageHeadLenght 59
+#define MessageHeadLenght 62
 
 #pragma 数据类型
 #define DataType_String 1
@@ -38,7 +38,7 @@
 
 #pragma 通知字符串
 #define ConnectSuccess @"ConnectSuccess"
-
+#define FileListRecvSuccess @"FileListRecvSuccess"
 
 #pragma 其他
 #define CurrentUserDesktopPath @"CurrentUserDesktopPath"

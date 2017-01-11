@@ -17,6 +17,7 @@
 #import "ShutDownController.h"
 
 #import "MainViewController.h"
+#import "FileManagerController.h"
 #define MAX_LISTEN_NUM 1 //最大监听数
 
 static SocketControl* shareSocketControl = nil;
@@ -33,7 +34,6 @@ static SocketControl* shareSocketControl = nil;
     @synchronized (self) {
         if (!shareSocketControl) {
             shareSocketControl = [[SocketControl alloc] init];
-
         }
     }
     return shareSocketControl;
@@ -265,7 +265,7 @@ static SocketControl* shareSocketControl = nil;
     }else if(messagetype == MessageType_OpenURL){
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:data]];
     }else if(messagetype == MessageType_FileManager){
-        
+        [[FileManagerController share] sendFileList:data];
     }
     
 }

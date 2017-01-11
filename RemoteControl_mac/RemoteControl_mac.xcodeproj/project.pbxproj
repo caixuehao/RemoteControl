@@ -22,6 +22,7 @@
 		FC7282DA1E1CFF6800C078D2 /* CommandLineController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC7282D91E1CFF6800C078D2 /* CommandLineController.mm */; };
 		FCC860201E24E77F004713A0 /* FileManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC8601F1E24E77F004713A0 /* FileManagerController.m */; };
 		FCC860241E24E7BE004713A0 /* SocketControl.mm in Sources */ = {isa = PBXBuildFile; fileRef = FCC860231E24E7BE004713A0 /* SocketControl.mm */; };
+		FCCECACA1E25CF4600D24EE9 /* FileListEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = FCCECAC81E25CF4600D24EE9 /* FileListEntity.m */; };
 		FCF76D821E1F44CC008DF19E /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FCF76D811E1F44CC008DF19E /* README.md */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +77,8 @@
 		FCC8601F1E24E77F004713A0 /* FileManagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileManagerController.m; path = FileManager/FileManagerController.m; sourceTree = "<group>"; };
 		FCC860221E24E7BE004713A0 /* SocketControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketControl.h; sourceTree = "<group>"; };
 		FCC860231E24E7BE004713A0 /* SocketControl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SocketControl.mm; sourceTree = "<group>"; };
+		FCCECAC71E25CF4600D24EE9 /* FileListEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileListEntity.h; path = FileListEntity/FileListEntity.h; sourceTree = "<group>"; };
+		FCCECAC81E25CF4600D24EE9 /* FileListEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileListEntity.m; path = FileListEntity/FileListEntity.m; sourceTree = "<group>"; };
 		FCF76D811E1F44CC008DF19E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -200,6 +203,7 @@
 		FC5CAF411E1BA27600DCAFA7 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				FCCECAC91E25CF4600D24EE9 /* FileListEntity */,
 				FCC860251E24EEC8004713A0 /* SavePath */,
 			);
 			path = Common;
@@ -279,6 +283,16 @@
 				FC6D9A961E1F2EED00D393F5 /* SavePath.m */,
 			);
 			name = SavePath;
+			sourceTree = "<group>";
+		};
+		FCCECAC91E25CF4600D24EE9 /* FileListEntity */ = {
+			isa = PBXGroup;
+			children = (
+				FCCECAC71E25CF4600D24EE9 /* FileListEntity.h */,
+				FCCECAC81E25CF4600D24EE9 /* FileListEntity.m */,
+			);
+			name = FileListEntity;
+			path = ../../../../RemoteControl_ios/RemoteControl_ios/Classes/Common;
 			sourceTree = "<group>";
 		};
 		FCF76D801E1F4492008DF19E /* Frameworks */ = {
@@ -471,6 +485,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC5CAED91E1BA04A00DCAFA7 /* main.m in Sources */,
+				FCCECACA1E25CF4600D24EE9 /* FileListEntity.m in Sources */,
 				FC20C20C1E1DE51B00DBAC75 /* ShutDownController.mm in Sources */,
 				FC7282DA1E1CFF6800C078D2 /* CommandLineController.mm in Sources */,
 				FC5CAED61E1BA04A00DCAFA7 /* AppDelegate.m in Sources */,

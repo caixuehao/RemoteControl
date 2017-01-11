@@ -67,15 +67,16 @@ static SocketControl* shareSocketControl = nil;
             
             if ([[NSString stringWithFormat:@"%s",message] isEqualToString:[NSString stringWithFormat:@"%s",IAmHere]]) {
                 
-                //主机有回应
-                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-//                    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(connect) object:nil];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:ConnectSuccess object:nil];
-                }];
+
                 connectreturn = connect(_socketReturn,(struct sockaddr *) &socketParameters, sizeof(socketParameters));
                 if(connectreturn==0){
                     NSLog(@"链接成功");
                     [self tcpRecvMessage];
+                    //主机有回应
+                    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(connect) object:nil];
+                        [[NSNotificationCenter defaultCenter] postNotificationName:ConnectSuccess object:nil];
+                    }];
                 }else{
                     NSLog(@"connectreturn:%d errno:%d str:%s len:%lu",connectreturn,errno,strerror(errno), sizeof(socketParameters));
                 }
@@ -85,48 +86,64 @@ static SocketControl* shareSocketControl = nil;
 }
 -(void)tcpRecvMessage{
     
-    NSDictionary* headdic = nil;
-    NSMutableData* recvData = nil;
-    
-    char message[1024];
-    bool recvbool = true;
-    while (recvbool) {
-        //        char *message =  (char*)malloc(1024*sizeof(char));;
-        memset(message,0,sizeof(message));
-        size_t recvreturn = recv(connectreturn,message, sizeof(message), 0);
-        //判断是否断开连接 http://blog.csdn.net/god2469/article/details/8801356
-        if(recvreturn<=0 && errno != EINTR){
-            NSLog(@"链接断开了 erron:%d str:%s",errno,strerror(errno));
-            close(connectreturn);
-            [self UDPinit];
-            recvbool = false;
-        }
+  
+    [tcpQueue addOperationWithBlock:^{
+        NSDictionary* headdic = nil;
+        NSMutableData* recvData = nil;
         
-        //读取信息
-        
-        if(headdic == nil){
-            //读取头
-            NSData *data = [NSData dataWithBytes: message length:strlen(message)];
-            headdic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-            NSLog(@"recvreturn:%zu headdic:%@",recvreturn,headdic);
-            recvData = nil;
-        }else{
-            NSLog(@"recvreturn:%zu recvData:%s\n\n",recvreturn,message);
-            //读取数据
-            if(recvData == nil){
-                recvData = [NSMutableData dataWithBytes: message length:strlen(message)];
-            }else{
-                [recvData appendBytes:message length:strlen(message)];
+        char message[1024];
+        bool recvbool = true;
+        while (recvbool) {
+            //        char *message =  (char*)malloc(1024*sizeof(char));;
+            memset(message,0,sizeof(message));
+            size_t recvreturn = recv(_socketReturn,message, sizeof(message), 0);
+            //判断是否断开连接 http://blog.csdn.net/god2469/article/details/8801356
+            if(recvreturn<=0 && errno != EINTR){
+                NSLog(@"链接断开了 erron:%d str:%s",errno,strerror(errno));
+                close(_socketReturn);
+                [self UDPinit];
+                recvbool = false;
             }
             
-            if(recvData.length >= [[headdic objectForKey:@"dataSize"] integerValue]){
+            //读取信息
+            
+            if(headdic == nil){
+                //读取头
+                NSData *data = [NSData dataWithBytes: message length:MessageHeadLenght];
+                 NSLog(@"recvreturn:%zu message:%s",recvreturn,message);
+                //不清楚为啥直接解析解析不出来
+//                NSString *receiveStr = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+//                data = [receiveStr dataUsingEncoding:NSUTF8StringEncoding];
+                headdic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+                NSLog(@"recvreturn:%zu headdic:%@",recvreturn,headdic);
+               
+                recvData = nil;
+            }else{
+                NSLog(@"recvreturn:%zu ",recvreturn);
+                //读取数据
+                if(recvData == nil){
+                    recvData = [NSMutableData dataWithBytes: message length:strlen(message)];
+                }else{
+                    [recvData appendBytes:message length:strlen(message)];
+                }
                 
-                headdic = nil;
+                if(recvData.length >= [[headdic objectForKey:@"dataSize"] intValue]){
+                    [self executeCommand:[[headdic objectForKey:@"messageType"] intValue] datatype:[[headdic objectForKey:@"dataType"] intValue] data:recvData];
+                    headdic = nil;
+                }
             }
+            
         }
-        
-    }
+    }];
+   
 }
+
+
+
+
+
+
+
 
 -(void)connect{
     
@@ -228,6 +245,30 @@ static SocketControl* shareSocketControl = nil;
         
     }];
     
+    
+}
+
+
+
+
+-(void)executeCommand:(int)messagetype datatype:(int)datatype data:(id)data{
+    //转化数据类型
+    if(datatype == DataType_String){
+        data = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    }else if(datatype == DataType_NSDictionary){
+        
+//        NSString *receiveStr = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+//        data = [receiveStr dataUsingEncoding:NSUTF8StringEncoding];
+        data = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+
+    }
+    //根据消息类型来执行命令
+   if(messagetype == MessageType_FileManager){
+//       NSLog(@"%@",data);
+       [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:FileListRecvSuccess object:data];
+       }];
+    }
     
 }
 @end

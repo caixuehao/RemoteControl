@@ -10,4 +10,8 @@
 
 @interface FileManagerController : NSObject
 
++(instancetype)share;
+
+-(void)sendFileList:(NSString*)path;
+
 @end

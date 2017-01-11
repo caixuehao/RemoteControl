@@ -14,7 +14,6 @@
  */
 @property(nonatomic,strong,readonly)NSString* path;
 
-@property(nonatomic,strong,readonly)NSArray* currentFiles;
 
 -(instancetype)initWithPath:(NSString*)path;
 

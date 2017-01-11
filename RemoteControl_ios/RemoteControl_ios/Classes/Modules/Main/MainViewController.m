@@ -59,14 +59,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    //不加这个没网络
+    [[[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:@"http://www.baidu.com"] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSLog(@"%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    }] resume];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(connectSuccess)  name:ConnectSuccess  object:nil];
     [[SocketControl share] connect];
     _titlesArr = @[@"关机",@"打开网页",@"资源管理器"];
     [self loadSubView];
-    //不加这个没网络
-    [[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:@"http://www.baidu.com"]];
+
      self.isConnect = NO;
 
 }
