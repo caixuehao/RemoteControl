@@ -31,7 +31,7 @@
 
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fileListRecvSuccess:)  name:FileListRecvSuccess  object:nil];
-        [[SocketControl share] sendMessageType:MessageType_FileManager datatype:DataType_String data:_tagPath];
+        [[SocketControl share] sendMessageType:MessageType_FileList datatype:DataType_String data:_tagPath];
       
     }
     return self;
@@ -40,7 +40,7 @@
 -(void)fileListRecvSuccess:(NSNotification*) notification{
    
     FileListEntity *fileList = [FileListEntity mj_objectWithKeyValues:[notification object]];
-  
+
     if ([fileList.tagPath isEqualToString:_tagPath]) {
         NSLog(@"%@",fileList.tagPath);
         _fileList = fileList;

@@ -16,6 +16,7 @@
 #import "CommandLineViewController.h"
 #import "OpenURLViewController.h"
 #import "FileManagerViewController.h"
+#import "FileInfoViewController.h"
 
 @interface MainViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -74,7 +75,7 @@ struct sockethead {
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(connectSuccess)  name:ConnectSuccess  object:nil];
     [[SocketControl share] connect];
-    _titlesArr = @[@"关机",@"打开网页",@"资源管理器"];
+    _titlesArr = @[@"关机",@"打开网页",@"电脑资源管理器",@"本机文件",@"test"];
     [self loadSubView];
 
      self.isConnect = NO;
@@ -124,7 +125,10 @@ struct sockethead {
             [self.navigationController pushViewController:[[OpenURLViewController alloc] init] animated:YES];
             break;
         case 2:
-            [self.navigationController pushViewController:[[FileManagerViewController alloc] initWithTagPath:CurrentUserDesktopPath] animated:YES];
+            [self.navigationController pushViewController:[[FileManagerViewController alloc] initWithTagPath:CurrentUserMainPath] animated:YES];
+            break;
+        case 4:
+            [self.navigationController pushViewController:[[FileInfoViewController alloc] init] animated:YES];
             break;
         default:
             [self.navigationController pushViewController:[[UIViewController alloc] init] animated:YES];
@@ -132,6 +136,9 @@ struct sockethead {
     }
     
 }
+
+
+
 #pragma mark -  UITableViewDataSource
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;

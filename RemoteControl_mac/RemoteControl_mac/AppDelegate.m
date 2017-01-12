@@ -21,7 +21,7 @@
     [[StartController share] autoStart];
     [[StartController share] hideDock];
     [[SocketControl share] start];
-    
+ 
 //    NSData* data = [NSData dataWithContentsOfFile:@"/Users/cxh/Desktop/文稿"];
 //    NSLog(@"%@",[[NSDictionary alloc] initWithContentsOfFile:@"/Users/cxh/Desktop/文稿"]);
 }

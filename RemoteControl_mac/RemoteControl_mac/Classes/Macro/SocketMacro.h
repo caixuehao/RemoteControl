@@ -9,7 +9,7 @@
 #ifndef SocketMacro_h
 #define SocketMacro_h
 
-#define NetworkPort 1995 //端口号
+#define NetworkPort 1994 //端口号
 
 
 #pragma 数据类型
@@ -22,7 +22,8 @@
 #define MessageType_TerminalCommand 1 //终端命令
 #define MessageType_Shutdown 2 //关机
 #define MessageType_OpenURL 3  //打开网页
-#define MessageType_FileManager 4 //文件管理器
+#define MessageType_FileList 4 //获取文件列表
+#define MessageType_FileInfo 5 //文件简介
 
 #pragma 关机命令参数
 #define ShutDown @"ShutDown"
@@ -41,8 +42,8 @@
 #define FileListRecvSuccess @"FileListRecvSuccess"
 
 #pragma 其他
-#define CurrentUserDesktopPath @"CurrentUserDesktopPath"
-
+#define CurrentUserDesktopPath  @"CurrentUserDesktopPath"
+#define CurrentUserMainPath     @"CurrentUserMainPath"
 //#define MessageHeadLenght 16
 
 struct socketTCPhead {

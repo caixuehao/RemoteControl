@@ -31,6 +31,8 @@ static FileManagerController *shareFileManagerController;
     
     if([path isEqualToString:CurrentUserDesktopPath]){
         path = NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES)[0];
+    }else if([path isEqualToString:CurrentUserMainPath]){
+        path = NSHomeDirectory();
     }
     fileList.path = path;
     Log(@"%@",path);
@@ -53,7 +55,7 @@ static FileManagerController *shareFileManagerController;
     
     NSDictionary* data_dic = fileList.mj_keyValues;
     //NSLog(@"%@",data_dic);
-    [[SocketControl share] sendMessageType:MessageType_FileManager datatype:DataType_NSDictionary data:data_dic];
+    [[SocketControl share] sendMessageType:MessageType_FileList datatype:DataType_NSDictionary data:data_dic];
 }
 
 @end

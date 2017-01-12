@@ -22,6 +22,7 @@
 		FC5CAF1D1E1BA0DB00DCAFA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC5CAF1B1E1BA0DB00DCAFA7 /* LaunchScreen.storyboard */; };
 		FC5CAF281E1BA0DB00DCAFA7 /* RemoteControl_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF271E1BA0DB00DCAFA7 /* RemoteControl_iosTests.m */; };
 		FC5CAF331E1BA0DB00DCAFA7 /* RemoteControl_iosUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF321E1BA0DB00DCAFA7 /* RemoteControl_iosUITests.m */; };
+		FC5E9F931E276E5B00AD749F /* FileInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5E9F921E276E5B00AD749F /* FileInfoViewController.m */; };
 		FC659CC91E236CE70028DE0F /* OpenURLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC659CC71E236CE70028DE0F /* OpenURLViewController.m */; };
 		FC659CCA1E236CE70028DE0F /* OpenURLViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC659CC81E236CE70028DE0F /* OpenURLViewController.xib */; };
 		FC659CCE1E237BCC0028DE0F /* background1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FC659CCD1E237BCC0028DE0F /* background1.jpg */; };
@@ -80,6 +81,8 @@
 		FC5CAF2E1E1BA0DB00DCAFA7 /* RemoteControl_iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RemoteControl_iosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC5CAF321E1BA0DB00DCAFA7 /* RemoteControl_iosUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RemoteControl_iosUITests.m; sourceTree = "<group>"; };
 		FC5CAF341E1BA0DB00DCAFA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC5E9F911E276E5B00AD749F /* FileInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileInfoViewController.h; path = FileInfo/FileInfoViewController.h; sourceTree = "<group>"; };
+		FC5E9F921E276E5B00AD749F /* FileInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileInfoViewController.m; path = FileInfo/FileInfoViewController.m; sourceTree = "<group>"; };
 		FC659CC61E236CE70028DE0F /* OpenURLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenURLViewController.h; path = OpenURL/OpenURLViewController.h; sourceTree = "<group>"; };
 		FC659CC71E236CE70028DE0F /* OpenURLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OpenURLViewController.m; path = OpenURL/OpenURLViewController.m; sourceTree = "<group>"; };
 		FC659CC81E236CE70028DE0F /* OpenURLViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OpenURLViewController.xib; path = OpenURL/OpenURLViewController.xib; sourceTree = "<group>"; };
@@ -274,6 +277,31 @@
 			path = RemoteControl_iosUITests;
 			sourceTree = "<group>";
 		};
+		FC5E9F8E1E276DAD00AD749F /* FileManager_mac */ = {
+			isa = PBXGroup;
+			children = (
+				FCC860141E24BCE5004713A0 /* FileManagerViewController.h */,
+				FCC860151E24BCE5004713A0 /* FileManagerViewController.m */,
+			);
+			name = FileManager_mac;
+			sourceTree = "<group>";
+		};
+		FC5E9F8F1E276DB700AD749F /* FileManager_ios */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = FileManager_ios;
+			sourceTree = "<group>";
+		};
+		FC5E9F901E276E2800AD749F /* FileInfo */ = {
+			isa = PBXGroup;
+			children = (
+				FC5E9F911E276E5B00AD749F /* FileInfoViewController.h */,
+				FC5E9F921E276E5B00AD749F /* FileInfoViewController.m */,
+			);
+			name = FileInfo;
+			sourceTree = "<group>";
+		};
 		FC659CC51E236CBA0028DE0F /* OpenURL */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,8 +333,9 @@
 		FCC860131E24BA6C004713A0 /* FileManager */ = {
 			isa = PBXGroup;
 			children = (
-				FCC860141E24BCE5004713A0 /* FileManagerViewController.h */,
-				FCC860151E24BCE5004713A0 /* FileManagerViewController.m */,
+				FC5E9F901E276E2800AD749F /* FileInfo */,
+				FC5E9F8F1E276DB700AD749F /* FileManager_ios */,
+				FC5E9F8E1E276DAD00AD749F /* FileManager_mac */,
 			);
 			name = FileManager;
 			sourceTree = "<group>";
@@ -516,6 +545,7 @@
 				FC494B1C1E1CC6F3005D91FE /* SocketControl.mm in Sources */,
 				FC7282E61E1D01B300C078D2 /* CommandLineViewController.m in Sources */,
 				FC5CAF0F1E1BA0DB00DCAFA7 /* main.m in Sources */,
+				FC5E9F931E276E5B00AD749F /* FileInfoViewController.m in Sources */,
 				FCF76D841E1F4C51008DF19E /* README.md in Sources */,
 				FC494B311E1CD19B005D91FE /* MainNavigationController.m in Sources */,
 				FC494B221E1CCC46005D91FE /* SetViewController.m in Sources */,

@@ -210,7 +210,7 @@ static SocketControl* shareSocketControl = nil;
                 NSUInteger length = (recvreturn>head.dataSize)?head.dataSize:recvreturn;
                 recvData = [NSMutableData dataWithBytes: message length:length];
             }else{
-                NSUInteger length = strlen(message);
+                NSUInteger length = recvreturn;
                 length = (length+recvData.length)>head.dataSize?head.dataSize-recvData.length:length;
                 [recvData appendBytes:message length:length];
             }
@@ -273,7 +273,7 @@ static SocketControl* shareSocketControl = nil;
         [ShutDownController shutdown:data];
     }else if(messagetype == MessageType_OpenURL){
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:data]];
-    }else if(messagetype == MessageType_FileManager){
+    }else if(messagetype == MessageType_FileList){
         [[FileManagerController share] sendFileList:data];
     }
     

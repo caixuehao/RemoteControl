@@ -120,7 +120,7 @@ static SocketControl* shareSocketControl = nil;
                     NSUInteger length = (recvreturn>head.dataSize)?head.dataSize:recvreturn;
                     recvData = [NSMutableData dataWithBytes: message length:length];
                 }else{
-                    NSUInteger length = strlen(message);
+                    NSUInteger length = recvreturn;
                     length = (length+recvData.length)>head.dataSize?head.dataSize-recvData.length:length;
                     [recvData appendBytes:message length:length];
                 }
@@ -249,6 +249,7 @@ static SocketControl* shareSocketControl = nil;
 
 
 -(void)executeCommand:(int)messagetype datatype:(int)datatype data:(id)data{
+  NSLog(@"%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     //转化数据类型
     if(datatype == DataType_String){
         data = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
@@ -258,8 +259,9 @@ static SocketControl* shareSocketControl = nil;
         data = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
 
     }
+    
     //根据消息类型来执行命令
-   if(messagetype == MessageType_FileManager){
+   if(messagetype == MessageType_FileList){
        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [[NSNotificationCenter defaultCenter] postNotificationName:FileListRecvSuccess object:data];
        }];
