@@ -31,6 +31,8 @@ typedef enum : NSUInteger {
 
 @interface FileListEntity : NSObject
 
+@property(nonatomic,strong)NSString* tagPath;//标记路径（用来分辨是哪个视图请求的）
+
 @property(nonatomic,strong)NSString* path;
 
 @property(nonatomic,strong)NSMutableArray<FileEntity *>* files;

@@ -12,9 +12,9 @@
 /**
  *  CurrentUserDesktopPath 保留字段表示当前用户的桌面路径
  */
-@property(nonatomic,strong,readonly)NSString* path;
+@property(nonatomic,strong,readonly)NSString* tagPath;
 
 
--(instancetype)initWithPath:(NSString*)path;
+-(instancetype)initWithTagPath:(NSString*)tagPath;
 
 @end

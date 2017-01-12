@@ -10,7 +10,7 @@
 #import "SocketMacro.h"
 #import "FileListEntity.h"
 #import "SocketControl.h"
-
+#import "MainViewController.h"
 
 static FileManagerController *shareFileManagerController;
 @implementation FileManagerController
@@ -27,12 +27,13 @@ static FileManagerController *shareFileManagerController;
 
 -(void)sendFileList:(NSString*)path{
     FileListEntity* fileList = [[FileListEntity alloc] init];
-    fileList.path = path;
+    fileList.tagPath = path;
     
     if([path isEqualToString:CurrentUserDesktopPath]){
         path = NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES)[0];
     }
-    NSLog(@"%@",path);
+    fileList.path = path;
+    Log(@"%@",path);
     NSFileManager * fm = [NSFileManager defaultManager];
     NSArray * array = [fm contentsOfDirectoryAtPath:path error:nil];
     

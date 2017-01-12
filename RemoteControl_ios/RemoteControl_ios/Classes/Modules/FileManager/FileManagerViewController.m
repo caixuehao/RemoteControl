@@ -20,27 +20,33 @@
     MBProgressHUD *_hud;
     UITableView* _mainTableView;
     
-    FileListEntity *fileList;
+    FileListEntity *_fileList;
 }
-
--(instancetype)initWithPath:(NSString*)path{
+-(void)dealloc{
+    NSLog(@"%s",__FUNCTION__);
+}
+-(instancetype)initWithTagPath:(NSString*)tagPath{
     if (self = [super init]) {
-        _path = path;
+        _tagPath = tagPath;
 
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fileListRecvSuccess:)  name:FileListRecvSuccess  object:nil];
-        [[SocketControl share] sendMessageType:MessageType_FileManager datatype:DataType_String data:_path];
+        [[SocketControl share] sendMessageType:MessageType_FileManager datatype:DataType_String data:_tagPath];
       
     }
     return self;
 }
 
 -(void)fileListRecvSuccess:(NSNotification*) notification{
-    fileList = [FileListEntity mj_objectWithKeyValues:[notification object]];
-    if ([fileList.path isEqualToString:_path]) {
-        NSLog(@"%lu",fileList.files.count);
+   
+    FileListEntity *fileList = [FileListEntity mj_objectWithKeyValues:[notification object]];
+  
+    if ([fileList.tagPath isEqualToString:_tagPath]) {
+        NSLog(@"%@",fileList.tagPath);
+        _fileList = fileList;
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 [_mainTableView reloadData];
+                [_hud hideAnimated:YES];
         }];
     }
 }
@@ -68,26 +74,28 @@
     });
     
     [_mainTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.mas_topLayoutGuide).offset(0);
+        make.top.equalTo(self.view).offset(0);
         make.left.right.bottom.equalTo(self.view);
     }];
     
-//    _hud = ({
-//        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//        hud.label.text = @"正在获取文件列表";
-//        hud.removeFromSuperViewOnHide = YES;// 隐藏时候从父控件中移除
-//        hud.tag = 2008;
-//        [self.view bringSubviewToFront:hud];
-//        hud;
-//    });
+    _hud = ({
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.label.text = @"正在获取文件列表";
+        hud.removeFromSuperViewOnHide = YES;// 隐藏时候从父控件中移除
+        hud.tag = 2008;
+        [self.view bringSubviewToFront:hud];
+        hud;
+    });
 }
 
 #pragma mark - UITableViewDelegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    switch (indexPath.row) {
-        default:
-            break;
+    FileEntity* file = _fileList.files[indexPath.row];
+    if (file.type == FileType_Folder) {
+        FileManagerViewController* fmvc = [[FileManagerViewController alloc] initWithTagPath:[_fileList.path stringByAppendingPathComponent:file.fileName]];
+        [self.navigationController pushViewController:fmvc animated:YES];
     }
+
 }
 
 #pragma mark -  UITableViewDataSource
@@ -96,7 +104,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return fileList?fileList.files.count:0;
+    return _fileList?_fileList.files.count:0;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -105,7 +113,16 @@
         cell = [[UITableViewCell alloc] init];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    cell.textLabel.text = fileList.files[indexPath.row].fileName;
+    FileEntity* file = _fileList.files[indexPath.row];
+    cell.textLabel.text = file.fileName;
+    switch (file.type) {
+        case FileType_Folder:
+            cell.textLabel.textColor = [UIColor blueColor];
+            break;
+        default:
+            cell.textLabel.textColor = [UIColor blackColor];
+            break;
+    }
     return cell;
 }
 

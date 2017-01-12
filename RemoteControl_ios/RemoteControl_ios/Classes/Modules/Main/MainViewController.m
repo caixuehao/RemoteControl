@@ -25,6 +25,12 @@
 
 @end
 
+struct sockethead {
+    long int size;
+    int typeid;
+    int messageid;
+};
+
 @implementation MainViewController{
 
  UIImageView* backgroundImage;
@@ -63,6 +69,8 @@
     [[[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:@"http://www.baidu.com"] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         NSLog(@"%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     }] resume];
+    
+    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(connectSuccess)  name:ConnectSuccess  object:nil];
     [[SocketControl share] connect];
@@ -116,7 +124,7 @@
             [self.navigationController pushViewController:[[OpenURLViewController alloc] init] animated:YES];
             break;
         case 2:
-            [self.navigationController pushViewController:[[FileManagerViewController alloc] initWithPath:CurrentUserDesktopPath] animated:YES];
+            [self.navigationController pushViewController:[[FileManagerViewController alloc] initWithTagPath:CurrentUserDesktopPath] animated:YES];
             break;
         default:
             [self.navigationController pushViewController:[[UIViewController alloc] init] animated:YES];

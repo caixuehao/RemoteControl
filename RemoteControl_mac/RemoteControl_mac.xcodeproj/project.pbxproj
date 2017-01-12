@@ -20,7 +20,7 @@
 		FC6D9A941E1F298400D393F5 /* StartController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC6D9A931E1F298400D393F5 /* StartController.mm */; };
 		FC6D9A971E1F2EED00D393F5 /* SavePath.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6D9A961E1F2EED00D393F5 /* SavePath.m */; };
 		FC7282DA1E1CFF6800C078D2 /* CommandLineController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC7282D91E1CFF6800C078D2 /* CommandLineController.mm */; };
-		FCC860201E24E77F004713A0 /* FileManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC8601F1E24E77F004713A0 /* FileManagerController.m */; };
+		FCC860201E24E77F004713A0 /* FileManagerController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FCC8601F1E24E77F004713A0 /* FileManagerController.mm */; };
 		FCC860241E24E7BE004713A0 /* SocketControl.mm in Sources */ = {isa = PBXBuildFile; fileRef = FCC860231E24E7BE004713A0 /* SocketControl.mm */; };
 		FCCECACA1E25CF4600D24EE9 /* FileListEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = FCCECAC81E25CF4600D24EE9 /* FileListEntity.m */; };
 		FCF76D821E1F44CC008DF19E /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FCF76D811E1F44CC008DF19E /* README.md */; };
@@ -74,7 +74,7 @@
 		FC7282D81E1CFF6800C078D2 /* CommandLineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandLineController.h; sourceTree = "<group>"; };
 		FC7282D91E1CFF6800C078D2 /* CommandLineController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CommandLineController.mm; sourceTree = "<group>"; };
 		FCC8601E1E24E77F004713A0 /* FileManagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileManagerController.h; path = FileManager/FileManagerController.h; sourceTree = "<group>"; };
-		FCC8601F1E24E77F004713A0 /* FileManagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileManagerController.m; path = FileManager/FileManagerController.m; sourceTree = "<group>"; };
+		FCC8601F1E24E77F004713A0 /* FileManagerController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = FileManagerController.mm; path = FileManager/FileManagerController.mm; sourceTree = "<group>"; };
 		FCC860221E24E7BE004713A0 /* SocketControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketControl.h; sourceTree = "<group>"; };
 		FCC860231E24E7BE004713A0 /* SocketControl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SocketControl.mm; sourceTree = "<group>"; };
 		FCCECAC71E25CF4600D24EE9 /* FileListEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileListEntity.h; path = FileListEntity/FileListEntity.h; sourceTree = "<group>"; };
@@ -262,7 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				FCC8601E1E24E77F004713A0 /* FileManagerController.h */,
-				FCC8601F1E24E77F004713A0 /* FileManagerController.m */,
+				FCC8601F1E24E77F004713A0 /* FileManagerController.mm */,
 			);
 			name = FileManager;
 			sourceTree = "<group>";
@@ -494,7 +494,7 @@
 				FC6D9A971E1F2EED00D393F5 /* SavePath.m in Sources */,
 				FCF76D821E1F44CC008DF19E /* README.md in Sources */,
 				FCC860241E24E7BE004713A0 /* SocketControl.mm in Sources */,
-				FCC860201E24E77F004713A0 /* FileManagerController.m in Sources */,
+				FCC860201E24E77F004713A0 /* FileManagerController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

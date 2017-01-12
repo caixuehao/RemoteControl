@@ -88,48 +88,46 @@ static SocketControl* shareSocketControl = nil;
     
   
     [tcpQueue addOperationWithBlock:^{
-        NSDictionary* headdic = nil;
+        struct socketTCPhead head;
+        memset(&head,0,sizeof(head));//清空结构体
         NSMutableData* recvData = nil;
         
         char message[1024];
         bool recvbool = true;
+
+        
         while (recvbool) {
-            //        char *message =  (char*)malloc(1024*sizeof(char));;
             memset(message,0,sizeof(message));
             size_t recvreturn = recv(_socketReturn,message, sizeof(message), 0);
-            //判断是否断开连接 http://blog.csdn.net/god2469/article/details/8801356
-            if(recvreturn<=0 && errno != EINTR){
-                NSLog(@"链接断开了 erron:%d str:%s",errno,strerror(errno));
-                close(_socketReturn);
-                [self UDPinit];
-                recvbool = false;
-            }
+          
+             NSLog(@"recvreturn:%zu",recvreturn);
             
             //读取信息
-            
-            if(headdic == nil){
+            if(head.dataSize == 0){
                 //读取头
-                NSData *data = [NSData dataWithBytes: message length:MessageHeadLenght];
-                 NSLog(@"recvreturn:%zu message:%s",recvreturn,message);
-                //不清楚为啥直接解析解析不出来
-//                NSString *receiveStr = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-//                data = [receiveStr dataUsingEncoding:NSUTF8StringEncoding];
-                headdic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-                NSLog(@"recvreturn:%zu headdic:%@",recvreturn,headdic);
-               
-                recvData = nil;
+                memcpy(&head,message,sizeof(head));
+                if (recvreturn>sizeof(head)) {
+                    NSUInteger length = recvreturn-sizeof(head);
+                    length = (length>head.dataSize)?head.dataSize:length;
+                    recvData = [NSMutableData dataWithBytes: message+sizeof(head) length:length];
+                }else{
+                    recvData = nil;
+                }
             }else{
-                NSLog(@"recvreturn:%zu ",recvreturn);
+               
                 //读取数据
                 if(recvData == nil){
-                    recvData = [NSMutableData dataWithBytes: message length:strlen(message)];
+                    NSUInteger length = (recvreturn>head.dataSize)?head.dataSize:recvreturn;
+                    recvData = [NSMutableData dataWithBytes: message length:length];
                 }else{
-                    [recvData appendBytes:message length:strlen(message)];
+                    NSUInteger length = strlen(message);
+                    length = (length+recvData.length)>head.dataSize?head.dataSize-recvData.length:length;
+                    [recvData appendBytes:message length:length];
                 }
-                
-                if(recvData.length >= [[headdic objectForKey:@"dataSize"] intValue]){
-                    [self executeCommand:[[headdic objectForKey:@"messageType"] intValue] datatype:[[headdic objectForKey:@"dataType"] intValue] data:recvData];
-                    headdic = nil;
+                //这里还有一种第二个包头可能接在包尾的情况，又要加判断不写了。
+                if(recvData.length == head.dataSize){
+                    [self executeCommand:head.messageType datatype:head.dataType data:recvData];
+                    memset(&head,0,sizeof(head));
                 }
             }
             
@@ -237,10 +235,9 @@ static SocketControl* shareSocketControl = nil;
                 senddata = data;
                 break;
         }
-        NSDictionary* headdic = @{@"messageType":@(messagetype),@"dataType":@(datatype),@"dataSize":@(senddata.length)};
-        NSData* headdata =  [NSJSONSerialization dataWithJSONObject:headdic options:NSJSONWritingPrettyPrinted error:nil];
-        send(_socketReturn, [headdata bytes], headdata.length, 0);
-        //        NSLog(@"%lu",(unsigned long)senddata.length);
+
+        struct socketTCPhead head = {messagetype,datatype,static_cast<long>(senddata.length)};
+        send(_socketReturn, &head, sizeof(head), 0);
         send(_socketReturn, [senddata bytes], senddata.length, 0);
         
     }];
@@ -257,14 +254,12 @@ static SocketControl* shareSocketControl = nil;
         data = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     }else if(datatype == DataType_NSDictionary){
         
-//        NSString *receiveStr = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-//        data = [receiveStr dataUsingEncoding:NSUTF8StringEncoding];
+//data = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         data = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
 
     }
     //根据消息类型来执行命令
    if(messagetype == MessageType_FileManager){
-//       NSLog(@"%@",data);
        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [[NSNotificationCenter defaultCenter] postNotificationName:FileListRecvSuccess object:data];
        }];

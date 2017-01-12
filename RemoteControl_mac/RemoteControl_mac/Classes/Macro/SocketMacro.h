@@ -10,7 +10,7 @@
 #define SocketMacro_h
 
 #define NetworkPort 1995 //端口号
-#define MessageHeadLenght 62
+
 
 #pragma 数据类型
 #define DataType_String 1
@@ -43,5 +43,12 @@
 #pragma 其他
 #define CurrentUserDesktopPath @"CurrentUserDesktopPath"
 
+//#define MessageHeadLenght 16
+
+struct socketTCPhead {
+    int messageType;
+    int dataType;
+    long int dataSize;
+};
 
 #endif /* SocketMacro_h */

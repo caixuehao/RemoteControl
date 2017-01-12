@@ -24,7 +24,7 @@
 
 
 +(NSDictionary *)mj_objectClassInArray{
-    return @{@"files":NSStringFromClass([FileListEntity class])};
+    return @{@"files":NSStringFromClass([FileEntity class])};
 }
 
 
