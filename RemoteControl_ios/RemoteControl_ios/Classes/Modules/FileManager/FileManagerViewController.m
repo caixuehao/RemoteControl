@@ -48,7 +48,7 @@
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [[NSNotificationCenter defaultCenter] removeObserver:self name:FileListRecvSuccess object:nil];
             if(_mainTableView)[_mainTableView reloadData];
-            [_hud hideAnimated:YES];
+            [_hud hide:YES];
         }];
     }
 }
@@ -82,7 +82,7 @@
     
     _hud = ({
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.label.text = @"正在获取文件列表";
+        hud.labelText = @"正在获取文件列表";
         hud.removeFromSuperViewOnHide = YES;// 隐藏时候从父控件中移除
         hud.tag = 2008;
         [self.view bringSubviewToFront:hud];

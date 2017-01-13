@@ -171,8 +171,60 @@ static SocketControl* shareSocketControl = nil;
         return;
     }
     
-    
     struct socketTCPhead head;
+    memset(&head,0,sizeof(head));//清空结构体
+    NSMutableData* recvData = nil;
+    
+    int maxsize = 1024;
+    char message[2014];
+    memset(message,0,strlen(message));
+    bool recvbool= true;
+    
+    
+    size_t restSize = 0;//剩下的数据
+    while (recvbool) {
+        size_t recvreturn = recv(acceptreturn,message+restSize, maxsize, 0);
+        // size_t messageSize = strlen(message);
+        NSLog(@"recvreturn:%zu restSize:%zu",recvreturn,restSize);
+        //读取信息
+        if(head.dataSize == 0){
+            //读取头
+            if (recvreturn>=sizeof(head)){
+                memcpy(&head,message,sizeof(head));
+                //将剩下的数据前移动并清空后面的数据用于下一次储存
+                memcpy(message,message+sizeof(head),recvreturn-sizeof(head));
+                memset(message+recvreturn-sizeof(head),0,maxsize);
+                restSize = recvreturn - sizeof(head);
+                NSLog(@"messageType:%d datasize:%zu dataType:%d tag:%d ",head.messageType,head.dataSize,head.dataType,head.tag);
+                recvData = nil;
+            }
+        }else{
+            //读取数据
+            if (recvreturn+restSize<(head.dataSize-recvData.length)) {
+                if(recvData == nil){
+                    recvData = [NSMutableData dataWithBytes: message length:recvreturn+restSize];
+                }else{
+                    [recvData appendBytes:message length:recvreturn+restSize];
+                }
+                restSize=0;
+                memset(message,0,maxsize);
+            }else{
+                size_t length = head.dataSize-recvData.length;
+                if(recvData == nil){
+                    recvData = [NSMutableData dataWithBytes: message length:length];
+                }else{
+                    [recvData appendBytes:message length:length];
+                }
+                [self executeCommand:head.messageType datatype:head.dataType data:recvData];
+                memcpy(message,message+length,recvreturn+restSize-length);
+                memset(message+recvreturn+restSize-length,0,maxsize);
+                memset(&head,0,sizeof(head));
+                restSize = recvreturn+restSize-length;
+            }
+        }
+        
+    }
+    /*   struct socketTCPhead head;
     memset(&head,0,sizeof(head));//清空结构体
     NSMutableData* recvData = nil;
     
@@ -221,7 +273,7 @@ static SocketControl* shareSocketControl = nil;
             }
         }
         
-    }
+    }*/
 }
 
 -(void)sendMessageType:(int)messagetype datatype:(int)datatype data:(id)data{

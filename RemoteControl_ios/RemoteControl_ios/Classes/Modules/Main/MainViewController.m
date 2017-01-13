@@ -11,7 +11,7 @@
 #import "SocketControl.h"
 
 #import <Masonry.h>
-#import <MBProgressHUD.h>
+#import "MBProgressHUD.h"
 
 #import "CommandLineViewController.h"
 #import "OpenURLViewController.h"
@@ -49,10 +49,10 @@ struct sockethead {
     _isConnect = isConnect;
     if(isConnect){
         MBProgressHUD *hud = [self.view viewWithTag:2008];
-        [hud hideAnimated:YES];
+        [hud hide:YES];
     }else{
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.label.text = @"正在查找主机";
+        hud.labelText = @"正在查找主机";
         hud.removeFromSuperViewOnHide = YES;// 隐藏时候从父控件中移除
         hud.tag = 2008;
         [self.view bringSubviewToFront:hud];

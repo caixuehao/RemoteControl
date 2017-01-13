@@ -97,57 +97,50 @@ static SocketControl* shareSocketControl = nil;
         int maxsize = 1024;
         char message[2014];
         memset(message,0,strlen(message));
-        bool recvbool = true;
+        bool recvbool= true;
         
         
-        //        int restSize = 0;//剩下的数据
+        size_t restSize = 0;//剩下的数据
         while (recvbool) {
-            
-            
-            
-            size_t recvreturn = recv(_socketReturn,message+strlen(message), maxsize+1, 0);
-            size_t messageSize = strlen(message);
-            NSLog(@"recvreturn:%zu messageSize:%zu",recvreturn,messageSize);
+            size_t recvreturn = recv(_socketReturn,message+restSize, maxsize, 0);
+           // size_t messageSize = strlen(message);
+            NSLog(@"recvreturn:%zu restSize:%zu",recvreturn,restSize);
                 //读取信息
                 if(head.dataSize == 0){
                     //读取头
-                    if (messageSize>=sizeof(head)){
+                    if (recvreturn>=sizeof(head)){
                         memcpy(&head,message,sizeof(head));
-                        memcpy(message,message+sizeof(head),messageSize-sizeof(head));
-                        memset(message+messageSize-sizeof(head),0,maxsize);
+                        //将剩下的数据前移动并清空后面的数据用于下一次储存
+                        memcpy(message,message+sizeof(head),recvreturn-sizeof(head));
+                        memset(message+recvreturn-sizeof(head),0,maxsize);
+                        restSize = recvreturn - sizeof(head);
+                        NSLog(@"messageType:%d datasize:%zu dataType:%d tag:%d ",head.messageType,head.dataSize,head.dataType,head.tag);
                         recvData = nil;
                     }
                 }else{
                     //读取数据
-                    if (messageSize<(head.dataSize-recvData.length)) {
-                        if(recvData){
-                            recvData = [NSMutableData dataWithBytes: message length:messageSize];
+                    if (recvreturn+restSize<(head.dataSize-recvData.length)) {
+                        if(recvData == nil){
+                            recvData = [NSMutableData dataWithBytes: message length:recvreturn+restSize];
                         }else{
-                            [recvData appendBytes:message length:messageSize];
+                            [recvData appendBytes:message length:recvreturn+restSize];
                         }
+                        restSize=0;
                         memset(message,0,maxsize);
-//                        break;
                     }else{
                         size_t length = head.dataSize-recvData.length;
-                        if(recvData){
+                        if(recvData == nil){
                             recvData = [NSMutableData dataWithBytes: message length:length];
                         }else{
                             [recvData appendBytes:message length:length];
                         }
                         [self executeCommand:head.messageType datatype:head.dataType data:recvData];
-                        memcpy(message,message+length,messageSize-length);
-                        memset(message+messageSize-length,0,maxsize);
+                        memcpy(message,message+length,recvreturn+restSize-length);
+                        memset(message+recvreturn+restSize-length,0,maxsize);
                         memset(&head,0,sizeof(head));
-//                        break;
+                        restSize = recvreturn+restSize-length;
                     }
                 }
-            
-           
-            
-            
-            
-            
-            
             
         }
     }];
@@ -268,7 +261,7 @@ static SocketControl* shareSocketControl = nil;
 
 
 -(void)executeCommand:(int)messagetype datatype:(int)datatype data:(id)data{
-    //      NSLog(@"%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    //NSLog(@"%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     //转化数据类型
     if(datatype == DataType_String){
         data = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
