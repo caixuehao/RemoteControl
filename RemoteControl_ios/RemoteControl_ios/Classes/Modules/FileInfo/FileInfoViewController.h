@@ -10,4 +10,6 @@
 
 @interface FileInfoViewController : UIViewController
 
+-(instancetype)initWithPath:(NSString*)path;
+
 @end

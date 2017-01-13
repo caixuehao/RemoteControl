@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8C7BA79176519AB7A2846A83 /* libPods-RemoteControl_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4DC048EE82EC0C11DD2D2E /* libPods-RemoteControl_ios.a */; };
+		FC2197C81E2875D600C64FAB /* FileInfoEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2197C71E2875D600C64FAB /* FileInfoEntity.m */; };
+		FC2197D01E28BDB600C64FAB /* FileDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2197CF1E28BDB600C64FAB /* FileDownload.m */; };
 		FC494B1C1E1CC6F3005D91FE /* SocketControl.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC494B1B1E1CC6F3005D91FE /* SocketControl.mm */; };
 		FC494B221E1CCC46005D91FE /* SetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC494B201E1CCC46005D91FE /* SetViewController.m */; };
 		FC494B231E1CCC46005D91FE /* SetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC494B211E1CCC46005D91FE /* SetViewController.xib */; };
@@ -54,6 +56,10 @@
 		6D686269E9EB4B6756C4B109 /* Pods-RemoteControl_ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemoteControl_ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-RemoteControl_ios/Pods-RemoteControl_ios.release.xcconfig"; sourceTree = "<group>"; };
 		72727C7EE7E438D1EE3272B5 /* Pods-RemoteControl_ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemoteControl_ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RemoteControl_ios/Pods-RemoteControl_ios.debug.xcconfig"; sourceTree = "<group>"; };
 		CF4DC048EE82EC0C11DD2D2E /* libPods-RemoteControl_ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RemoteControl_ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC2197C61E2875D600C64FAB /* FileInfoEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileInfoEntity.h; path = FileInfoEntity/FileInfoEntity.h; sourceTree = "<group>"; };
+		FC2197C71E2875D600C64FAB /* FileInfoEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileInfoEntity.m; path = FileInfoEntity/FileInfoEntity.m; sourceTree = "<group>"; };
+		FC2197CE1E28BDB600C64FAB /* FileDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileDownload.h; path = FileDownload/FileDownload.h; sourceTree = "<group>"; };
+		FC2197CF1E28BDB600C64FAB /* FileDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileDownload.m; path = FileDownload/FileDownload.m; sourceTree = "<group>"; };
 		FC494B1A1E1CC6F3005D91FE /* SocketControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketControl.h; sourceTree = "<group>"; };
 		FC494B1B1E1CC6F3005D91FE /* SocketControl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SocketControl.mm; sourceTree = "<group>"; };
 		FC494B1E1E1CC880005D91FE /* SocketMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SocketMacro.h; path = ../../../../RemoteControl_mac/RemoteControl_mac/Classes/Macro/SocketMacro.h; sourceTree = "<group>"; };
@@ -140,6 +146,24 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		FC2197C51E2875AE00C64FAB /* FileInfoEntity */ = {
+			isa = PBXGroup;
+			children = (
+				FC2197C61E2875D600C64FAB /* FileInfoEntity.h */,
+				FC2197C71E2875D600C64FAB /* FileInfoEntity.m */,
+			);
+			name = FileInfoEntity;
+			sourceTree = "<group>";
+		};
+		FC2197CD1E28BD5B00C64FAB /* FileDownload */ = {
+			isa = PBXGroup;
+			children = (
+				FC2197CE1E28BDB600C64FAB /* FileDownload.h */,
+				FC2197CF1E28BDB600C64FAB /* FileDownload.m */,
+			);
+			name = FileDownload;
+			sourceTree = "<group>";
+		};
 		FC494B091E1CC4A3005D91FE /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +177,7 @@
 		FC494B0A1E1CC4A3005D91FE /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				FC2197C51E2875AE00C64FAB /* FileInfoEntity */,
 				FCC860191E24DE42004713A0 /* FileListEntity */,
 			);
 			path = Common;
@@ -169,6 +194,7 @@
 		FC494B0C1E1CC4A3005D91FE /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				FC2197CD1E28BD5B00C64FAB /* FileDownload */,
 				FCC860131E24BA6C004713A0 /* FileManager */,
 				FC659CC51E236CBA0028DE0F /* OpenURL */,
 				FC7282DB1E1CFF9800C078D2 /* CommandLine */,
@@ -536,6 +562,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC2197C81E2875D600C64FAB /* FileInfoEntity.m in Sources */,
 				FCC8601C1E24DF2F004713A0 /* FileListEntity.m in Sources */,
 				FC5CAF151E1BA0DB00DCAFA7 /* ViewController.m in Sources */,
 				FC494B271E1CD027005D91FE /* MainViewController.m in Sources */,
@@ -544,6 +571,7 @@
 				FC5CAF121E1BA0DB00DCAFA7 /* AppDelegate.m in Sources */,
 				FC494B1C1E1CC6F3005D91FE /* SocketControl.mm in Sources */,
 				FC7282E61E1D01B300C078D2 /* CommandLineViewController.m in Sources */,
+				FC2197D01E28BDB600C64FAB /* FileDownload.m in Sources */,
 				FC5CAF0F1E1BA0DB00DCAFA7 /* main.m in Sources */,
 				FC5E9F931E276E5B00AD749F /* FileInfoViewController.m in Sources */,
 				FCF76D841E1F4C51008DF19E /* README.md in Sources */,

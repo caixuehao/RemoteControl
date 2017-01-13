@@ -29,7 +29,7 @@ static MainViewController* shareMainViewController;
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-
+   
     [self.view.window setReleasedWhenClosed:NO];//设置关闭时不释放
 }
 

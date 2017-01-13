@@ -245,7 +245,7 @@ static SocketControl* shareSocketControl = nil;
         }
 //        NSDictionary* headdic = @{@"messageType":@(messagetype),@"dataType":@(datatype),@"dataSize":@(senddata.length)};
 //        NSData* headdata =  [NSJSONSerialization dataWithJSONObject:headdic options:NSJSONWritingPrettyPrinted error:nil];
-        struct socketTCPhead head = {messagetype,datatype,static_cast<long>(senddata.length)};
+        struct socketTCPhead head = {messagetype,datatype,0,static_cast<long>(senddata.length)};
         send(acceptreturn, &head, sizeof(head), 0);
         //        NSLog(@"%lu",(unsigned long)senddata.length);
         send(acceptreturn, [senddata bytes], senddata.length, 0);
@@ -273,8 +273,12 @@ static SocketControl* shareSocketControl = nil;
         [ShutDownController shutdown:data];
     }else if(messagetype == MessageType_OpenURL){
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:data]];
+    }else if(messagetype == MessageType_OpenFile){
+        [[NSWorkspace sharedWorkspace] openFile:data];
     }else if(messagetype == MessageType_FileList){
         [[FileManagerController share] sendFileList:data];
+    }else if(messagetype == MessageType_FileInfo){
+        [[FileManagerController share] sendFileInfo:data];
     }
     
 }

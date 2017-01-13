@@ -9,7 +9,7 @@
 #ifndef SocketMacro_h
 #define SocketMacro_h
 
-#define NetworkPort 1994 //端口号
+#define NetworkPort 1995 //端口号
 
 
 #pragma 数据类型
@@ -22,8 +22,11 @@
 #define MessageType_TerminalCommand 1 //终端命令
 #define MessageType_Shutdown 2 //关机
 #define MessageType_OpenURL 3  //打开网页
-#define MessageType_FileList 4 //获取文件列表
-#define MessageType_FileInfo 5 //文件简介
+#define MessageType_OpenFile 4 //打开文件
+#define MessageType_FileList 5 //获取文件列表
+#define MessageType_FileInfo 6 //文件简介
+#define MessageType_DownloadFile 7 //下载文件
+
 
 #pragma 关机命令参数
 #define ShutDown @"ShutDown"
@@ -40,6 +43,7 @@
 #pragma 通知字符串
 #define ConnectSuccess @"ConnectSuccess"
 #define FileListRecvSuccess @"FileListRecvSuccess"
+#define FileInfoRecvSuccess @"FileInfoRecvSuccess"
 
 #pragma 其他
 #define CurrentUserDesktopPath  @"CurrentUserDesktopPath"
@@ -47,9 +51,10 @@
 //#define MessageHeadLenght 16
 
 struct socketTCPhead {
-    int messageType;
-    int dataType;
-    long int dataSize;
+    int messageType;//消息类型
+    int dataType;//数据类型
+    int tag;//消息编号 一般都是0
+    long int dataSize;//数据大小
 };
 
 #endif /* SocketMacro_h */

@@ -58,19 +58,21 @@ static SocketControl* shareSocketControl = nil;
         socketParameters.sin_family = AF_INET;
         socketParameters.sin_port = htons(NetworkPort);
         
-        while (true) {
+        BOOL bl = YES;
+        while (bl) {
             memset(message, 0, sizeof(message));
             socketParameters.sin_addr.s_addr = htonl(INADDR_ANY);
             socklen_t sin_len = sizeof(socketParameters);
             recvfrom(udpSocketReturn,message,sizeof(message),0,(struct sockaddr *)&socketParameters,&sin_len);
             NSLog(@"UDP_message:%s  IP:%s",message,inet_ntoa(socketParameters.sin_addr));
             
+            
             if ([[NSString stringWithFormat:@"%s",message] isEqualToString:[NSString stringWithFormat:@"%s",IAmHere]]) {
-                
-
                 connectreturn = connect(_socketReturn,(struct sockaddr *) &socketParameters, sizeof(socketParameters));
                 if(connectreturn==0){
+                    _serverIP = [NSString stringWithFormat:@"%s",inet_ntoa(socketParameters.sin_addr)];
                     NSLog(@"链接成功");
+                    bl = NO;
                     [self tcpRecvMessage];
                     //主机有回应
                     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -86,54 +88,70 @@ static SocketControl* shareSocketControl = nil;
 }
 -(void)tcpRecvMessage{
     
-  
+    
     [tcpQueue addOperationWithBlock:^{
         struct socketTCPhead head;
         memset(&head,0,sizeof(head));//清空结构体
         NSMutableData* recvData = nil;
         
-        char message[1024];
+        int maxsize = 1024;
+        char message[2014];
+        memset(message,0,strlen(message));
         bool recvbool = true;
-
         
+        
+        //        int restSize = 0;//剩下的数据
         while (recvbool) {
-            memset(message,0,sizeof(message));
-            size_t recvreturn = recv(_socketReturn,message, sizeof(message), 0);
-          
-             NSLog(@"recvreturn:%zu",recvreturn);
             
-            //读取信息
-            if(head.dataSize == 0){
-                //读取头
-                memcpy(&head,message,sizeof(head));
-                if (recvreturn>sizeof(head)) {
-                    NSUInteger length = recvreturn-sizeof(head);
-                    length = (length>head.dataSize)?head.dataSize:length;
-                    recvData = [NSMutableData dataWithBytes: message+sizeof(head) length:length];
+            
+            
+            size_t recvreturn = recv(_socketReturn,message+strlen(message), maxsize+1, 0);
+            size_t messageSize = strlen(message);
+            NSLog(@"recvreturn:%zu messageSize:%zu",recvreturn,messageSize);
+                //读取信息
+                if(head.dataSize == 0){
+                    //读取头
+                    if (messageSize>=sizeof(head)){
+                        memcpy(&head,message,sizeof(head));
+                        memcpy(message,message+sizeof(head),messageSize-sizeof(head));
+                        memset(message+messageSize-sizeof(head),0,maxsize);
+                        recvData = nil;
+                    }
                 }else{
-                    recvData = nil;
+                    //读取数据
+                    if (messageSize<(head.dataSize-recvData.length)) {
+                        if(recvData){
+                            recvData = [NSMutableData dataWithBytes: message length:messageSize];
+                        }else{
+                            [recvData appendBytes:message length:messageSize];
+                        }
+                        memset(message,0,maxsize);
+//                        break;
+                    }else{
+                        size_t length = head.dataSize-recvData.length;
+                        if(recvData){
+                            recvData = [NSMutableData dataWithBytes: message length:length];
+                        }else{
+                            [recvData appendBytes:message length:length];
+                        }
+                        [self executeCommand:head.messageType datatype:head.dataType data:recvData];
+                        memcpy(message,message+length,messageSize-length);
+                        memset(message+messageSize-length,0,maxsize);
+                        memset(&head,0,sizeof(head));
+//                        break;
+                    }
                 }
-            }else{
-               
-                //读取数据
-                if(recvData == nil){
-                    NSUInteger length = (recvreturn>head.dataSize)?head.dataSize:recvreturn;
-                    recvData = [NSMutableData dataWithBytes: message length:length];
-                }else{
-                    NSUInteger length = recvreturn;
-                    length = (length+recvData.length)>head.dataSize?head.dataSize-recvData.length:length;
-                    [recvData appendBytes:message length:length];
-                }
-                //这里还有一种第二个包头可能接在包尾的情况，又要加判断不写了。
-                if(recvData.length == head.dataSize){
-                    [self executeCommand:head.messageType datatype:head.dataType data:recvData];
-                    memset(&head,0,sizeof(head));
-                }
-            }
+            
+           
+            
+            
+            
+            
+            
             
         }
     }];
-   
+    
 }
 
 
@@ -157,7 +175,7 @@ static SocketControl* shareSocketControl = nil;
      *
      *  @return 如果成功就返回发送的字节数，如果失败就返回SOCKET_ERROR
      */
-   
+    
     //发现速度挺快就不搞别的了
     [[[NSOperationQueue alloc] init]addOperationWithBlock:^{
         NSLog(@"%s",AnybodyHere);
@@ -174,7 +192,7 @@ static SocketControl* shareSocketControl = nil;
         }
         //UDP可能发送失败，每1秒就重试一遍
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-           if(connectreturn)[self performSelector:@selector(connect) withObject:nil afterDelay:1.0f];
+            if(connectreturn)[self performSelector:@selector(connect) withObject:nil afterDelay:1.0f];
         }];
     }];
 }
@@ -214,10 +232,11 @@ static SocketControl* shareSocketControl = nil;
 
 
 
-
-
 -(void)sendMessageType:(int)messagetype datatype:(int)datatype data:(id)data{
-    
+    [self sendMessageType:messagetype datatype:datatype tag:0 data:data];
+}
+
+-(void)sendMessageType:(int)messagetype datatype:(int)datatype tag:(int)tag data:(id)data{
     
     [sendQueue addOperationWithBlock:^{
         
@@ -235,8 +254,8 @@ static SocketControl* shareSocketControl = nil;
                 senddata = data;
                 break;
         }
-
-        struct socketTCPhead head = {messagetype,datatype,static_cast<long>(senddata.length)};
+        
+        struct socketTCPhead head = {messagetype,datatype,tag,static_cast<long>(senddata.length)};
         send(_socketReturn, &head, sizeof(head), 0);
         send(_socketReturn, [senddata bytes], senddata.length, 0);
         
@@ -249,22 +268,25 @@ static SocketControl* shareSocketControl = nil;
 
 
 -(void)executeCommand:(int)messagetype datatype:(int)datatype data:(id)data{
-  NSLog(@"%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    //      NSLog(@"%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     //转化数据类型
     if(datatype == DataType_String){
         data = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     }else if(datatype == DataType_NSDictionary){
-        
-//data = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        //data = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         data = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-
+       
     }
-    
+    if(data==nil){NSLog(@"空数据或者，数据解析错误。");}
     //根据消息类型来执行命令
-   if(messagetype == MessageType_FileList){
-       [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+    if(messagetype == MessageType_FileList){
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [[NSNotificationCenter defaultCenter] postNotificationName:FileListRecvSuccess object:data];
-       }];
+        }];
+    }else if(messagetype == MessageType_FileInfo){
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:FileInfoRecvSuccess object:data];
+        }];
     }
     
 }

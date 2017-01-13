@@ -11,6 +11,7 @@
 #import "FileListEntity.h"
 #import "SocketControl.h"
 #import "MainViewController.h"
+#import "FileInfoEntity.h"
 
 static FileManagerController *shareFileManagerController;
 @implementation FileManagerController
@@ -52,10 +53,19 @@ static FileManagerController *shareFileManagerController;
             [fileList addFile:str type:FileType_File];
         }
     }
-    
-    NSDictionary* data_dic = fileList.mj_keyValues;
-    //NSLog(@"%@",data_dic);
-    [[SocketControl share] sendMessageType:MessageType_FileList datatype:DataType_NSDictionary data:data_dic];
+    [[SocketControl share] sendMessageType:MessageType_FileList datatype:DataType_NSDictionary data:fileList.mj_keyValues];
 }
 
+
+-(void)sendFileInfo:(NSString *)path{
+    NSLog(@"%@",path);
+    FileInfoEntity* fileInfo = [[FileInfoEntity alloc] init];
+    fileInfo.path = path;
+    NSDictionary *fileAttributes =[[NSFileManager defaultManager] attributesOfItemAtPath:path error:nil];
+    NSLog(@"%@",fileAttributes);
+    fileInfo.size = [fileAttributes objectForKey:@"NSFileSize"];
+    
+    [[SocketControl share] sendMessageType:MessageType_FileInfo datatype:DataType_NSDictionary data:fileInfo.mj_keyValues];
+    //判断文件类型http://blog.csdn.net/snowbueaty/article/details/14225627
+}
 @end

@@ -11,6 +11,7 @@
 #import "MBProgressHUD.h"
 #import <Masonry.h>
 #import "FileListEntity.h"
+#import "FileInfoViewController.h"
 
 @interface FileManagerViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -38,15 +39,16 @@
 }
 
 -(void)fileListRecvSuccess:(NSNotification*) notification{
-   
+    
     FileListEntity *fileList = [FileListEntity mj_objectWithKeyValues:[notification object]];
-
+    NSLog(@"%@ == %@",fileList.tagPath,_tagPath);
     if ([fileList.tagPath isEqualToString:_tagPath]) {
-        NSLog(@"%@",fileList.tagPath);
+
         _fileList = fileList;
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                [_mainTableView reloadData];
-                [_hud hideAnimated:YES];
+            [[NSNotificationCenter defaultCenter] removeObserver:self name:FileListRecvSuccess object:nil];
+            if(_mainTableView)[_mainTableView reloadData];
+            [_hud hideAnimated:YES];
         }];
     }
 }
@@ -94,6 +96,9 @@
     if (file.type == FileType_Folder) {
         FileManagerViewController* fmvc = [[FileManagerViewController alloc] initWithTagPath:[_fileList.path stringByAppendingPathComponent:file.fileName]];
         [self.navigationController pushViewController:fmvc animated:YES];
+    }else if(file.type == FileType_File){
+        FileInfoViewController* fileInfoVC = [[FileInfoViewController alloc] initWithPath:[_fileList.path stringByAppendingPathComponent:file.fileName]];
+        [self.navigationController pushViewController:fileInfoVC animated:YES];
     }
 
 }

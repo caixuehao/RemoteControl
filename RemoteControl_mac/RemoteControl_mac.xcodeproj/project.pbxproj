@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B3ABCC2DB7A31DC81838A7A4 /* libPods-RemoteControl_mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 111C2CF9F0AA50EAAF3D0543 /* libPods-RemoteControl_mac.a */; };
 		FC20C20C1E1DE51B00DBAC75 /* ShutDownController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC20C20B1E1DE51B00DBAC75 /* ShutDownController.mm */; };
+		FC2197CC1E2876B600C64FAB /* FileInfoEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2197CA1E2876B600C64FAB /* FileInfoEntity.m */; };
 		FC51B83A1E1DE352009723A5 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC51B8391E1DE352009723A5 /* Carbon.framework */; };
 		FC5CAED61E1BA04A00DCAFA7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAED51E1BA04A00DCAFA7 /* AppDelegate.m */; };
 		FC5CAED91E1BA04A00DCAFA7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAED81E1BA04A00DCAFA7 /* main.m */; };
@@ -49,6 +50,8 @@
 		EA263DD9C8DBACD9E295E1BB /* Pods-RemoteControl_mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemoteControl_mac.release.xcconfig"; path = "Pods/Target Support Files/Pods-RemoteControl_mac/Pods-RemoteControl_mac.release.xcconfig"; sourceTree = "<group>"; };
 		FC20C20A1E1DE51B00DBAC75 /* ShutDownController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShutDownController.h; path = ShutDown/ShutDownController.h; sourceTree = "<group>"; };
 		FC20C20B1E1DE51B00DBAC75 /* ShutDownController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ShutDownController.mm; path = ShutDown/ShutDownController.mm; sourceTree = "<group>"; };
+		FC2197C91E2876B600C64FAB /* FileInfoEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileInfoEntity.h; path = FileInfoEntity/FileInfoEntity.h; sourceTree = "<group>"; };
+		FC2197CA1E2876B600C64FAB /* FileInfoEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileInfoEntity.m; path = FileInfoEntity/FileInfoEntity.m; sourceTree = "<group>"; };
 		FC494B1D1E1CC7D6005D91FE /* SocketMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketMacro.h; sourceTree = "<group>"; };
 		FC51B8391E1DE352009723A5 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		FC5CAED11E1BA04A00DCAFA7 /* RemoteControl_mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemoteControl_mac.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +130,16 @@
 			name = ShutDown;
 			sourceTree = "<group>";
 		};
+		FC2197CB1E2876B600C64FAB /* FileInfoEntity */ = {
+			isa = PBXGroup;
+			children = (
+				FC2197C91E2876B600C64FAB /* FileInfoEntity.h */,
+				FC2197CA1E2876B600C64FAB /* FileInfoEntity.m */,
+			);
+			name = FileInfoEntity;
+			path = ../../../../RemoteControl_ios/RemoteControl_ios/Classes/Common;
+			sourceTree = "<group>";
+		};
 		FC5CAEC81E1BA04A00DCAFA7 = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +216,7 @@
 		FC5CAF411E1BA27600DCAFA7 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				FC2197CB1E2876B600C64FAB /* FileInfoEntity */,
 				FCCECAC91E25CF4600D24EE9 /* FileListEntity */,
 				FCC860251E24EEC8004713A0 /* SavePath */,
 			);
@@ -484,6 +498,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC2197CC1E2876B600C64FAB /* FileInfoEntity.m in Sources */,
 				FC5CAED91E1BA04A00DCAFA7 /* main.m in Sources */,
 				FCCECACA1E25CF4600D24EE9 /* FileListEntity.m in Sources */,
 				FC20C20C1E1DE51B00DBAC75 /* ShutDownController.mm in Sources */,

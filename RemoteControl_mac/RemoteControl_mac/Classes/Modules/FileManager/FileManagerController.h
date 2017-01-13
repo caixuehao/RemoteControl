@@ -14,4 +14,6 @@
 
 -(void)sendFileList:(NSString*)path;
 
+-(void)sendFileInfo:(NSString *)path;
+
 @end

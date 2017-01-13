@@ -10,7 +10,7 @@
 #import "SocketMacro.h"
 
 @interface SocketControl : NSObject
-
+@property(nonatomic,strong)NSString* serverIP;
 @property(nonatomic,assign) int socketReturn;
 
 +(instancetype)share;
@@ -21,5 +21,5 @@
 -(NSString*)connectIP:(NSString*)ip Port:(int)port __attribute__((deprecated));
 
 -(void)sendMessageType:(int)messagetype datatype:(int)datatype data:(id)data;
-
+-(void)sendMessageType:(int)messagetype datatype:(int)datatype tag:(int)tag data:(id)data;
 @end
