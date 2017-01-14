@@ -10,6 +10,7 @@
 #import <Masonry.h>
 #import "SocketControl.h"
 #import "FileInfoEntity.h"
+#import "FileDownload.h"
 
 @interface FileInfoViewController ()
 
@@ -58,7 +59,7 @@
 }
 
 -(void)OnDownloadClick{
-    NSLog(@"123455");
+    [[FileDownload share] download:_fileInfo];
 }
 
 -(void)OnOpenClick{

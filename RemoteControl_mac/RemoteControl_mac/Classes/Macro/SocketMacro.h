@@ -9,7 +9,7 @@
 #ifndef SocketMacro_h
 #define SocketMacro_h
 
-#define NetworkPort 1995 //端口号
+#define NetworkPort 1998 //端口号
 
 
 #pragma 数据类型
@@ -26,7 +26,9 @@
 #define MessageType_FileList 5 //获取文件列表
 #define MessageType_FileInfo 6 //文件简介
 #define MessageType_DownloadFile 7 //下载文件
-
+#define MessageType_DownloadFileStart 8//文件下载开始
+#define MessageType_DownloadFileIng 9 //文件下载中
+#define MessageType_DownloadFileEnd 10 //文件下载结束
 
 #pragma 关机命令参数
 #define ShutDown @"ShutDown"

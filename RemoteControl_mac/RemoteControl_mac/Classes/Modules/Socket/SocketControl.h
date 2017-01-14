@@ -15,5 +15,6 @@
 -(void)start;
 
 -(void)sendMessageType:(int)messagetype datatype:(int)datatype data:(id)data;
+-(void)sendMessageType:(int)messagetype datatype:(int)datatype tag:(int)tag data:(id)data;
 
 @end

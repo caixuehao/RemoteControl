@@ -18,7 +18,13 @@
 //目前只能同时下载一个文件
 +(instancetype)share;
 
--(BOOL)download:(FileInfoEntity*)fileInfo;
+-(void)download:(FileInfoEntity*)fileInfo;
+
+-(void)download_revcStart:(int)tag info:(NSDictionary*)info;
+
+-(void)download_revcIng:(int)tag data:(NSData*)data;
+
+-(void)download_revcFinished:(int)tag info:(NSString*)info;
 
 @end
 

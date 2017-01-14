@@ -186,6 +186,12 @@ static SocketControl* shareSocketControl = nil;
         size_t recvreturn = recv(acceptreturn,message+restSize, maxsize, 0);
         // size_t messageSize = strlen(message);
         NSLog(@"recvreturn:%zu restSize:%zu",recvreturn,restSize);
+        if(recvreturn<=0 && errno != EINTR){
+            Log(@"链接断开了 erron:%d str:%s",errno,strerror(errno));
+            close(acceptreturn);
+            [self listenTCPConnect];
+            recvbool = false;
+        }
         //读取信息
         if(head.dataSize == 0){
             //读取头
@@ -215,7 +221,7 @@ static SocketControl* shareSocketControl = nil;
                 }else{
                     [recvData appendBytes:message length:length];
                 }
-                [self executeCommand:head.messageType datatype:head.dataType data:recvData];
+                [self executeCommand:head.messageType datatype:head.dataType tag:head.tag data:recvData];
                 memcpy(message,message+length,recvreturn+restSize-length);
                 memset(message+recvreturn+restSize-length,0,maxsize);
                 memset(&head,0,sizeof(head));
@@ -277,6 +283,11 @@ static SocketControl* shareSocketControl = nil;
 }
 
 -(void)sendMessageType:(int)messagetype datatype:(int)datatype data:(id)data{
+    [self sendMessageType:messagetype datatype:datatype tag:0 data:data];
+}
+
+-(void)sendMessageType:(int)messagetype datatype:(int)datatype tag:(int)tag data:(id)data{
+    
     
     
     [sendQueue addOperationWithBlock:^{
@@ -297,7 +308,7 @@ static SocketControl* shareSocketControl = nil;
         }
 //        NSDictionary* headdic = @{@"messageType":@(messagetype),@"dataType":@(datatype),@"dataSize":@(senddata.length)};
 //        NSData* headdata =  [NSJSONSerialization dataWithJSONObject:headdic options:NSJSONWritingPrettyPrinted error:nil];
-        struct socketTCPhead head = {messagetype,datatype,0,static_cast<long>(senddata.length)};
+        struct socketTCPhead head = {messagetype,datatype,tag,static_cast<long>(senddata.length)};
         send(acceptreturn, &head, sizeof(head), 0);
         //        NSLog(@"%lu",(unsigned long)senddata.length);
         send(acceptreturn, [senddata bytes], senddata.length, 0);
@@ -311,7 +322,7 @@ static SocketControl* shareSocketControl = nil;
 
 
 
--(void)executeCommand:(int)messagetype datatype:(int)datatype data:(id)data{
+-(void)executeCommand:(int)messagetype datatype:(int)datatype tag:(int)tag data:(id)data{
     //转化数据类型
     if(datatype == DataType_String){
         data = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
@@ -331,6 +342,8 @@ static SocketControl* shareSocketControl = nil;
         [[FileManagerController share] sendFileList:data];
     }else if(messagetype == MessageType_FileInfo){
         [[FileManagerController share] sendFileInfo:data];
+    }else if(messagetype == MessageType_DownloadFile){
+        [[FileManagerController share] sendFile:tag path:data];
     }
     
 }

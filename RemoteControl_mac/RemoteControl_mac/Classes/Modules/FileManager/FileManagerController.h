@@ -16,4 +16,5 @@
 
 -(void)sendFileInfo:(NSString *)path;
 
+-(void)sendFile:(int)tag path:(NSString *)path;
 @end

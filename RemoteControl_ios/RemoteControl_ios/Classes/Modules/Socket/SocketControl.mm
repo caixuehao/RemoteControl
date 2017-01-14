@@ -14,6 +14,7 @@
 #include <sys/ioctl.h>
 
 #import "SocketControl.h"
+#import "FileDownload.h"
 
 
 static SocketControl* shareSocketControl = nil;
@@ -104,7 +105,7 @@ static SocketControl* shareSocketControl = nil;
         while (recvbool) {
             size_t recvreturn = recv(_socketReturn,message+restSize, maxsize, 0);
            // size_t messageSize = strlen(message);
-            NSLog(@"recvreturn:%zu restSize:%zu",recvreturn,restSize);
+           // NSLog(@"recvreturn:%zu restSize:%zu",recvreturn,restSize);
                 //读取信息
                 if(head.dataSize == 0){
                     //读取头
@@ -134,7 +135,7 @@ static SocketControl* shareSocketControl = nil;
                         }else{
                             [recvData appendBytes:message length:length];
                         }
-                        [self executeCommand:head.messageType datatype:head.dataType data:recvData];
+                        [self executeCommand:head.messageType datatype:head.dataType tag:head.tag data:recvData];
                         memcpy(message,message+length,recvreturn+restSize-length);
                         memset(message+recvreturn+restSize-length,0,maxsize);
                         memset(&head,0,sizeof(head));
@@ -260,7 +261,7 @@ static SocketControl* shareSocketControl = nil;
 
 
 
--(void)executeCommand:(int)messagetype datatype:(int)datatype data:(id)data{
+-(void)executeCommand:(int)messagetype datatype:(int)datatype tag:(int)tag data:(id)data{
     //NSLog(@"%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     //转化数据类型
     if(datatype == DataType_String){
@@ -280,6 +281,12 @@ static SocketControl* shareSocketControl = nil;
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [[NSNotificationCenter defaultCenter] postNotificationName:FileInfoRecvSuccess object:data];
         }];
+    }else if(messagetype == MessageType_DownloadFileStart){
+        [[FileDownload share] download_revcStart:tag info:data];
+    }else if(messagetype == MessageType_DownloadFileIng){
+        [[FileDownload share] download_revcIng:tag data:data];
+    }else if(messagetype == MessageType_DownloadFileEnd){
+        [[FileDownload share] download_revcFinished:tag info:data];
     }
     
 }
