@@ -125,7 +125,7 @@ struct sockethead {
             [self.navigationController pushViewController:[[OpenURLViewController alloc] init] animated:YES];
             break;
         case 2:
-            [self.navigationController pushViewController:[[FileManagerViewController alloc] initWithTagPath:CurrentUserMainPath] animated:YES];
+            [self.navigationController pushViewController:[[FileManagerViewController alloc] initWithTagPath:@"/Users/cxh/Desktop/暂存"] animated:YES];
             break;
         case 4:
             [self.navigationController pushViewController:[[FileInfoViewController alloc] init] animated:YES];

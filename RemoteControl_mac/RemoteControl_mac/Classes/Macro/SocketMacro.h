@@ -9,7 +9,7 @@
 #ifndef SocketMacro_h
 #define SocketMacro_h
 
-#define NetworkPort 1998 //端口号
+#define NetworkPort 1997 //端口号
 
 
 #pragma 数据类型

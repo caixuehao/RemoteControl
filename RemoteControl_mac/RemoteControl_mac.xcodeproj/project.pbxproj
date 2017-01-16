@@ -11,7 +11,7 @@
 		FC20C20C1E1DE51B00DBAC75 /* ShutDownController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC20C20B1E1DE51B00DBAC75 /* ShutDownController.mm */; };
 		FC2197CC1E2876B600C64FAB /* FileInfoEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2197CA1E2876B600C64FAB /* FileInfoEntity.m */; };
 		FC51B83A1E1DE352009723A5 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC51B8391E1DE352009723A5 /* Carbon.framework */; };
-		FC5CAED61E1BA04A00DCAFA7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAED51E1BA04A00DCAFA7 /* AppDelegate.m */; };
+		FC5CAED61E1BA04A00DCAFA7 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAED51E1BA04A00DCAFA7 /* AppDelegate.mm */; };
 		FC5CAED91E1BA04A00DCAFA7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAED81E1BA04A00DCAFA7 /* main.m */; };
 		FC5CAEDB1E1BA04A00DCAFA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC5CAEDA1E1BA04A00DCAFA7 /* Assets.xcassets */; };
 		FC5CAEE91E1BA04A00DCAFA7 /* RemoteControl_macTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAEE81E1BA04A00DCAFA7 /* RemoteControl_macTests.m */; };
@@ -56,7 +56,7 @@
 		FC51B8391E1DE352009723A5 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		FC5CAED11E1BA04A00DCAFA7 /* RemoteControl_mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemoteControl_mac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC5CAED41E1BA04A00DCAFA7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		FC5CAED51E1BA04A00DCAFA7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FC5CAED51E1BA04A00DCAFA7 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		FC5CAED81E1BA04A00DCAFA7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FC5CAEDA1E1BA04A00DCAFA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC5CAEDF1E1BA04A00DCAFA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -168,7 +168,7 @@
 			children = (
 				FC5CAF401E1BA27600DCAFA7 /* Classes */,
 				FC5CAED41E1BA04A00DCAFA7 /* AppDelegate.h */,
-				FC5CAED51E1BA04A00DCAFA7 /* AppDelegate.m */,
+				FC5CAED51E1BA04A00DCAFA7 /* AppDelegate.mm */,
 				FC659CC11E23266F0028DE0F /* Main.storyboard */,
 				FC5CAEDA1E1BA04A00DCAFA7 /* Assets.xcassets */,
 				FC5CAEDF1E1BA04A00DCAFA7 /* Info.plist */,
@@ -503,7 +503,7 @@
 				FCCECACA1E25CF4600D24EE9 /* FileListEntity.m in Sources */,
 				FC20C20C1E1DE51B00DBAC75 /* ShutDownController.mm in Sources */,
 				FC7282DA1E1CFF6800C078D2 /* CommandLineController.mm in Sources */,
-				FC5CAED61E1BA04A00DCAFA7 /* AppDelegate.m in Sources */,
+				FC5CAED61E1BA04A00DCAFA7 /* AppDelegate.mm in Sources */,
 				FC659CC01E2323CC0028DE0F /* MainViewController.mm in Sources */,
 				FC6D9A941E1F298400D393F5 /* StartController.mm in Sources */,
 				FC6D9A971E1F2EED00D393F5 /* SavePath.m in Sources */,

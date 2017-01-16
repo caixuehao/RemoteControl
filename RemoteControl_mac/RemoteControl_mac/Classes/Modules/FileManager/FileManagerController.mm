@@ -73,6 +73,7 @@ static FileManagerController *shareFileManagerController;
 
 
 -(void)sendFile:(int)tag path:(NSString *)path{
+    
     Log(@"sendFile:tag:%d path:%@",tag,path);
     //再次发送文件信息
     FileInfoEntity* fileInfo = [[FileInfoEntity alloc] init];
@@ -81,7 +82,7 @@ static FileManagerController *shareFileManagerController;
     fileInfo.size = [fileAttributes objectForKey:@"NSFileSize"];
     [[SocketControl share] sendMessageType:MessageType_DownloadFileStart datatype:DataType_NSDictionary tag:tag data:fileInfo.mj_keyValues];
     
-    
+//    NSMutableData* testdata = [[NSMutableData data] init];
     //发送文件信息
     NSFileHandle* filehandle = [NSFileHandle fileHandleForReadingAtPath:path];
     
@@ -95,9 +96,10 @@ static FileManagerController *shareFileManagerController;
         data = [filehandle readDataOfLength:MaxSendSize];
 //        NSLog(@"%@",[[NSString alloc] initWithData:data encoding:4]);
         [[SocketControl share] sendMessageType:MessageType_DownloadFileIng datatype:DataType_NSData tag:tag data:data];
-        [NSThread sleepForTimeInterval:0.5]; 
+       
+//        [testdata appendData:data];
     }
-  
+//    NSLog(@"%@",[[NSString alloc] initWithData:testdata encoding:NSUTF8StringEncoding]);
     //发送结束消息
     [[SocketControl share] sendMessageType:MessageType_DownloadFileEnd datatype:DataType_String tag:tag data:@"发送完毕"];
 }

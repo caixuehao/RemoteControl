@@ -26,7 +26,7 @@ static SocketControl* shareSocketControl = nil;
     int acceptreturn;
     NSOperationQueue* SocketQueue;
     NSOperationQueue* udpQueue;
-    NSOperationQueue* sendQueue;
+    
 }
 
 
@@ -43,8 +43,7 @@ static SocketControl* shareSocketControl = nil;
     
     
     udpQueue = [[NSOperationQueue alloc] init] ;
-    sendQueue = [[NSOperationQueue alloc] init];
-    
+       
     
     /**
      *  socket  创建并初始化 socket，返回该 socket 的文件描述符，如果描述符为 -1 表示创建失败。
@@ -177,55 +176,66 @@ static SocketControl* shareSocketControl = nil;
     
     int maxsize = 1024;
     char message[2014];
+    char message2[2014];//用于前移message的字符串
     memset(message,0,strlen(message));
     bool recvbool= true;
     
     
-    size_t restSize = 0;//剩下的数据
+    size_t messageLenght = 0;
     while (recvbool) {
-        size_t recvreturn = recv(acceptreturn,message+restSize, maxsize, 0);
-        // size_t messageSize = strlen(message);
-        NSLog(@"recvreturn:%zu restSize:%zu",recvreturn,restSize);
+        size_t recvreturn = recv(acceptreturn,message+messageLenght, maxsize, 0);
+        messageLenght += recvreturn;
+        
         if(recvreturn<=0 && errno != EINTR){
             Log(@"链接断开了 erron:%d str:%s",errno,strerror(errno));
             close(acceptreturn);
             [self listenTCPConnect];
             recvbool = false;
         }
-        //读取信息
-        if(head.dataSize == 0){
-            //读取头
-            if (recvreturn>=sizeof(head)){
-                memcpy(&head,message,sizeof(head));
-                //将剩下的数据前移动并清空后面的数据用于下一次储存
-                memcpy(message,message+sizeof(head),recvreturn-sizeof(head));
-                memset(message+recvreturn-sizeof(head),0,maxsize);
-                restSize = recvreturn - sizeof(head);
-                NSLog(@"messageType:%d datasize:%zu dataType:%d tag:%d ",head.messageType,head.dataSize,head.dataType,head.tag);
-                recvData = nil;
-            }
-        }else{
-            //读取数据
-            if (recvreturn+restSize<(head.dataSize-recvData.length)) {
-                if(recvData == nil){
-                    recvData = [NSMutableData dataWithBytes: message length:recvreturn+restSize];
+        while (true) {
+            //读取信息
+            if(head.dataSize == 0){
+                //读取头
+                if (messageLenght>=sizeof(socketTCPhead)){
+                    
+                    memcpy(&head,message,sizeof(head));
+                    //将剩下的数据前移动并清空后面的数据用于下一次储存
+                    //memcpy(message,message+sizeof(head),recvreturn-sizeof(head));
+                    memcpy(message2,message+sizeof(socketTCPhead),messageLenght-sizeof(socketTCPhead));
+                    memcpy(message,message2,messageLenght-sizeof(socketTCPhead));
+                    memset(message+messageLenght-sizeof(head),0,maxsize);
+                    messageLenght -= sizeof(socketTCPhead);
+                    //NSLog(@"messageType:%d datasize:%zu dataType:%d tag:%d ",head.messageType,head.dataSize,head.dataType,head.tag);
+                    recvData = nil;
                 }else{
-                    [recvData appendBytes:message length:recvreturn+restSize];
+                    break;
                 }
-                restSize=0;
-                memset(message,0,maxsize);
             }else{
-                size_t length = head.dataSize-recvData.length;
-                if(recvData == nil){
-                    recvData = [NSMutableData dataWithBytes: message length:length];
+                //读取数据
+                if (messageLenght<(head.dataSize-recvData.length)) {
+                    if(recvData == nil){
+                        recvData = [NSMutableData dataWithBytes: message length:messageLenght];
+                    }else{
+                        [recvData appendBytes:message length:messageLenght];
+                    }
+                    messageLenght=0;
+                    memset(message,0,maxsize);
+                    break;
                 }else{
-                    [recvData appendBytes:message length:length];
+                    size_t length = head.dataSize-recvData.length;
+                    if(recvData == nil){
+                        recvData = [NSMutableData dataWithBytes:message length:length];
+                    }else{
+                        [recvData appendBytes:message length:length];
+                    }
+                    [self executeCommand:head.messageType datatype:head.dataType tag:head.tag data:recvData];
+                    memcpy(message2,message+length,messageLenght-length);
+                    memcpy(message,message2,messageLenght-length);
+                    memset(message+messageLenght-length,0,maxsize);
+                    memset(&head,0,sizeof(socketTCPhead));
+                    head.dataSize = 0;
+                    messageLenght = messageLenght-length;
                 }
-                [self executeCommand:head.messageType datatype:head.dataType tag:head.tag data:recvData];
-                memcpy(message,message+length,recvreturn+restSize-length);
-                memset(message+recvreturn+restSize-length,0,maxsize);
-                memset(&head,0,sizeof(head));
-                restSize = recvreturn+restSize-length;
             }
         }
         
@@ -287,35 +297,31 @@ static SocketControl* shareSocketControl = nil;
 }
 
 -(void)sendMessageType:(int)messagetype datatype:(int)datatype tag:(int)tag data:(id)data{
-    
-    
-    
-    [sendQueue addOperationWithBlock:^{
-        
-        NSData* senddata;
-        int offset = 0;
-        switch (datatype) {
-            case DataType_String:
-                senddata = [data dataUsingEncoding:NSUTF8StringEncoding];
-                offset = 1;
-                break;
-            case DataType_NSDictionary:
-                senddata = [NSJSONSerialization dataWithJSONObject:data options:NSJSONWritingPrettyPrinted error:nil];
-                break;
-            default:
-                senddata = data;
-                break;
-        }
-//        NSDictionary* headdic = @{@"messageType":@(messagetype),@"dataType":@(datatype),@"dataSize":@(senddata.length)};
-//        NSData* headdata =  [NSJSONSerialization dataWithJSONObject:headdic options:NSJSONWritingPrettyPrinted error:nil];
-        struct socketTCPhead head = {messagetype,datatype,tag,static_cast<long>(senddata.length)};
-        send(acceptreturn, &head, sizeof(head), 0);
-        //        NSLog(@"%lu",(unsigned long)senddata.length);
-        send(acceptreturn, [senddata bytes], senddata.length, 0);
-        
-    }];
-    
-    
+
+    NSData* senddata;
+    int offset = 0;
+    switch (datatype) {
+        case DataType_String:
+            senddata = [data dataUsingEncoding:NSUTF8StringEncoding];
+            offset = 1;
+            break;
+        case DataType_NSDictionary:
+            senddata = [NSJSONSerialization dataWithJSONObject:data options:NSJSONWritingPrettyPrinted error:nil];
+            break;
+        case DataType_NSData:
+            senddata = data;
+            break;
+        default:
+            senddata = data;
+            break;
+    }
+    //NSDictionary* headdic = @{@"messageType":@(messagetype),@"dataType":@(datatype),@"dataSize":@(senddata.length)};
+    //NSData* headdata =  [NSJSONSerialization dataWithJSONObject:headdic options:NSJSONWritingPrettyPrinted error:nil];
+    struct socketTCPhead head = {messagetype,datatype,tag,static_cast<long>(senddata.length)};
+    send(acceptreturn, &head, sizeof(head), 0);
+    //NSLog(@"%lu",(unsigned long)senddata.length);
+    send(acceptreturn, [senddata bytes], senddata.length, 0);
+
 }
 
 
