@@ -12,11 +12,15 @@
 
 #define InitialTag 100
 
+
+
 static FileDownload* shareFileDownload = nil;
 
 @implementation FileDownload{
     NSMutableArray<FileInfoEntity*>* fileInfoArr;
-    NSMutableArray<NSMutableData*>* fileDataArr;
+//    NSMutableArray<NSNumber *>* fileSizeArr;
+    NSMutableArray<NSNumber *>* currentFileSizeArr;
+    NSMutableArray<NSFileHandle *>* fileHandleArr;
     int currenttag;
 }
 
@@ -34,7 +38,9 @@ static FileDownload* shareFileDownload = nil;
     if (self = [super init]) {
         currenttag = InitialTag;
         fileInfoArr = [[NSMutableArray alloc] init];
-        fileDataArr = [[NSMutableArray alloc] init];
+//        fileSizeArr = [[NSMutableArray alloc] init];
+        currentFileSizeArr = [[NSMutableArray alloc] init];
+        fileHandleArr = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -43,19 +49,23 @@ static FileDownload* shareFileDownload = nil;
     
     [[SocketControl share] sendMessageType:MessageType_DownloadFile datatype:DataType_String tag:currenttag data:fileInfo.path];
     [fileInfoArr addObject:fileInfo];
-    [fileDataArr addObject:[[NSMutableData alloc] init]];
+    [currentFileSizeArr addObject:@(0)];
+    [[NSFileManager defaultManager] createFileAtPath:fileInfo.path contents:nil attributes:nil];
+    [fileHandleArr addObject:[NSFileHandle fileHandleForWritingAtPath:fileInfo.path]];
+    [[fileHandleArr lastObject] seekToEndOfFile];
     currenttag++;
 
 }
 -(void)download_revcStart:(int)tag info:(NSDictionary*)info{
     NSLog(@"download_revcStart:%d",tag);
+ 
 }
 
 -(void)download_revcIng:(int)tag data:(NSData*)data{
     NSLog(@"download_revcIng:%d",tag);
     int index =tag-InitialTag;
-    if (index>=0&&index<fileDataArr.count) {
-        [fileDataArr[index] appendData:data];
+    if (index>=0&&index<currentFileSizeArr.count) {
+       
     }
 }
 
