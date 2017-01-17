@@ -8,17 +8,17 @@
 
 #import "SocketControl.h"
 #import "FileManagerViewController.h"
-#import "MBProgressHUD.h"
+
 #import <Masonry.h>
 #import "FileListEntity.h"
 #import "FileInfoViewController.h"
+#import "ShowMessage.h"
 
 @interface FileManagerViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @end
 
 @implementation FileManagerViewController{
-    MBProgressHUD *_hud;
     UITableView* _mainTableView;
     
     FileListEntity *_fileList;
@@ -48,7 +48,7 @@
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [[NSNotificationCenter defaultCenter] removeObserver:self name:FileListRecvSuccess object:nil];
             if(_mainTableView)[_mainTableView reloadData];
-            [_hud hideAnimated:YES];
+            [[ShowMessage share] hide];
         }];
     }
 }
@@ -79,15 +79,7 @@
         make.top.equalTo(self.view).offset(0);
         make.left.right.bottom.equalTo(self.view);
     }];
-    
-    _hud = ({
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.label.text = @"正在获取文件列表";
-        hud.removeFromSuperViewOnHide = YES;// 隐藏时候从父控件中移除
-        hud.tag = 2008;
-        [self.view bringSubviewToFront:hud];
-        hud;
-    });
+    [[ShowMessage share] showHub:@"正在获取文件列表"];
 }
 
 #pragma mark - UITableViewDelegate

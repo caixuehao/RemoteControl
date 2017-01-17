@@ -8,7 +8,11 @@
 
 #import "ShowMessage.h"
 static ShowMessage *shareShowMessage;
-@implementation ShowMessage
+@implementation ShowMessage{
+    MBProgressHUD *_hud;
+}
+
+
 +(instancetype)share{
     @synchronized (self) {
         if (!shareShowMessage) {
@@ -28,5 +32,19 @@ static ShowMessage *shareShowMessage;
    }];
 
     
+}
+
+-(void)showHub:(NSString*)message{
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        _hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].delegate.window animated:YES];
+        _hud.label.text = message;
+        _hud.removeFromSuperViewOnHide = YES;// 隐藏时候从父控件中移除
+    }];
+}
+
+-(void)hide{
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [_hud hideAnimated:YES];
+    }];
 }
 @end

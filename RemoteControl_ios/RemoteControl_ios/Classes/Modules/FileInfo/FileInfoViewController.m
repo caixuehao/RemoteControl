@@ -11,10 +11,10 @@
 #import "SocketControl.h"
 #import "FileInfoEntity.h"
 #import "FileDownload.h"
-#import "MBProgressHUD.h"
+
 #import "ShowMessage.h"
 
-@interface FileInfoViewController ()
+@interface FileInfoViewController ()<FileDownloadDelegate>
 
 @end
 
@@ -62,11 +62,12 @@
 
 -(void)OnDownloadClick{
     //只显示文字
-
+    [[FileDownload share] setDelegate:self];
     if([[FileDownload share] download:_fileInfo] == NO){
          [[ShowMessage share] showMessage:@"请勿重复下载" afterDelay:2];
     }else{
         [[ShowMessage share] showMessage:@"正在下载" afterDelay:2];
+        [[ShowMessage share] showHub:@"正在下载"];
     }
     
 }
@@ -74,6 +75,20 @@
 -(void)OnOpenClick{
      [[SocketControl share] sendMessageType:MessageType_OpenFile datatype:DataType_String data:_path];
 }
+
+#pragma mark-- FileDownloadDelegate
+-(void)downloadFinished:(int)tag fileInfoEntity:(FileInfoEntity*)fileInfo{
+    if ([fileInfo.path isEqualToString:_fileInfo.path]) {
+        [[ShowMessage share] hide];
+    }
+}
+
+-(void)downloading:(int)tag fileInfoEntity:(FileInfoEntity*)fileInfo WholeSize:(float)wholeSize PresentSize:(float)presentSize{
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [ShowMessage share].hud.label.text = [NSString stringWithFormat:@"正在下载%0.2f%%",presentSize/wholeSize * 100.0];
+    }];
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];

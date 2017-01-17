@@ -53,8 +53,8 @@ typedef enum :NSUInteger{
 
 
 @protocol FileDownloadDelegate
-
--(void)downloading:(int)tag fileInfoEntity:(FileInfoEntity*)fileInfo WholeSize:(float)wholeSize PresentSize:(float)PresentSize;
+@optional
+-(void)downloading:(int)tag fileInfoEntity:(FileInfoEntity*)fileInfo WholeSize:(float)wholeSize PresentSize:(float)presentSize;
 
 -(void)downloadFinished:(int)tag fileInfoEntity:(FileInfoEntity*)fileInfo;
 

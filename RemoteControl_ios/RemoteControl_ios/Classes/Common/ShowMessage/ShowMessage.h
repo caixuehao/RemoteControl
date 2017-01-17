@@ -10,8 +10,12 @@
 #import "MBProgressHUD.h"
 
 @interface ShowMessage : NSObject
-
+@property(nonatomic,strong)MBProgressHUD *hud;;
 +(instancetype)share;
 
 -(void)showMessage:(NSString*)message afterDelay:(float)time;
+
+-(void)showHub:(NSString*)message;
+
+-(void)hide;
 @end
