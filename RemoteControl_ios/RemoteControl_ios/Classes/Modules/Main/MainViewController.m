@@ -17,6 +17,8 @@
 #import "OpenURLViewController.h"
 #import "FileManagerViewController.h"
 #import "FileInfoViewController.h"
+#import "LocalFileManagerViewController.h"
+#import "ShowMessage.h"
 
 @interface MainViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -49,15 +51,15 @@ struct sockethead {
     _isConnect = isConnect;
     if(isConnect){
         MBProgressHUD *hud = [self.view viewWithTag:2008];
-        [hud hide:YES];
+        [hud hideAnimated:YES];
     }else{
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.labelText = @"正在查找主机";
+        hud.label.text = @"正在查找主机";
         hud.removeFromSuperViewOnHide = YES;// 隐藏时候从父控件中移除
         hud.tag = 2008;
         [self.view bringSubviewToFront:hud];
     }
-  
+    
 }
 
 -(void)connectSuccess{
@@ -66,6 +68,7 @@ struct sockethead {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     //不加这个没网络
     [[[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:@"http://www.baidu.com"] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         NSLog(@"%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
@@ -126,6 +129,9 @@ struct sockethead {
             break;
         case 2:
             [self.navigationController pushViewController:[[FileManagerViewController alloc] initWithTagPath:CurrentUserMainPath] animated:YES];
+            break;
+        case 3:
+            [self.navigationController pushViewController:[[LocalFileManagerViewController alloc] init] animated:YES];
             break;
         case 4:
             [self.navigationController pushViewController:[[FileInfoViewController alloc] init] animated:YES];

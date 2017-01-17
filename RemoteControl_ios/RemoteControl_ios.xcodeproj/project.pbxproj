@@ -16,6 +16,7 @@
 		FC494B271E1CD027005D91FE /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC494B251E1CD027005D91FE /* MainViewController.m */; };
 		FC494B281E1CD027005D91FE /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC494B261E1CD027005D91FE /* MainViewController.xib */; };
 		FC494B311E1CD19B005D91FE /* MainNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC494B301E1CD19B005D91FE /* MainNavigationController.m */; };
+		FC5C133E1E2DCC5400EC3E69 /* LocalFileManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5C133D1E2DCC5400EC3E69 /* LocalFileManagerViewController.m */; };
 		FC5CAF0F1E1BA0DB00DCAFA7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF0E1E1BA0DB00DCAFA7 /* main.m */; };
 		FC5CAF121E1BA0DB00DCAFA7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF111E1BA0DB00DCAFA7 /* AppDelegate.m */; };
 		FC5CAF151E1BA0DB00DCAFA7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAF141E1BA0DB00DCAFA7 /* ViewController.m */; };
@@ -32,6 +33,7 @@
 		FC7282E71E1D01B300C078D2 /* CommandLineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC7282E51E1D01B300C078D2 /* CommandLineViewController.xib */; };
 		FCC860161E24BCE5004713A0 /* FileManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC860151E24BCE5004713A0 /* FileManagerViewController.m */; };
 		FCC8601C1E24DF2F004713A0 /* FileListEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC8601B1E24DF2F004713A0 /* FileListEntity.m */; };
+		FCE78B8C1E2E0AB200AF137E /* ShowMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FCE78B8B1E2E0AB200AF137E /* ShowMessage.m */; };
 		FCF76D841E1F4C51008DF19E /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FCF76D831E1F4C51008DF19E /* README.md */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +73,8 @@
 		FC494B261E1CD027005D91FE /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		FC494B2F1E1CD19B005D91FE /* MainNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainNavigationController.h; sourceTree = "<group>"; };
 		FC494B301E1CD19B005D91FE /* MainNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainNavigationController.m; sourceTree = "<group>"; };
+		FC5C133C1E2DCC5400EC3E69 /* LocalFileManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalFileManagerViewController.h; path = FileManager/LocalFileManagerViewController.h; sourceTree = "<group>"; };
+		FC5C133D1E2DCC5400EC3E69 /* LocalFileManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalFileManagerViewController.m; path = FileManager/LocalFileManagerViewController.m; sourceTree = "<group>"; };
 		FC5CAF0A1E1BA0DB00DCAFA7 /* RemoteControl_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemoteControl_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC5CAF0E1E1BA0DB00DCAFA7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FC5CAF101E1BA0DB00DCAFA7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -100,6 +104,8 @@
 		FCC860151E24BCE5004713A0 /* FileManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileManagerViewController.m; path = FileManager/FileManagerViewController.m; sourceTree = "<group>"; };
 		FCC8601A1E24DF2F004713A0 /* FileListEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileListEntity.h; path = FileListEntity/FileListEntity.h; sourceTree = "<group>"; };
 		FCC8601B1E24DF2F004713A0 /* FileListEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileListEntity.m; path = FileListEntity/FileListEntity.m; sourceTree = "<group>"; };
+		FCE78B8A1E2E0AB200AF137E /* ShowMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShowMessage.h; path = ShowMessage/ShowMessage.h; sourceTree = "<group>"; };
+		FCE78B8B1E2E0AB200AF137E /* ShowMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShowMessage.m; path = ShowMessage/ShowMessage.m; sourceTree = "<group>"; };
 		FCF76D831E1F4C51008DF19E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -177,6 +183,7 @@
 		FC494B0A1E1CC4A3005D91FE /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				FCE78B891E2E0A6500AF137E /* ShowMessage */,
 				FC2197C51E2875AE00C64FAB /* FileInfoEntity */,
 				FCC860191E24DE42004713A0 /* FileListEntity */,
 			);
@@ -315,6 +322,8 @@
 		FC5E9F8F1E276DB700AD749F /* FileManager_ios */ = {
 			isa = PBXGroup;
 			children = (
+				FC5C133C1E2DCC5400EC3E69 /* LocalFileManagerViewController.h */,
+				FC5C133D1E2DCC5400EC3E69 /* LocalFileManagerViewController.m */,
 			);
 			name = FileManager_ios;
 			sourceTree = "<group>";
@@ -373,6 +382,15 @@
 				FCC8601B1E24DF2F004713A0 /* FileListEntity.m */,
 			);
 			name = FileListEntity;
+			sourceTree = "<group>";
+		};
+		FCE78B891E2E0A6500AF137E /* ShowMessage */ = {
+			isa = PBXGroup;
+			children = (
+				FCE78B8A1E2E0AB200AF137E /* ShowMessage.h */,
+				FCE78B8B1E2E0AB200AF137E /* ShowMessage.m */,
+			);
+			name = ShowMessage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -561,6 +579,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC5C133E1E2DCC5400EC3E69 /* LocalFileManagerViewController.m in Sources */,
 				FC2197C81E2875D600C64FAB /* FileInfoEntity.m in Sources */,
 				FCC8601C1E24DF2F004713A0 /* FileListEntity.m in Sources */,
 				FC5CAF151E1BA0DB00DCAFA7 /* ViewController.m in Sources */,
@@ -570,6 +589,7 @@
 				FC5CAF121E1BA0DB00DCAFA7 /* AppDelegate.m in Sources */,
 				FC494B1C1E1CC6F3005D91FE /* SocketControl.mm in Sources */,
 				FC7282E61E1D01B300C078D2 /* CommandLineViewController.m in Sources */,
+				FCE78B8C1E2E0AB200AF137E /* ShowMessage.m in Sources */,
 				FC2197D01E28BDB600C64FAB /* FileDownload.m in Sources */,
 				FC5CAF0F1E1BA0DB00DCAFA7 /* main.m in Sources */,
 				FC5E9F931E276E5B00AD749F /* FileInfoViewController.m in Sources */,

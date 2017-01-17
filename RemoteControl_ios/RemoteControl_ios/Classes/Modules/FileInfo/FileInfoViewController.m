@@ -11,6 +11,8 @@
 #import "SocketControl.h"
 #import "FileInfoEntity.h"
 #import "FileDownload.h"
+#import "MBProgressHUD.h"
+#import "ShowMessage.h"
 
 @interface FileInfoViewController ()
 
@@ -59,7 +61,14 @@
 }
 
 -(void)OnDownloadClick{
-    [[FileDownload share] download:_fileInfo];
+    //只显示文字
+
+    if([[FileDownload share] download:_fileInfo] == NO){
+         [[ShowMessage share] showMessage:@"请勿重复下载" afterDelay:2];
+    }else{
+        [[ShowMessage share] showMessage:@"正在下载" afterDelay:2];
+    }
+    
 }
 
 -(void)OnOpenClick{

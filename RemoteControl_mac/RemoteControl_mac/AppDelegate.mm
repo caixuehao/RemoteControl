@@ -21,17 +21,7 @@
     [[StartController share] autoStart];
     [[StartController share] hideDock];
     [[SocketControl share] start];
- 
-//    NSData* data = [NSData dataWithContentsOfFile:@"/Users/cxh/Desktop/文稿"];
-//    NSLog(@"%@",[[NSDictionary alloc] initWithContentsOfFile:@"/Users/cxh/Desktop/文稿"]);
-    char message[10] = "123456789";
-    char message2[10] = "";
-    NSLog(@"%s    %zu",message,strlen(message));
-    memcpy(message2,message+4,6);
-     NSLog(@"%s    %zu",message2,strlen(message2));
-    memcpy(message,message2,6);
-    memset(message+6,0,10);
-     NSLog(@"%s    %zu",message,strlen(message));
+    
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
