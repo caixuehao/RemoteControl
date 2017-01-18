@@ -61,6 +61,11 @@ struct sockethead {
     self.isConnect = YES;
 }
 
+-(void)connectDisconnect{
+    self.isConnect = NO;
+    [[SocketControl share] connect];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -70,10 +75,10 @@ struct sockethead {
     }] resume];
     
     
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(connectDisconnect) name:ConnectDisconnect object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(connectSuccess)  name:ConnectSuccess  object:nil];
     [[SocketControl share] connect];
-    _titlesArr = @[@"关机",@"打开网页",@"电脑资源管理器",@"本机文件",@"test"];
+    _titlesArr = @[@"关机",@"打开网页",@"电脑资源管理器",@"本机文件"];
     [self loadSubView];
 
      self.isConnect = NO;
@@ -127,9 +132,6 @@ struct sockethead {
             break;
         case 3:
             [self.navigationController pushViewController:[[LocalFileManagerViewController alloc] init] animated:YES];
-            break;
-        case 4:
-            [self.navigationController pushViewController:[[FileInfoViewController alloc] init] animated:YES];
             break;
         default:
             [self.navigationController pushViewController:[[UIViewController alloc] init] animated:YES];

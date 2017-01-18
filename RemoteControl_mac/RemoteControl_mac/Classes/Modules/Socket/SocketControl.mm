@@ -39,6 +39,13 @@ static SocketControl* shareSocketControl = nil;
     return shareSocketControl;
 }
 
+-(void)close{
+    shutdown(socketReturn,2);
+    close(acceptreturn);
+    close(socketReturn);
+   
+}
+
 -(void)start{
     
     
@@ -74,6 +81,7 @@ static SocketControl* shareSocketControl = nil;
     servaddr.sin_family = AF_INET;
     servaddr.sin_port = htons(NetworkPort);//端口
     servaddr.sin_addr.s_addr = htonl(INADDR_ANY);//INADDR_ANY表示任何IP
+    
     int bindreturn = bind(socketReturn, (struct sockaddr *) &servaddr, sizeof(servaddr));
     Log(@"bindreturn:%d",bindreturn);
     if(bindreturn != 0){

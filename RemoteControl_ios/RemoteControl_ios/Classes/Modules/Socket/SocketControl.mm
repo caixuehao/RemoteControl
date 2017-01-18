@@ -12,6 +12,7 @@
 
 #include <sys/types.h>
 #include <sys/ioctl.h>
+#include <netinet/tcp.h>  
 
 #import "SocketControl.h"
 #import "FileDownload.h"
@@ -40,10 +41,11 @@ static SocketControl* shareSocketControl = nil;
     if (self = [super init]) {
         _socketReturn = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
         connectreturn = -1;
+        
         //sendQueue = [[NSOperationQueue alloc] init];
         udpQueue = [[NSOperationQueue alloc] init];
         tcpQueue = [[NSOperationQueue alloc] init];
-        [self UDPinit];
+        
     }
     return self;
 }
@@ -87,6 +89,14 @@ static SocketControl* shareSocketControl = nil;
         }
     }];
 }
+
+
+
+
+
+
+
+
 -(void)tcpRecvMessage{
     
     
@@ -107,7 +117,15 @@ static SocketControl* shareSocketControl = nil;
         while (recvbool) {
             size_t recvreturn = recv(_socketReturn,message+messageLenght, maxsize, 0);
             messageLenght += recvreturn;
-            
+            if(recvreturn<=0 && errno != EINTR){
+                NSLog(@"链接断开了 erron:%d str:%s",errno,strerror(errno));
+                //close(connectreturn);
+                connectreturn = -1;
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                    [[NSNotificationCenter defaultCenter] postNotificationName:ConnectDisconnect object:nil];
+                }];
+                recvbool = false;
+            }
             //NSLog(@"messageLenght:%zu ,recvreturn:%zu",messageLenght,recvreturn);
             //bool readbool = true;
             while (true) {
@@ -171,7 +189,7 @@ static SocketControl* shareSocketControl = nil;
 
 
 -(void)connect{
-    
+    [self UDPinit];
     /**
      *  用udp发送信息
      *

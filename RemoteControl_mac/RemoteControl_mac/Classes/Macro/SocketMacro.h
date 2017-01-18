@@ -9,7 +9,7 @@
 #ifndef SocketMacro_h
 #define SocketMacro_h
 
-#define NetworkPort 1997 //端口号
+#define NetworkPort 1995 //端口号
 
 
 #pragma 数据类型
@@ -41,9 +41,9 @@
 #define AnybodyHere "Anybody here?"
 #define IAmHere "I am here."
 
-
 #pragma 通知字符串
 #define ConnectSuccess @"ConnectSuccess"
+#define ConnectDisconnect @"ConnectDisconnect"
 #define FileListRecvSuccess @"FileListRecvSuccess"
 #define FileInfoRecvSuccess @"FileInfoRecvSuccess"
 

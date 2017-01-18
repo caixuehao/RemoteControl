@@ -7,6 +7,7 @@
 //
 
 #import "CommandLineController.h"
+#import "MainViewController.h"
 
 
 static CommandLineController* shareCommandLineController = nil;
@@ -33,7 +34,8 @@ static CommandLineController* shareCommandLineController = nil;
 
 -(void)shellCommands:(NSString*)commands{
     NSLog(@"%@",commands);
-  
+    int systemReturn = system([commands UTF8String]);
+    Log(@"systemReturn:%d",systemReturn);
 }
 
 @end

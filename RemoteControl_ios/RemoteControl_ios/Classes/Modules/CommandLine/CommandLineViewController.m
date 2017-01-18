@@ -21,7 +21,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 - (IBAction)shutdown:(id)sender {
     [[SocketControl share] sendMessageType:MessageType_Shutdown datatype:DataType_String data:ShutDown];
@@ -35,6 +34,9 @@
 - (IBAction)restart:(id)sender {
     [[SocketControl share] sendMessageType:MessageType_Shutdown datatype:DataType_String data:Restart];
     
+}
+- (IBAction)shutdown2:(id)sender {
+    [[SocketControl share] sendMessageType:MessageType_TerminalCommand datatype:DataType_String data:@"sudo halt"];
 }
 
 /*

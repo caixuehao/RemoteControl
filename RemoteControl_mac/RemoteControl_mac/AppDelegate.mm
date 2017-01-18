@@ -26,6 +26,8 @@
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
+    [[SocketControl share] close];
+    
 }
 //点击Dock重新打开主窗口
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication
