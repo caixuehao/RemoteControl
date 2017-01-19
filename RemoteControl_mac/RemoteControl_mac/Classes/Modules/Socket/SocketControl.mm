@@ -26,7 +26,8 @@ static SocketControl* shareSocketControl = nil;
     int acceptreturn;
     NSOperationQueue* SocketQueue;
     NSOperationQueue* udpQueue;
-    
+    NSTimer* heartbeatTimer;
+    int heartbeatInt;
 }
 
 
@@ -40,15 +41,13 @@ static SocketControl* shareSocketControl = nil;
 }
 
 -(void)close{
-    shutdown(socketReturn,2);
+//    shutdown(socketReturn,2);
     close(acceptreturn);
     close(socketReturn);
    
 }
 
 -(void)start{
-    
-    
     udpQueue = [[NSOperationQueue alloc] init] ;
        
     
@@ -88,6 +87,10 @@ static SocketControl* shareSocketControl = nil;
         Log(@"erron:%d str:%s",errno,strerror(errno));
         return;
     }
+    
+    
+    
+    
     
     //UDP
     struct sockaddr_in udpSocketAddr;
@@ -134,6 +137,7 @@ static SocketControl* shareSocketControl = nil;
     
     
     
+    
     /**
      *  listen 处于监听状态的套接字socketReturn将维护一个客户连接请求队列，该队列最多容纳MAX_LISTEN_NUM个用户请求。
      *
@@ -157,7 +161,7 @@ static SocketControl* shareSocketControl = nil;
 
 
 
-
+//监听tcp连接
 -(void)listenTCPConnect{
     
     /**
@@ -177,7 +181,15 @@ static SocketControl* shareSocketControl = nil;
         Log(@"erron:%d str:%s",errno,strerror(errno));
         return;
     }
+    /**
+     *  连接成功
+     */
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        heartbeatTimer =[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(sendHeartbeat) userInfo:nil repeats:YES];
+        heartbeatInt = 0;
+    }];
     
+    //
     struct socketTCPhead head;
     memset(&head,0,sizeof(head));//清空结构体
     NSMutableData* recvData = nil;
@@ -194,11 +206,14 @@ static SocketControl* shareSocketControl = nil;
         size_t recvreturn = recv(acceptreturn,message+messageLenght, maxsize, 0);
         messageLenght += recvreturn;
         
-        if(recvreturn<=0 && errno != EINTR){
+        if((recvreturn<=0 && errno != EINTR)){
+            if(heartbeatTimer)[heartbeatTimer invalidate];
+            heartbeatTimer = nil;
             Log(@"链接断开了 erron:%d str:%s",errno,strerror(errno));
             close(acceptreturn);
             [self listenTCPConnect];
             recvbool = false;
+            break;
         }
         while (true) {
             //读取信息
@@ -248,58 +263,22 @@ static SocketControl* shareSocketControl = nil;
         }
         
     }
-    /*   struct socketTCPhead head;
-    memset(&head,0,sizeof(head));//清空结构体
-    NSMutableData* recvData = nil;
-    
-
-    char message[1024];
-    //接收并打印客户端数据
-    bool recvbool = true;
-    while (recvbool) {
-        memset(message,0,sizeof(message));
-        size_t recvreturn = recv(acceptreturn,message, sizeof(message), 0);
-        NSLog(@"recvreturn:%zu message:%s",recvreturn,message);
-        //判断是否断开连接 http://blog.csdn.net/god2469/article/details/8801356
-        if(recvreturn<=0 && errno != EINTR){
-            Log(@"链接断开了 erron:%d str:%s",errno,strerror(errno));
-            close(acceptreturn);
-            [self listenTCPConnect];
-            recvbool = false;
-        }
-        
-        //读取信息
-        if(head.dataSize == 0){
-            //读取头
-            memcpy(&head,message,sizeof(head));
-            if (recvreturn>sizeof(head)) {
-                NSUInteger length = recvreturn-sizeof(head);
-                length = (length>head.dataSize)?head.dataSize:length;
-                recvData = [NSMutableData dataWithBytes: message+sizeof(head) length:length];
-            }else{
-                recvData = nil;
-            }
-        }else{
-            
-            //读取数据
-            if(recvData == nil){
-                NSUInteger length = (recvreturn>head.dataSize)?head.dataSize:recvreturn;
-                recvData = [NSMutableData dataWithBytes: message length:length];
-            }else{
-                NSUInteger length = recvreturn;
-                length = (length+recvData.length)>head.dataSize?head.dataSize-recvData.length:length;
-                [recvData appendBytes:message length:length];
-            }
-            //这里还有一种第二个包头可能接在包尾的情况，又要加判断不写了。
-            if(recvData.length == head.dataSize){
-                [self executeCommand:head.messageType datatype:head.dataType data:recvData];
-                memset(&head,0,sizeof(head));
-            }
-        }
-        
-    }*/
+   
 }
 
+
+
+-(void)sendHeartbeat{
+    [self sendMessageType:MessageType_Heartbeat datatype:DataType_String data:AreYouHere];
+    if (heartbeatInt++>Overtime) {
+        if(heartbeatTimer)[heartbeatTimer invalidate];
+        heartbeatTimer = nil;
+        Log(@"连接失败");
+        shutdown(acceptreturn,2);
+    }
+}
+
+//发送
 -(void)sendMessageType:(int)messagetype datatype:(int)datatype data:(id)data{
     [self sendMessageType:messagetype datatype:datatype tag:0 data:data];
 }
@@ -323,11 +302,8 @@ static SocketControl* shareSocketControl = nil;
             senddata = data;
             break;
     }
-    //NSDictionary* headdic = @{@"messageType":@(messagetype),@"dataType":@(datatype),@"dataSize":@(senddata.length)};
-    //NSData* headdata =  [NSJSONSerialization dataWithJSONObject:headdic options:NSJSONWritingPrettyPrinted error:nil];
     struct socketTCPhead head = {messagetype,datatype,tag,static_cast<long>(senddata.length)};
     send(acceptreturn, &head, sizeof(head), 0);
-    //NSLog(@"%lu",(unsigned long)senddata.length);
     send(acceptreturn, [senddata bytes], senddata.length, 0);
 
 }
@@ -335,7 +311,7 @@ static SocketControl* shareSocketControl = nil;
 
 
 
-
+//执行
 -(void)executeCommand:(int)messagetype datatype:(int)datatype tag:(int)tag data:(id)data{
     //转化数据类型
     if(datatype == DataType_String){
@@ -344,6 +320,10 @@ static SocketControl* shareSocketControl = nil;
         data = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     }
     //根据消息类型来执行命令
+    
+//    if(messagetype == MessageType_Heartbeat){
+        heartbeatInt = 0;
+//    }else
     if (messagetype == MessageType_TerminalCommand) {
         [[CommandLineController share] shellCommands:data];
     }else if(messagetype == MessageType_Shutdown){

@@ -58,12 +58,16 @@ struct sockethead {
 }
 
 -(void)connectSuccess{
-    self.isConnect = YES;
+    if (self.isConnect == NO) {
+         self.isConnect = YES;
+    }
+   
 }
 
 -(void)connectDisconnect{
-    self.isConnect = NO;
-    [[SocketControl share] connect];
+    if (self.isConnect == YES) {
+        self.isConnect = NO;
+    }
 }
 
 - (void)viewDidLoad {

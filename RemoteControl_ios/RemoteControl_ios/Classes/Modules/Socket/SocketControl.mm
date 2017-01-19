@@ -26,6 +26,8 @@ static SocketControl* shareSocketControl = nil;
     //NSOperationQueue* sendQueue;
     NSOperationQueue* udpQueue;
     NSOperationQueue* tcpQueue;
+    NSTimer* heartbeatTimer;
+    int heartbeatInt;
 }
 
 +(instancetype)share{
@@ -39,15 +41,24 @@ static SocketControl* shareSocketControl = nil;
 
 -(instancetype)init{
     if (self = [super init]) {
-        _socketReturn = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-        connectreturn = -1;
+       
         
         //sendQueue = [[NSOperationQueue alloc] init];
         udpQueue = [[NSOperationQueue alloc] init];
         tcpQueue = [[NSOperationQueue alloc] init];
-        
+       
     }
     return self;
+}
+
+
+-(void)connect{
+    
+    _socketReturn = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+     NSLog(@"_socketReturn:%d",_socketReturn);
+    connectreturn = -1;
+    [self UDPinit];
+    [self sendBroadcast];
 }
 
 -(void)UDPinit{
@@ -76,10 +87,12 @@ static SocketControl* shareSocketControl = nil;
                     _serverIP = [NSString stringWithFormat:@"%s",inet_ntoa(socketParameters.sin_addr)];
                     NSLog(@"链接成功");
                     bl = NO;
+                    close(udpSocketReturn);
                     [self tcpRecvMessage];
-                    //主机有回应
                     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(connect) object:nil];
+                        heartbeatTimer =[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(sendHeartbeat) userInfo:nil repeats:YES];
+                        heartbeatInt = 0;
+                        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(sendBroadcast) object:nil];
                         [[NSNotificationCenter defaultCenter] postNotificationName:ConnectSuccess object:nil];
                     }];
                 }else{
@@ -119,12 +132,16 @@ static SocketControl* shareSocketControl = nil;
             messageLenght += recvreturn;
             if(recvreturn<=0 && errno != EINTR){
                 NSLog(@"链接断开了 erron:%d str:%s",errno,strerror(errno));
-                //close(connectreturn);
+                if(heartbeatTimer)[heartbeatTimer invalidate];
+                heartbeatTimer = nil;
                 connectreturn = -1;
+                close(_socketReturn);
                 [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                     [[NSNotificationCenter defaultCenter] postNotificationName:ConnectDisconnect object:nil];
                 }];
                 recvbool = false;
+                [self connect];
+                break;
             }
             //NSLog(@"messageLenght:%zu ,recvreturn:%zu",messageLenght,recvreturn);
             //bool readbool = true;
@@ -136,7 +153,6 @@ static SocketControl* shareSocketControl = nil;
                         
                         memcpy(&head,message,sizeof(head));
                         //将剩下的数据前移动并清空后面的数据用于下一次储存
-                        //memcpy(message,message+sizeof(head),recvreturn-sizeof(head));
                         memcpy(message2,message+sizeof(socketTCPhead),messageLenght-sizeof(socketTCPhead));
                         memcpy(message,message2,messageLenght-sizeof(socketTCPhead));
                         memset(message+messageLenght-sizeof(head),0,maxsize);
@@ -185,11 +201,7 @@ static SocketControl* shareSocketControl = nil;
 
 
 
-
-
-
--(void)connect{
-    [self UDPinit];
+-(void)sendBroadcast{
     /**
      *  用udp发送信息
      *
@@ -202,8 +214,7 @@ static SocketControl* shareSocketControl = nil;
      *
      *  @return 如果成功就返回发送的字节数，如果失败就返回SOCKET_ERROR
      */
-    
-    //发现速度挺快就不搞别的了
+
     [[[NSOperationQueue alloc] init]addOperationWithBlock:^{
         NSLog(@"%s",AnybodyHere);
         char message[100] = AnybodyHere;
@@ -219,9 +230,10 @@ static SocketControl* shareSocketControl = nil;
         }
         //UDP可能发送失败，每1秒就重试一遍
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            if(connectreturn)[self performSelector:@selector(connect) withObject:nil afterDelay:1.0f];
+            if(connectreturn)[self performSelector:@selector(sendBroadcast) withObject:nil afterDelay:1.0f];
         }];
     }];
+
 }
 
 
@@ -255,6 +267,19 @@ static SocketControl* shareSocketControl = nil;
 
 
 
+-(void)sendHeartbeat{
+    [self sendMessageType:MessageType_Heartbeat datatype:DataType_String data:AreYouHere];
+    if (heartbeatInt++>Overtime) {
+        if(heartbeatTimer)[heartbeatTimer invalidate];
+        heartbeatTimer = nil;
+         NSLog(@"连接失败");
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:ConnectDisconnect object:nil];
+        }];
+
+       
+    }
+}
 
 
 
@@ -301,6 +326,9 @@ static SocketControl* shareSocketControl = nil;
     }
     if(data==nil){NSLog(@"空数据或者，数据解析错误。");}
     //根据消息类型来执行命令
+//    if(messagetype == MessageType_Heartbeat){
+        heartbeatInt = 0;
+//    }else
     if(messagetype == MessageType_FileList){
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [[NSNotificationCenter defaultCenter] postNotificationName:FileListRecvSuccess object:data];

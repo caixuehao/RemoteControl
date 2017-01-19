@@ -9,8 +9,8 @@
 #ifndef SocketMacro_h
 #define SocketMacro_h
 
-#define NetworkPort 1995 //端口号
-
+#define NetworkPort 1993 //端口号
+#define Overtime 5
 
 #pragma 数据类型
 #define DataType_String 1
@@ -19,6 +19,7 @@
 
 
 #pragma 消息类型
+#define MessageType_Heartbeat 0 //心跳
 #define MessageType_TerminalCommand 1 //终端命令
 #define MessageType_Shutdown 2 //关机
 #define MessageType_OpenURL 3  //打开网页
@@ -40,6 +41,8 @@
 #pragma 对话字符串
 #define AnybodyHere "Anybody here?"
 #define IAmHere "I am here."
+#define AreYouHere @"Are you here?"
+#define YesIAmHere @"yes,i am here"
 
 #pragma 通知字符串
 #define ConnectSuccess @"ConnectSuccess"
